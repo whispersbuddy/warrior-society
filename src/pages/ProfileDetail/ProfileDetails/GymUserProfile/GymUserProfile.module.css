@@ -1,0 +1,359 @@
+.userProfile p {
+  margin-bottom: 0px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.header h3 {
+  font-size: 35px;
+  color: var(--secondary-color);
+}
+
+.leftContainer .editBtn,
+.rightContainer .editBtn {
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+}
+
+.dues .editBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.aboutContainer,
+.fightingContainer,
+.awardsContainer,
+.gymsContainer,
+.instructorContainer,
+.studentsContainer,
+.admissionInfo,
+.ownersContainer,
+.albumContainer,
+.dues {
+  border: 3px solid var(--bg-color);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 2em;
+  position: relative;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.skill {
+  position: relative;
+}
+.skill h5 {
+  font-family: var(--ff-primary-semiBold);
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.award {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.award img {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 7px;
+  object-fit: cover;
+}
+
+.award p {
+  text-align: center;
+}
+
+.trashBtn {
+  position: absolute;
+  top: 11px;
+  right: 45px;
+  background-color: transparent !important;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.trashBtn svg {
+  color: var(--black-color);
+  cursor: pointer;
+}
+
+.gym {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.gymContent {
+  display: flex;
+  flex-direction: column;
+  /* gap: 6px; */
+  flex: 2;
+}
+
+.gym img {
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
+}
+
+.gymImage {
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  overflow: hidden;
+  background-color: rgb(227, 227, 227);
+}
+
+.gymImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gymContent p {
+  margin-bottom: 0px;
+  font-family: var(--ff-primary-semiBold);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 19px;
+}
+
+.gymContent span {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+
+.dues,
+.specials {
+  padding-top: 20px;
+}
+
+.dues h5,
+.specials h5 {
+  color: var(--secondary-color);
+  font-size: 30px;
+}
+
+.fee {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fee p,
+.specials p {
+  font-family: var(--ff-primary-medium);
+  font-size: 18px;
+}
+
+.fee span {
+  color: var(--secondary-color);
+  font-family: var(--ff-primary-semiBold);
+  font-size: 18px;
+}
+
+.owners {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.actions svg,
+.editBtn {
+  font-size: 20px;
+}
+
+.topDiv {
+  align-items: stretch;
+}
+
+.albumContainer .header span {
+  text-decoration: underline !important;
+  font-size: 20px;
+  color: var(--secondary-color) !important;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+.albumDiv {
+  margin-bottom: 17px;
+}
+
+.albumDiv h2 {
+  font-size: 28px;
+  padding-top: 30px !important;
+}
+
+.albumDiv > div {
+  height: 280px;
+}
+
+.imageBox {
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgb(238, 233, 233);
+}
+
+.award img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 7px;
+}
+
+.awardEdit {
+  position: absolute;
+  top: 0px;
+  right: 7px;
+  background-color: transparent !important;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.awardEdit svg {
+  color: var(--black-color);
+}
+
+.editDlt__wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.owners__wrapper {
+  /* position: relative; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ownerDetails {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.owners__wrapper p {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-family: var(--ff-primary-semiBold);
+}
+
+.owners__wrapper span {
+  cursor: pointer;
+}
+
+.owners__wrapper span svg {
+  color: var(--bg-color);
+  font-size: 20px;
+}
+.imgBox {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid #929eaa;
+  background-color: #d6d6d6;
+}
+@media screen and (max-width: 1200px) and (min-width: 991px) {
+  .fee {
+    grid-column-gap: 0px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .fee {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header h3 {
+    font-size: 28px;
+  }
+
+  .award img {
+    height: 110px;
+  }
+
+  .dues h5 {
+    font-size: 24px;
+  }
+
+  .actions svg,
+  .editBtn {
+    font-size: 17px;
+  }
+
+  .leftContainer .editBtn,
+  .rightContainer .editBtn {
+    height: 34px;
+    width: 34px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header h3 {
+    font-size: 25px;
+  }
+
+  .dues h5 {
+    font-size: 20px;
+  }
+
+  .award img {
+    height: 110px;
+  }
+
+  .aboutContainer,
+  .fightingContainer,
+  .awardsContainer,
+  .gymsContainer,
+  .instructorContainer,
+  .studentsContainer,
+  .admissionInfo,
+  .ownersContainer,
+  .albumContainer,
+  .dues {
+    padding: 15px;
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .gym {
+    width: 100%;
+  }
+}

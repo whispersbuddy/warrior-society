@@ -1,0 +1,152 @@
+.box {
+  user-select: none;
+  height: 140px;
+}
+
+.box label {
+  font-size: 18px;
+  margin-top: 20px;
+  color: var(--text-color-black) !important;
+  font-family: "open-sans-regular";
+}
+
+.uploadImageBox {
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+}
+
+.uploadBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.uploadBox .icon {
+  height: 60px;
+  width: 60px;
+  color: var(--label-color);
+}
+
+.uploadBox .uploadIcon {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  background-color: var(--main-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.uploadBox .uploadIcon svg {
+  color: var(--white-color);
+  font-size: 20px;
+}
+
+/* Image Uploaded */
+.imageUploaded {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageUploaded .editAndDelete {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imageUploaded .editAndDelete .icon {
+  background-color: var(--main-color);
+  padding: 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 1px #afa8a8;
+}
+
+.imageUploaded .editAndDelete .icon svg {
+  color: var(--white-color);
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  display: inherit;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  background-color: var(--main-color);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 1px #afa8a8;
+  z-index: 2;
+}
+
+.closeIcon svg {
+  color: var(--white-color);
+  vertical-align: middle;
+  display: flex;
+}
+
+.label {
+  color: var(--text-color);
+  text-transform: capitalize;
+  font-family: "open-sans-medium";
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.output {
+  position: relative;
+  overflow: hidden;
+}
+
+.output img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+.controls {
+  margin: 10px;
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  position: absolute;
+  top: 76px;
+  right: -6px;
+}
+.controls svg {
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .box {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .box {
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .box {
+    height: 140px;
+  }
+}

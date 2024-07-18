@@ -1,0 +1,19 @@
+.output {
+  position: relative;
+  overflow: hidden;
+}
+
+.output img {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+.uploadImageBox {
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0px 0 5px 2px #0000000d;
+  position: relative;
+  background-color: #fff;
+}

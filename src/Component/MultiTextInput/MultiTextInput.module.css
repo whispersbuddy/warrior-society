@@ -1,0 +1,73 @@
+.inputHeading {
+  display: flex;
+}
+
+.inputHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputHeading p {
+  margin-left: 10px;
+  font-family: var(--ff-primary-bold);
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  margin-left: 15px;
+}
+
+.inputHeading p svg {
+  font-family: var(--ff-primary-bold);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0px !important;
+  margin-top: 0px !important;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+
+.deleteBtn svg {
+  color: var(--main-color);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.ownerInput {
+  display: flex;
+  gap: 10px;
+  margin-top: 0px;
+  position: relative;
+}
+
+.owner {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  flex: 2;
+}
+
+.addBtn {
+  color: var(--main-color);
+  font-size: 22px;
+  cursor: pointer
+}
+
+.bullet {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background-color: var(--main-color);
+  position: absolute;
+  left: -20px;
+  top: 20px;
+}

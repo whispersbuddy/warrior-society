@@ -1,0 +1,116 @@
+.inputField {
+  margin-top: 15px;
+}
+
+.labelStyle {
+  text-transform: none;
+}
+
+.addBtn {
+  color: var(--main-color);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.disciplineBox::-webkit-scrollbar {
+  width: 7px;
+}
+
+.disciplineBox ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.disciplineBox::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 50px;
+}
+.inputField ::-webkit-scrollbar {
+  width: 7px;
+}
+
+.inputField ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.inputField ::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 50px;
+}
+.deleteBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0px !important;
+  margin-top: 0px !important;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+
+.deleteBtn svg {
+  color: var(--main-color);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.deleteBtn p {
+  margin-bottom: 4px;
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.addDiscipline {
+  /* margin-bottom: 6px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.disciplineHeading {
+  color: var(--secondary-color);
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.disciplineHeading svg {
+  margin-left: 7px;
+}
+
+.divBox {
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.divBox::-webkit-scrollbar {
+  width: 5px;
+}
+
+.divBox::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.divBox::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
+.disciplineBox {
+  padding-block: 10px;
+}
+
+.disciplineBox:not(:last-child) {
+  border-bottom: 1px solid silver;
+}

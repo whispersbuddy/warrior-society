@@ -1,0 +1,423 @@
+.selectRoleWrapper {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto minmax(768px, 1024px);
+  gap: 1rem;
+  height: 100vh;
+}
+
+.imageWrapper {
+  background-color: var(--main-color);
+  border-radius: 1rem;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.selectRoleLogo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  max-height: 150px;
+  max-width: 150px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.imageWrapper .description {
+  margin-block: auto;
+}
+
+.imageWrapper .description h1 {
+  color: var(--white-color);
+  font-size: clamp(30px, 3vw, 60px) !important;
+  max-width: 500px;
+}
+
+.imageWrapper .description span {
+  font-size: 2em;
+}
+
+.chooseRoleWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chooseRoleWrapper .header {
+  margin-inline-end: auto;
+}
+
+.chooseRoleWrapper .header h1 {
+  color: var(--secondary-color);
+}
+
+.chooseRole,
+.actionWrapper {
+  width: 100%;
+}
+
+.chooseRole {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.roleCheckbox {
+  height: 250px;
+  width: 200px;
+  border: 3px solid var(--main-color);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roleCheckbox.active {
+  border: 3px solid var(--secondary-color);
+}
+
+.roleCheckbox > div {
+  flex-direction: column-reverse;
+  justify-content: start;
+  align-items: start;
+  height: 100%;
+  margin: 0 !important;
+}
+
+.roleCheckbox > div > label {
+  color: var(--placeholder-color) !important;
+  margin: auto;
+}
+
+.roleCheckbox > div > label span {
+  font-size: 28px !important;
+  color: var(--placeholder-color) !important;
+  font-family: var(--ff-primary-semiBold);
+  cursor: pointer;
+}
+
+.roleCheckbox.active > div > label span {
+  color: var(--secondary-color) !important;
+}
+
+.actionWrapper {
+  max-width: 600px;
+}
+
+.actionWrapper > button {
+  width: 100%;
+}
+
+.pageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
+  padding-bottom: 3rem;
+}
+
+/* .pageMain {
+  position: relative;
+} */
+
+.pageMain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/images/dragon.png");
+  background-repeat: no-repeat;
+  background-size: 50% 80%;
+  background-position: top right;
+  z-index: -2;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+.logo img {
+  height: 150px;
+  width: 120px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.main {
+  background-color: var(--white-color);
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-inline: 10em;
+  border: 3px solid var(--main-color);
+  padding: 70px 50px 50px 50px;
+  border-radius: 15px;
+}
+
+.main h1 {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 70px;
+}
+
+.form {
+  margin-top: 2rem;
+}
+
+.forgot {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 10px 0 20px 0;
+}
+
+.forgot div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.forgot div p {
+  margin-bottom: 0;
+  color: var(--secondary-color);
+  font-family: var(--ff-primary-bold);
+  cursor: pointer;
+}
+
+.forgot div:last-child p {
+  cursor: pointer;
+}
+
+.submitBtn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.submitBtn button {
+  width: 100%;
+}
+
+.chooseOther {
+  display: flex;
+  padding-block: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chooseOther p {
+  font-size: 17px;
+  font-family: var(--ff-primary-bold);
+  color: var(--secondary-color);
+}
+
+.chooseOther p span {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.inputField {
+  margin-top: 10px;
+}
+
+.roleCheckbox {
+  position: relative;
+}
+
+.checkBoxDiv {
+  height: 20px !important;
+  width: 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.checkBoxDiv svg {
+  font-size: 16px;
+  color: var(--white-color);
+}
+
+.roleCheckbox p {
+  margin-bottom: 0px;
+  font-family: var(--ff-primary-semiBold);
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--placeholder-color);
+}
+
+.checkBoxActive {
+  border: 2px solid var(--secondary-color);
+}
+
+.active p {
+  color: var(--secondary-color);
+}
+
+.checkBoxActive svg {
+  color: var(--secondary-color);
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    margin-top: 2em;
+    margin-inline: 4em;
+  }
+
+  .logo img {
+    height: 140px;
+    width: 100px;
+  }
+
+  .selectRoleWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .actionWrapper {
+    margin-bottom: 20px;
+  }
+
+  .imageWrapper .description {
+    margin-block-start: 85px;
+  }
+
+  .imageWrapper .description h1 {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .chooseRoleWrapper .header {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .selectRoleLogo {
+    height: 80px;
+    width: 80px;
+  }
+
+  .chooseRole {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .roleCheckbox {
+    height: 200px;
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .main h1 {
+    font-size: 62px;
+  }
+
+  .main {
+    margin-inline: 5em;
+  }
+
+  .pageMain::before {
+    background-size: 74% 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main h1 {
+    font-size: 55px;
+  }
+
+  .main {
+    margin-top: 4em;
+    margin-inline: 0px;
+  }
+
+  .logo img {
+    padding-left: 15px;
+  }
+
+  .logo img {
+    width: 90px;
+    height: 110px;
+  }
+
+  .pageMain::before {
+    background-size: 80% 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .main h1 {
+    font-size: 46px;
+  }
+
+  .main {
+    padding: 50px 30px 30px 30px;
+  }
+
+  .logo img {
+    height: 90px;
+    width: 70px;
+  }
+
+  .submitBtn {
+    margin-top: 12px;
+  }
+
+  .inputField {
+    margin-top: 8px;
+  }
+
+  .pageMain::before {
+    background-size: 90% 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main {
+    padding: 35px 15px 15px 15px;
+  }
+
+  .pageMain::before {
+    background-size: 95% 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .imageWrapper .description h1,
+  .chooseRoleWrapper .header h1 {
+    font-size: 22px !important;
+  }
+
+  .roleCheckbox {
+    height: 100px;
+    width: 100%;
+  }
+
+  .roleCheckbox > div {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,43 @@
+.tagsContainer {
+    padding-block: 10px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.tagsContainer::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.profileImage {
+    height: 50px;
+    width: 50px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+}
+
+.tagContent {
+    cursor: pointer;
+}
+
+.tagContent p {
+    margin-bottom: 0px;
+    color: var(--secondary-color);
+    font-family: var(--ff-kanit-reg);
+    font-size: 17px;
+    text-transform: capitalize
+}
+
+.date {
+    font-size: 15px !important;
+    color: var(--primary-color) !important;
+}

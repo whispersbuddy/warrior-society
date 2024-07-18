@@ -1,0 +1,84 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.header h3 {
+  font-size: 32px;
+  color: var(--secondary-color);
+  margin-bottom: 0px;
+}
+.tableWrapper {
+  margin-top: 1rem;
+}
+
+.tableWrapper .viewMore {
+  color: blue;
+  text-transform: capitalize;
+  text-align: end;
+}
+
+.tableWrapper table {
+  width: 100%;
+}
+
+.tableWrapper thead {
+  background-color: var(--bg-color);
+  width: 100%;
+}
+.tableWrapper tbody {
+  max-height: 40vh;
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+}
+.tableWrapper tbody::-webkit-scrollbar {
+  width: 7px;
+}
+
+.tableWrapper tbody::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.tableWrapper tbody::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 50px;
+}
+.tableWrapper tbody tr,
+.tableWrapper thead tr {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 4fr 2fr;
+  gap: 10px;
+  width: 100%;
+  padding: 9px;
+}
+.tableWrapper thead tr{
+    padding-right: 15px;
+}
+.tableWrapper th {
+  color: var(--white-color);
+  padding-block: 10px;
+  padding-inline: 10px;
+}
+
+.tableWrapper tbody tr:nth-child(even) {
+  background-color: #af1a2730;
+}
+
+.tableWrapper td {
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
+}
+@media screen and (max-width: 767px) {
+  .header h3 {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header h3 {
+    font-size: 22px;
+  }
+}

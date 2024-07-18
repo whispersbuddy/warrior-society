@@ -1,0 +1,92 @@
+.userBox {
+  width: 100%;
+  box-shadow: -1px 1px 2px #0000004c;
+  border: 1px solid #19275d;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userBox p {
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.userContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 40px;
+}
+
+.profile {
+  height: 80px;
+  width: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+
+.header {
+  padding-block: 10px;
+  text-align: center;
+}
+
+.header h3 {
+  font-size: 24px;
+  font-family: var(--ff-primary-semiBold);
+  margin-bottom: 0px;
+}
+
+.location {
+  text-align: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.location h6 {
+  font-size: 18px;
+  color: var(--main-color);
+  font-family: var(--ff-primary-semiBold);
+  padding-bottom: 5px;
+}
+
+.location p {
+  /* display: flex;
+  align-items: center;
+  gap: 8px; */
+  color: var(--text-color-gray);
+  font-size: 17px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.location p svg {
+  margin-top: 2px;
+}
+.userOptions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 15px;
+  padding-block: 20px;
+  background-color: var(--secondary-color);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--white-color);
+  cursor: pointer;
+}

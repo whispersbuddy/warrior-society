@@ -1,0 +1,21 @@
+.uploadImage {
+  margin-bottom: 20px;
+}
+
+.submitBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.submitBtn button {
+  width: 100%;
+}
+.modalClass {
+  max-height: 60vh;
+  overflow: auto;
+  /* overflow-y:auto;  */
+}
+.errorText {
+  margin-top: -6px;
+  color: red;
+}

@@ -1,0 +1,256 @@
+.pageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
+  /* position: relative; */
+}
+
+.pageMain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../../assets/images/dragon.png");
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  background-position: top right;
+  z-index: -2;
+}
+.lableToolTip svg {
+  margin-left: 0;
+}
+
+.lableTooltip {
+  color: var(--secondary-color);
+  /* text-transform: capitalize; */
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  align-items: center;
+}
+.tooltipSvg {
+  color: var(--bg-color);
+  font-size: 20px;
+  margin: 0 !important;
+}
+.logo {
+  height: 100%;
+  width: 100%;
+  padding-top: 30px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 150px;
+  width: 120px;
+  /* object-fit: cover; */
+}
+
+.main {
+  background-color: var(--white-color);
+  z-index: 2;
+  margin-top: 2em;
+  margin-inline: 10em;
+  border: 3px solid var(--main-color);
+  padding: 70px 50px 50px 50px;
+  border-radius: 15px;
+}
+
+.main h1 {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 70px;
+}
+
+.inputField {
+  margin-top: 15px;
+}
+
+.inputField ::-webkit-scrollbar {
+  width: 7px;
+}
+
+.inputField ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.inputField ::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 50px;
+}
+
+.submitBtn {
+  margin-top: 20px;
+}
+
+.submitBtn button {
+  width: 100%;
+}
+
+.inputHeading {
+  display: flex;
+}
+
+.inputHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputHeading p {
+  margin-left: 10px;
+  font-family: var(--ff-primary-bold);
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  margin-left: 15px;
+}
+
+.inputHeading p svg {
+  font-family: var(--ff-primary-bold);
+  color: var(--secondary-color);
+}
+
+.addBtn {
+  color: var(--main-color);
+  font-size: 22px;
+  cursor: pointer;
+}
+.tooltipDiv {
+  display: inline-block;
+}
+.tooltipDiv > div {
+  max-width: 800px;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0px !important;
+  margin-top: 0px !important;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+
+.deleteBtn svg {
+  color: var(--main-color);
+  font-size: 25px;
+}
+
+.ownerInput {
+  display: flex;
+  gap: 10px;
+  margin-top: 0px;
+}
+
+.owner {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  flex: 2;
+}
+
+.labelStyle {
+  text-transform: none;
+}
+.errorText {
+  margin-top: -6px;
+  color: red;
+}
+@media screen and (max-width: 1200px) {
+  .main {
+    margin-top: 2em;
+    margin-inline: 4em;
+  }
+
+  .logo img {
+    height: 140px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .main h1 {
+    font-size: 62px;
+  }
+
+  .main {
+    margin-inline: 5em;
+  }
+
+  .pageMain::before {
+    background-size: 74% 100%;
+  }
+  .tooltipDiv > div {
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main h1 {
+    font-size: 55px;
+  }
+
+  .main {
+    margin-top: 4em;
+    margin-inline: 0px;
+  }
+
+  .logo img {
+    padding-left: 15px;
+  }
+
+  .logo img {
+    width: 90px;
+    height: 110px;
+  }
+
+  .pageMain::before {
+    background-size: 80% 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+}
+@media screen and (max-width: 550px) {
+  .main h1 {
+    font-size: 46px;
+  }
+
+  .main {
+    padding: 50px 30px 30px 30px;
+  }
+
+  .logo img {
+    height: 90px;
+    width: 70px;
+  }
+
+  .inputField {
+    margin-top: 12px;
+  }
+
+  .pageMain::before {
+    background-size: 90% 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main {
+    padding: 35px 15px 15px 15px;
+  }
+
+  .pageMain::before {
+    background-size: 95% 100%;
+  }
+}

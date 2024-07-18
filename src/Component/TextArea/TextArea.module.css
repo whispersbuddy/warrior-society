@@ -1,0 +1,56 @@
+.textAreaBox {
+  position: relative;
+  /* box-shadow: 0px 0 5px 2px #0000000d; */
+}
+
+.label {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.label svg:first-child {
+  margin-left: 15px;
+}
+
+.textAreaBox textarea {
+  padding: 15px;
+  font-size: 16px;
+  color: var(--text-color-black);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  border: 1.5px solid var(--main-color);
+  font-family: "rajdhani-regular" !important;
+}
+
+.textAreaBox textarea::placeholder {
+  color: var(--placeholder-color);
+  font-family: var(--ff-primary-reg);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.textAreaBox textarea:focus-visible {
+  outline: none !important;
+}
+
+.textAreaBox textarea:disabled {
+  background-color: var(--disabled-input-color);
+  color: #c9c9c9;
+  user-select: none;
+}
+
+.labelDisabled {
+  color: var(--disabled-label-color);
+}
+
+.errorText {
+  color: red;
+}

@@ -1,0 +1,285 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+:root {
+  --main-color: #af1a27;
+  /* --main-color: #E81C24; */
+  --bg-color: #E81C24;
+  --black-color: #000;
+  --white-color: #ffffff;
+  --primary-color: #00aeef;
+  --secondary-color: #1f3b7b;
+  --text-color-gray: #707070;
+  --text-dark-gray: #cccccc;
+  --blue-color: #19275d;
+  /*  */
+  --dashboard-main-color: #fbf7f4;
+  --table-head: #f4f4f4;
+  --para-text-color: #112211;
+  --placeholder-color: #9a9a9a;
+  --section-background: #f0f0f0;
+  --section-background-light: #f7f7f7;
+  --sidebar-text-color: #4a4a4a;
+  --label-color: #9b9b9b;
+  --disabled-input-color: #fafafa;
+  --disabled-label-color: #ababab;
+  --error-color: red;
+
+  --ff-primary-reg: "rajdhani-regular";
+  --ff-primary-med: "rajdhani-medium";
+  --ff-primary-semiBold: "rajdhani-semiBold";
+  --ff-primary-bold: "rajdhani-bold";
+  --ff-secondary-bold: "rajdhani-bold";
+  --ff-accent-reg: "rajdhani-regular";
+
+  --ff-kanit-reg: "kanit-regular";
+  --ff-kanit-med: "kanit-medium";
+  --ff-kanit-bold: "kanit-bold";
+
+  --fs-base: 16px;
+}
+
+/* rajdhani */
+@font-face {
+  font-family: "rajdhani-regular";
+  src: url("../fonts/Rajdhani/Rajdhani-Regular.ttf");
+}
+
+@font-face {
+  font-family: "rajdhani-medium";
+  src: url("../fonts/Rajdhani/Rajdhani-Medium.ttf");
+}
+
+@font-face {
+  font-family: "rajdhani-semiBold";
+  src: url("../fonts/Rajdhani/Rajdhani-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "rajdhani-bold";
+  src: url("../fonts/Rajdhani/Rajdhani-Bold.ttf");
+}
+
+/* poppins */
+@font-face {
+  font-family: "poppins-regular";
+  src: url("../fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "poppins-medium";
+  src: url("../fonts/Poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "poppins-bold";
+  src: url("../fonts/Poppins/Poppins-Bold.ttf");
+}
+
+/* Kanit */
+@font-face {
+  font-family: "kanit-regular";
+  src: url("../fonts/Kanit/Kanit-Regular.ttf");
+}
+
+@font-face {
+  font-family: "kanit-medium";
+  src: url("../fonts/Kanit/Kanit-Medium.ttf");
+}
+
+@font-face {
+  font-family: "kanit-bold";
+  src: url("../fonts/Kanit/Kanit-Bold.ttf");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/*---------------------------------------------*/
+
+a {
+  font-family: "rajdhani-regular";
+  font-size: var(--fs-btn);
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+.px0 {
+  padding: 0 !important;
+}
+
+a:focus {
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #a64bf4;
+}
+
+body p {
+  font-size: 16px;
+  font-family: "rajdhani-regular";
+}
+
+.textDescOne {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+body h1 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 60px;
+}
+
+body h2 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 48px;
+}
+
+body h3 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 40px;
+}
+
+body h4 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 32px;
+}
+
+body h5 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 24px;
+}
+
+body h6 {
+  font-family: "rajdhani-bold";
+  color: var(--black-color);
+  font-size: 20px;
+}
+
+/*---------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+a,
+svg {
+  margin: 0px;
+}
+
+ul,
+li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+/*---------------------------------------------*/
+
+input {
+  outline: none;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* / Firefox / */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@keyframes drawer_animation_in {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawer_animation_out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes header_in {
+  from {
+    transform: translateY(-100%)
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes header_out {
+  from {
+    transform: translateY(-100%)
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+/* media query */
+
+@media screen and (max-width: 991px) {
+  body h1 {
+    font-size: 52px;
+  }
+
+  body h2 {
+    font-size: 40px;
+  }
+
+  body h3 {
+    font-size: 32px;
+  }
+
+  body h4 {
+    font-size: 24px;
+  }
+
+  body h5 {
+    font-size: 20px;
+  }
+
+  body h6 {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 90% !important;
+  }
+}

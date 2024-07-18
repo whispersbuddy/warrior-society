@@ -1,0 +1,292 @@
+.fileInputDiv label {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.main {
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px dashed var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagesWrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: calc(100% - 25px);
+}
+
+.image {
+  overflow: hidden;
+  width: 160px;
+  height: 140px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 6px;
+  position: relative;
+  background-color: var(--white-color);
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image .closeIconBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.fileUploadOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 7px;
+}
+
+.fileDesc {
+  padding-top: 20px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.fileDesc p {
+  margin-bottom: 0px;
+}
+
+.fileDesc span {
+  color: var(--main-color) !important;
+  font-size: 15px;
+}
+
+.fileUploadOptions p {
+  color: #3d3c3c;
+  font-size: 16px;
+  text-align: center;
+}
+
+.fileUploadOptions span {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+.fileUploadOptions p:nth-child(2) {
+  margin-bottom: 0px;
+}
+
+.fileUploadOptions button {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-size: 16px;
+  padding: 14px 80px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+}
+
+.upTo {
+  margin-top: 10px;
+}
+
+.suported {
+  background-color: #ffcfab;
+  padding: 14px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.suported p {
+  margin-bottom: 0;
+  margin-inline: auto;
+}
+
+.uploadImage {
+  margin-bottom: 10px;
+}
+
+.uploadImage img {
+  width: 120px;
+  height: 120px;
+}
+
+.pdfView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.pdfView > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.pdfView span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 0px 6px;
+}
+
+.audio__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.pdfView p {
+  font-size: 13px !important;
+  margin-bottom: 0;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  padding: 0px 6px;
+}
+
+.isFiles {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.videoPlayer video {
+  object-fit: cover;
+}
+
+.pdfIframe {
+  width: 182px;
+  height: 180px;
+}
+
+.pdfIframe::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.uploadMoreBtn {
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  display: block !important;
+  font-family: "helvetica-medium";
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 6px 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+}
+
+.toottipIconDiv {
+  margin: 3px 0 0 6px;
+}
+
+.uploadImage {
+  height: 200px;
+  width: 200px;
+}
+
+.uploadImage img {
+  height: 100%;
+  width: 100%;
+}
+
+.option {
+  display: flex;
+  gap: 6px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.option span {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-family: var(--ff-kanit-reg);
+}
+
+.option svg {
+  color: #00aeef;
+  font-size: 24px;
+}
+.video_file {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.video_file p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white-color);
+  z-index: 20;
+  width: 100%;
+  padding-inline: 20px;
+  text-align: center;
+  font-family: var(--ff-kanit-bold);
+}
+.format_allowed {
+  padding-block: 4px;
+  padding-left: 30px;
+}
+.format_allowed .supported,
+.formats {
+  color: #a79999;
+  font-family: var(--ff-primary-semiBold);
+  font-size: 16px;
+}
+.formats {
+  font-style: italic;
+  font-size: 16px;
+  text-transform: lowercase;
+}
+@media screen and (max-width: 550px) {
+  .fileDesc {
+    flex-direction: column;
+  }
+}

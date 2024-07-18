@@ -1,0 +1,31 @@
+.modalBody {
+  max-height: 60vh;
+  /* overflow-y: auto; */
+}
+
+.submitBtn {
+  margin-top: 20px;
+}
+
+.inputField {
+  margin-top: 10px;
+}
+
+.result {
+  display: flex;
+  gap: 40px;
+}
+.dropLabel {
+  text-transform: unset !important;
+}
+
+.title {
+  color: var(--secondary-color);
+  font-size: 20px;
+  margin-bottom: 6px;
+  margin-top: 10px;
+}
+
+.submitBtn button {
+  width: 100%;
+}

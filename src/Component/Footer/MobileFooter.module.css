@@ -1,0 +1,125 @@
+.mobileFooter_main {
+  background-color: #f7f7f7;
+  padding-top: 50px;
+}
+.mobileFooter_main img {
+  width: 300px;
+}
+.mobileFooter_main p {
+  margin-bottom: 0 !important;
+}
+.footer_para {
+  color: var(--text-color);
+  margin-top: 20px;
+}
+.links_head {
+  color: var(--main-color);
+  font-family: "rajdhani-medium" !important;
+  font-size: 20px;
+}
+.socialLinks {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+.footerPara {
+  color: var(--text-color-black);
+  margin-top: 10px;
+  padding-bottom: 1em;
+}
+.link_main {
+  background-color: var(--main-color);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hr_line {
+  padding-top: 50px;
+  padding-bottom: 22px;
+}
+.hr_line hr {
+  margin-bottom: 0;
+  color: var(--dark-blue);
+  border-width: 2px;
+}
+
+.copy_line_main {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.copy_line {
+  color: var(--text-color-black);
+  text-align: center;
+}
+.Accordion_items {
+  background-color: transparent !important;
+  border: none;
+}
+.Accordion_body {
+  padding: 0;
+}
+.Accordion_links_main {
+  padding: 0;
+}
+.Accordion_links_main li {
+  list-style-type: none;
+  display: block;
+}
+.Accordion_links_main li a {
+  display: block;
+  color: var(--text-color-black);
+  font-size: 17px !important;
+  text-decoration: none;
+  font-family: "rajdhani-regular";
+}
+.Accordion_header_main > button::after {
+  background-image: url("../../assets/images/dropdown-icon.png") !important;
+  background-size: 70% 50% !important;
+  filter: brightness(0) saturate(100%) invert(29%) sepia(29%) saturate(1706%)
+    hue-rotate(250deg) brightness(103%) contrast(88%);
+}
+.all_links {
+  color: var(--white-color) !important;
+}
+
+/* Subscribe newsletter
+ */
+.subscribe-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+.subscribe-wrapper h3 {
+  font-size: 1.8rem !important;
+  margin: 1rem 0;
+  color: var(--main-color);
+  text-align: center;
+}
+.field-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+.field-wrapper:first-child {
+  flex: 1;
+}
+.input-field {
+  flex: 1;
+}
+.input-field > div > div input {
+  border: none;
+}
+
+@media screen and (max-width: 500px) {
+  .field-wrapper {
+    gap: 0.6rem;
+  }
+  .subscribe-btn {
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+  }
+  .mobileFooter_main img {
+    width: 250px;
+  }
+}

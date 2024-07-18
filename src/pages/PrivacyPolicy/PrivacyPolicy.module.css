@@ -1,0 +1,7 @@
+.heading h1 {
+  text-align: center;
+  color: var(--white-color);
+}
+.privacyPolicy {
+  margin: 40px 0;
+}

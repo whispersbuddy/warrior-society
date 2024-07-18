@@ -1,0 +1,40 @@
+.textarea {
+  padding: 15px;
+  font-size: 16px;
+  color: var(--text-color-black);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  border: 1.5px solid var(--main-color);
+  font-family: "rajdhani-regular" !important;
+}
+.mainDiv {
+  position: relative;
+}
+.emojiIcon {
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  cursor: pointer;
+}
+.mainDiv aside {
+  width: 100% !important;
+  top: 72px;
+  position: absolute;
+  z-index: 99 !important;
+}
+.emojiLabel {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.textarea:focus-visible {
+  outline: none !important;
+}

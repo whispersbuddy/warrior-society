@@ -1,0 +1,50 @@
+.phoneInput {
+  font-family: "rajdhani-regular";
+  font-size: 16px !important;
+  color: var(--text-color-black);
+  letter-spacing: 1.4px !important;
+  background-color: #fff !important;
+  width: 100% !important;
+  min-height: 56px !important;
+  border: 1.5px solid var(--main-color) !important;
+  border-radius: 8px !important;
+}
+.errorInput {
+  border: 1.5px solid red !important;
+}
+.phoneInputContainer {
+  background-color: var(--white-color);
+}
+
+.phoneInput:focus {
+  box-shadow: none !important;
+}
+
+.phoneInput::placeholder {
+  color: var(--placeholder-color);
+  font-family: "rajdhani-regular";
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.phoneLabel {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.phoneLabel svg {
+  margin-left: 15px;
+}
+
+.labelDisabled {
+  color: #ababab;
+}
+.errorText {
+  color: var(--error-color);
+}

@@ -1,0 +1,14 @@
+.uploadImage {
+  margin-bottom: 20px;
+}
+.inputField {
+  margin-bottom: 15px;
+}
+.submitBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.labelStyle {
+  text-transform: unset;
+}

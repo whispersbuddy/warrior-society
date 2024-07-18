@@ -1,0 +1,177 @@
+.pageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  padding-block: 180px;
+}
+
+.pageMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80vh;
+  width: 100%;
+  background-image: url("../../assets/images/dragon.png");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: contain !important;
+  background-position: right center !important;
+  z-index: -2;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+.logo img {
+  height: 150px;
+  width: 120px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  /* object-fit: cover; */
+}
+
+.main {
+  background-color: var(--white-color);
+  margin-top: 2em;
+  margin-inline: 10em;
+  border: 3px solid var(--main-color);
+  padding: 70px 50px 50px 50px;
+  border-radius: 15px;
+}
+
+.main h1 {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 70px;
+}
+
+.form {
+  margin-top: 2rem;
+}
+
+.forgot {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 10px 0 20px 0;
+}
+
+.forgot div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.forgot div p {
+  margin-bottom: 0;
+  color: var(--secondary-color);
+  font-family: var(--ff-primary-bold);
+  cursor: pointer
+}
+
+.forgot div:last-child p {
+  cursor: pointer;
+}
+
+.submitBtn button {
+  width: 100%;
+}
+
+.chooseOther {
+  display: flex;
+  padding-block: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chooseOther p {
+  font-size: 17px;
+  font-family: var(--ff-primary-bold);
+  color: var(--secondary-color)
+}
+
+.chooseOther p span {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+@media screen and (max-width:1200px) {
+  .main {
+    margin-top: 2em;
+  }
+
+  .logo img {
+    height: 140px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .main h1 {
+    font-size: 62px;
+  }
+
+  .main {
+    margin-inline: 5em;
+  }
+
+}
+
+@media screen and (max-width:767px) {
+  .main h1 {
+    font-size: 55px;
+  }
+
+  .main {
+    margin-top: 4em;
+    margin-inline: 0px;
+  }
+
+  .logo {
+    padding-left: 15px;
+
+  }
+
+  .logo img {
+    height: 110px;
+    width: 90px;
+
+  }
+
+}
+
+@media screen and (max-width:550px) {
+  .main h1 {
+    font-size: 46px;
+  }
+
+  .main {
+    padding: 50px 30px 30px 30px;
+  }
+
+  .logo img {
+    height: 90px;
+    width: 70px;
+  }
+
+  .inputField {
+    margin-top: 12px;
+  }
+
+}
+
+@media screen and (max-width:400px) {
+  .main {
+    padding: 35px 15px 15px 15px;
+  }
+
+}

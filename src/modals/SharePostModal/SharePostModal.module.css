@@ -1,0 +1,41 @@
+.modalBody {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.submitBtn {
+    margin-top: 20px;
+}
+
+.inputField {
+    margin-top: 10px;
+}
+
+.result {
+    display: flex;
+    gap: 40px;
+}
+
+.title {
+    color: var(--secondary-color);
+    font-size: 20px;
+    margin-bottom: 6px;
+    margin-top: 10px;
+}
+
+.submitBtn button {
+    width: 100%;
+}
+.switchWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.switchWrapper p {
+    margin-bottom: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}

@@ -1,0 +1,144 @@
+.tagsPeople {
+
+    padding: 20px;
+}
+
+
+
+.profileImg {
+    background-color: #d6d6d6;
+    border: 2px solid #929eaa;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.usersContainer {
+    margin-block: 14px 20px;
+    padding-inline: 15px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.usersContainer::-webkit-scrollbar {
+    width: 5px;
+
+}
+
+.usersContainer::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 10px;
+}
+
+.usersContainer::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.user {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.userContent {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%
+}
+
+.user p {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-family: var(--ff-kanit-reg);
+    text-transform: capitalize;
+    color: var(--secondary-color)
+}
+
+.checkBox {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--main-color);
+    border-radius: 6px;
+    cursor: pointer
+}
+
+.checkBox.active {
+    background-color: var(--main-color)
+}
+
+.checkBox svg {
+    color: var(--white-color)
+}
+
+.backIcon {
+    padding-block: 10px;
+    padding-left: 10px;
+}
+
+.backIcon svg {
+    font-size: 24px;
+    cursor: pointer
+}
+
+.tagSearch {
+    margin-block: 10px;
+}
+
+.tagSearch input {
+    background-color: #f2eaea;
+    border: 0px !important;
+    border-radius: 40px
+}
+
+.tagUser {
+    position: relative;
+    transition: 0.2s all ease-in-out;
+}
+
+.tagsContainer {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-block: 15px;
+}
+
+.crossIcon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    height: 22px;
+    width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
+.crossIcon svg {
+    color: var(--white-color);
+    font-size: 20px;
+}
+
+.tagProfile {
+    background-color: #d6d6d6;
+    border: 2px solid #929eaa;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}

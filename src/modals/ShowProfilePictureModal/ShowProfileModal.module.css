@@ -1,0 +1,140 @@
+.coverImage {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.coverImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.profileDiv {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  justify-content: center;
+}
+.speacial {
+  margin-top: 0px;
+  display: flex;
+  border: none;
+  margin-inline: auto;
+  justify-content: center;
+}
+.coverContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalContainer {
+  display: flex;
+  justify-content: center;
+}
+.profileContent {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.profileContent p {
+  margin-bottom: 0px;
+  font-size: 25px;
+  color: var(--black-color);
+}
+
+.profileContent h1 {
+  margin-bottom: 0px;
+  font-size: 28px;
+  font-family: var(--ff-kanit-bold);
+  text-transform: capitalize;
+  color: var(--secondary-color);
+}
+.coverContainer {
+  border: 1px solid var(--text-dark-gray);
+  /* padding: 50px; */
+  border-radius: 20px;
+}
+@media screen and (max-width: 991px) {
+  .coverImage {
+    height: 300px;
+  }
+
+  .profileImage {
+    margin-top: -100px;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+
+  .profileContent p {
+    font-size: 22px;
+  }
+
+  .profileContent h1 {
+    font-size: 28px;
+  }
+  .coverContainer {
+    padding: 0px;
+    border: none;
+    /* margin-bottom: 40px; */
+  }
+}
+@media screen and (max-width: 768px) {
+  .coverImage {
+    height: 260px;
+  }
+
+  .profileImage {
+    width: 130px;
+    height: 130px;
+    margin-top: -70px;
+  }
+
+  .profileContent p {
+    font-size: 20px;
+  }
+
+  .profileContent h1 {
+    font-size: 26px;
+  }
+
+  .followers {
+    font-size: 23px;
+  }
+
+  .followers span {
+    font-size: 19px;
+  }
+
+  .profileDiv {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .profileContent h1 {
+    font-size: 26px;
+    margin-top: 7px;
+  }
+  .modal_body{
+    padding: 8px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .profileDiv {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profileContent h1 {
+    font-size: 22px;
+  }
+}

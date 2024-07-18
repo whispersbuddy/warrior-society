@@ -1,0 +1,182 @@
+.headerMainDiv {
+  border-bottom: 1.5px solid var(--main-color);
+}
+.header {
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 15px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+/*  */
+.headerSticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--black-color);
+  -webkit-animation: headerAnimation 200ms forwards ease-in;
+  -moz-animation: headerAnimation 200ms forwards ease-in;
+  -ms-animation: headerAnimation 200ms forwards ease-in;
+  -o-animation: headerAnimation 200ms forwards ease-in;
+  animation: headerAnimation 200ms forwards ease-in; /* this comes last */
+  z-index: 2;
+}
+@keyframes headerAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@-moz-keyframes headerAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes headerAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@-o-keyframes headerAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/*  */
+.imageContainer {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+}
+
+.hamburger {
+  font-size: 25px;
+  color: var(--white-color);
+  fill: var(--white-color);
+}
+
+.drawerContainer {
+  background: transparent
+    linear-gradient(#ffffff 0%, #fef7f1 100%, #ffffff 100%);
+  height: 100vh;
+  width: 100%;
+}
+.drawerLogo {
+  width: 210px;
+  height: auto;
+}
+
+/* User Section */
+.drawerUserSection {
+  height: 175px;
+  width: 100%;
+  background-color: var(--black-color);
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  padding: 70px 10px 70px 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.drawerUserSection .drawerUserImage {
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+}
+
+.drawerUserSection .drawerUserName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+.drawerUserSection .drawerUserEmail {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Listing Section */
+.drawerList {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.listItem {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px 5px 20px;
+  cursor: pointer;
+}
+
+.listItem .listItemText {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #717171;
+  font-family: "rajdhani-regular";
+}
+
+.listItem svg {
+  fill: #717171;
+  font-size: 15px;
+}
+
+.activeItem {
+  background: #ebe0ed;
+}
+
+.activeItem .listItemText {
+  color: var(--main-color);
+}
+
+.activeItem svg {
+  fill: var(--main-color);
+}
+.cartNumbers {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border-radius: 50%;
+  padding: 6px;
+  margin-left: 8px;
+}
+
+@media (max-width: 1440px) {
+  .header {
+    max-width: 90%;
+  }
+}

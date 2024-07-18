@@ -1,0 +1,10 @@
+.submitBtn {
+  width: 100%;
+}
+.modal {
+  max-height: 600px;
+  overflow-y: auto;
+}
+.inputField{
+  margin-bottom: 10px
+}

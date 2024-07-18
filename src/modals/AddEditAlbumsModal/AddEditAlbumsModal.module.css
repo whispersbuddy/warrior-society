@@ -1,0 +1,10 @@
+.rowMain {
+  row-gap: 20px;
+}
+.btn {
+  width: 100%;
+}
+.modalClass{
+  max-height: 60vh;
+  overflow-y: auto;
+}

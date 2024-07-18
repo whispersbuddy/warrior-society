@@ -1,0 +1,42 @@
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.recentHeader {
+  margin-bottom: 20px;
+}
+
+.recentHeader h1 {
+  font-size: 34px;
+}
+
+.recentHeader p {
+  cursor: pointer;
+}
+
+.detailheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.detailheader h1 {
+  font-size: 40px;
+}
+.albumCard {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.galleryPage {
+  padding-top: 20px;
+}
+.no_media {
+  min-height: 400px;
+}
+
+.view_All {
+  display: flex;
+  justify-content: center;
+}

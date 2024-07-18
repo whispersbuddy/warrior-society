@@ -1,0 +1,73 @@
+.experienceContainer {
+    position: relative;
+}
+
+.addIcon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--secondary-color);
+    cursor: pointer;
+    z-index: 2;
+    margin-bottom: 8px;
+}
+
+.addIcon p {
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    font-family: var(--ff-primary-bold);
+    font-size: 18px;
+    margin-bottom: 4px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.addIcon svg {
+    color: var(--main-color);
+    font-size: 22px;
+    cursor: pointer
+}
+
+.addIcon p svg {
+    margin-left: 15px;
+    color: var(--secondary-color) !important;
+    font-size: 16px;
+}
+
+
+
+.inputField {
+    margin-top: 15px;
+}
+
+.deleteBtn {
+    /* padding-top: 40px; */
+    z-index: 2;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.deleteBtn svg {
+    font-size: 22px;
+    color: var(--main-color);
+}
+
+.inputContainer {
+    display: flex;
+    gap: 15px;
+}
+
+.rowCOl {
+    flex: 2;
+}
+
+.divBox {
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}

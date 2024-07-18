@@ -1,0 +1,138 @@
+.rowMain {
+  row-gap: 20px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.switchWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.switchWrapper p {
+  margin-bottom: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: var(--ff-primary-semiBold);
+}
+
+.modal {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.imageHeading {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.options{
+  padding-top:15px ;
+}
+.postOptions h5 {
+  text-transform: capitalize;
+  font-size: 20px;
+  color: var(--secondary-color);
+  font-family: var(--ff-primary-bold);
+}
+.tooltipDiv {
+  display: inline-block;
+}
+.tooltipDiv > div {
+  max-width: 200px;
+}
+.lableTooltip {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  /* gap: 6px; */
+  margin: 0;
+  align-items: center;
+}
+.tooltipSvg {
+  color: var(--bg-color);
+  font-size: 20px;
+  margin: 0 !important;
+  margin-left: 5px !important;
+}
+
+.option {
+  display: flex;
+  gap: 6px;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.option span {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-family: var(--ff-kanit-reg);
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.option svg {
+  color: #00aeef;
+  font-size: 21px;
+}
+
+.modal_body {
+  padding: 0px !important;
+}
+
+.selectedActivity {
+  margin-bottom: 0px;
+  font-size: 16px;
+  margin-left: 6px;
+  font-family: var(--ff-kanit-reg);
+  color: var(--secondary-color);
+}
+
+.tagPeople {
+  margin-bottom: 0px;
+  font-size: 17px;
+  margin-left: 6px;
+  font-family: var(--ff-kanit-reg);
+  color: var(--secondary-color);
+}
+
+.tooltipSvg {
+  color: var(--bg-color);
+  font-size: 20px;
+}
+
+.tooltipDiv {
+  display: inline-block;
+}
+
+.tooltipDiv > div {
+  max-width: 500px;
+}
+
+.modal_header h2 {
+  margin-bottom: 0px;
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 32px;
+}
+
+@media screen and (max-width: 900px) {
+  .tooltipDiv > div {
+    max-width: 250px;
+  }
+}

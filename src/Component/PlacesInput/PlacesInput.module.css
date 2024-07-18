@@ -1,0 +1,79 @@
+.labelText {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.labelText svg {
+  margin-left: 15px;
+}
+
+.inputDiv {
+  position: relative;
+  display: flex;
+  border: 1.5px solid var(--main-color);
+  border-radius: 8px;
+}
+
+.comboboxInput {
+  font-family: "poppins-regular";
+  font-size: 16px;
+  /* color: var(--text-color-black); */
+  letter-spacing: 1.4px;
+  border-radius: inherit;
+  background-color: inherit;
+  padding: 15px;
+  width: 100%;
+}
+
+.inputDiv input {
+  background-color: inherit;
+}
+
+.leftIcon {
+  position: absolute;
+  left: 20px;
+  top: 60%;
+  bottom: 45%;
+  transform: translateY(-50%);
+  height: max-content;
+}
+
+.inputDiv input::placeholder {
+  color: var(--placeholder-color);
+  font-family: "rajdhani-regular";
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.comboBoxList {
+  position: absolute;
+  background: #fff;
+  top: 100%;
+  z-index: 9999;
+  /* 
+  border-radius: 0 0 10px 10px; */
+  /* border: 1px solid #000; */
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+  color: var(--white-color);
+  border-left: 1px solid var(--text-color-gray);
+  border-right: 1px solid var(--text-color-gray);
+  border-top: none;
+  border-bottom: 1px solid var(--text-color-gray);
+  box-shadow: 0 10px 6px -6px #777;
+}
+.inputDiv > input[aria-expanded="true"] + ul {
+  width: 100%;
+}
+.inputDiv > input[aria-expanded="false"] + ul {
+  display: none;
+}
+.comboBoxList > li {
+  color: var(--black-color) !important;
+}

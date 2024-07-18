@@ -1,0 +1,60 @@
+.mainDiv {
+    padding-inline: 60px;
+}
+
+.postContainer {
+    border-radius: 16px;
+    background-color: var(--white-color);
+    padding: 20px 26px 20px 26px
+}
+
+.switchContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding-block: 35px;
+}
+
+.switchComponent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switchComponent p {
+    color: #4D4D4D;
+    font-family: var(--ff-kanit-med);
+    font-size: 16px;
+}
+
+.btnWrapper {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+@media screen and (max-width:1200px) {
+    .mainDiv {
+        padding-inline: 10px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .mainDiv {
+        padding-inline: 10px;
+    }
+
+    .postContainer {
+        padding: 25px 20px 25px 20px
+    }
+
+    .switchContainer {
+        padding-block: 20px;
+    }
+
+    .switchComponent p {
+        font-size: 15px;
+    }
+
+    .btnWrapper {
+        margin-bottom: 40px;
+    }
+}

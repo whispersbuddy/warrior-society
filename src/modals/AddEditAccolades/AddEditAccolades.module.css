@@ -1,0 +1,12 @@
+.uploadImage {
+    margin-bottom: 20px;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.submitBtn button {
+    width: 100%;
+}

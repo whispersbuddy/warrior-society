@@ -1,0 +1,103 @@
+.container {
+  text-align: center;
+}
+.modal_width > div > div {
+  padding: 10px 10px !important;
+}
+.modal_width > div {
+  max-width: 30% !important;
+}
+.main h1 {
+  font-size: 26px !important;
+  line-height: 45px;
+}
+.subHead h4 {
+  font-size: 16px !important;
+  margin-bottom: 43px;
+  margin-top: 10px;
+}
+.socialDivs {
+  text-align: left;
+}
+.social_inner {
+  cursor: pointer;
+}
+
+.social button {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9 !important;
+  width: 100%;
+  border-radius: 12px !important;
+  border: 1px solid #cecece !important;
+  padding: 10px !important;
+  margin: 10px 0 10px 0;
+}
+.social_inner {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9 !important;
+  width: 100%;
+  border-radius: 12px !important;
+  border: 1px solid #cecece !important;
+  padding: 10px !important;
+  margin: 10px 0 10px 0;
+}
+
+.social span {
+  font-size: 18px;
+  font-family: "rajdhani-regular";
+  margin: 0 0 0 7px;
+}
+
+.social img {
+  width: 26px;
+  height: 24px;
+  margin-right: 5px;
+}
+.social .snachat_img {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border-radius: 50%;
+}
+.close_icon_main {
+  display: flex;
+  justify-content: right;
+  color: var(--black-color);
+  margin-bottom: 10px;
+}
+.close_icon {
+  font-size: 30px !important;
+  cursor: pointer;
+}
+@media (max-width: 1540px) {
+  .modal_width > div {
+    max-width: 35% !important;
+  }
+}
+@media (max-width: 1280px) {
+  .modal_width > div {
+    max-width: 40% !important;
+  }
+}
+@media (max-width: 1124px) {
+  .modal_width > div {
+    max-width: 50% !important;
+  }
+}
+@media (max-width: 991px) {
+  .modal_width > div {
+    max-width: 70% !important;
+  }
+}
+@media (max-width: 768px) {
+  .modal_width > div {
+    max-width: 80% !important;
+  }
+}
+@media (max-width: 600px) {
+  .modal_width > div {
+    max-width: 100% !important;
+  }
+}

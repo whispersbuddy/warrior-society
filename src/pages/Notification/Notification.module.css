@@ -1,0 +1,57 @@
+.notificationMain {
+  padding-top: 80px;
+  margin-bottom: 70px;
+}
+
+.inner {
+  border: 3px solid var(--main-color);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+
+.inner h3:first-child {
+  color: var(--secondary-color);
+  font-size: 35px;
+}
+
+.btnWrapper {
+  text-align: center;
+}
+
+.paginationDiv {
+  display: flex;
+  justify-content: end;
+}
+
+.notificationPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.header p {
+  color: var(--main-color);
+  font-family: var(--ff-primary-semiBold);
+  font-size: 20px;
+  margin-bottom: 0px
+}
+
+.header p span {
+  color: var(--secondary-color);
+}
+
+.rightDiv {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

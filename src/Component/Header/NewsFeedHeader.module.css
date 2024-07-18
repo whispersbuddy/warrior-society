@@ -1,0 +1,451 @@
+.header {
+  padding: 15px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 30px 8px 30px;
+  user-select: none;
+  background-color: #fff;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.profileImg {
+  background-color: #d6d6d6;
+  border: 2px solid #929eaa;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.notifyIconDiv {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.notifyIcon {
+  cursor: pointer;
+  font-size: 35px;
+}
+
+.notifyoverlayDiv {
+  top: 7px !important;
+  left: -10px !important;
+  z-index: 2;
+  background-color: var(--white-color);
+  box-shadow: 1px 1px 8px 0px #d5d5d5;
+  border-radius: 20px;
+}
+
+.notifyoverlayDiv ul {
+  padding: 20px 20px;
+  margin-bottom: 0px;
+}
+
+.notifyoverlayDiv ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--dashboard-main-color);
+  user-select: none;
+  cursor: pointer;
+}
+
+.notifyoverlayDiv ul li:first-child {
+  margin-bottom: 10px;
+}
+
+.notifyoverlayDiv ul li svg {
+  vertical-align: middle;
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.userName p {
+  font-size: 20px;
+  font-family: "";
+  margin-bottom: 0px;
+  text-transform: capitalize;
+  font-family: "rajdhani-regular";
+}
+
+.signup {
+  background-color: transparent;
+  color: var(--dashboard-main-color);
+  border: 1px solid var(--dashboard-main-color);
+  padding: 0;
+  height: 43px;
+  width: 120px;
+}
+
+.login {
+  margin-right: 16px;
+  padding: 0;
+  height: 43px;
+  width: 120px;
+}
+
+.notification-header {
+  height: 40px !important;
+  width: 40px !important;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-text-color);
+}
+
+.profile-wrapper {
+  height: 60px;
+  width: 60px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container p {
+  padding: 0 12px 0 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.profile-container .profile-role {
+  font-size: 12px;
+}
+
+.profile-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.logoDiv {
+  width: 122px;
+  height: 96px;
+  /* width: 100%; */
+  cursor: pointer;
+  margin-inline-end: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoDiv img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.navigationLinks {
+  display: flex;
+  gap: 2rem;
+  margin-inline-end: 3rem;
+}
+
+.navigationLinks a,
+.navigationLinks .notificationClick {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+  color: var(--black-color);
+  text-decoration: none;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.navigationLinks a svg {
+  font-size: 27px;
+  color: #e81c24;
+}
+
+.navigationLinks a span {
+  align-self: center;
+  height: fit-content;
+  color: #4d4d4d;
+  font-family: var(--ff-kanit-reg);
+}
+
+.navigationLinks a:not(:last-child) .navigationItem {
+  position: relative;
+  color: #4d4d4d;
+  font-family: var(--ff-kanit-reg);
+}
+
+.profileOverlay {
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px #00000030;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 10px;
+  z-index: 20;
+}
+
+.profileOverlay .links {
+  border-block: 1px solid #00000030;
+  margin-block: 0.5rem;
+  padding-block: 0.5rem;
+}
+
+.profileOverlay ul {
+  padding: 0;
+  margin: 0;
+}
+
+.profileOverlay p,
+.profileOverlay li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  line-height: 1.8;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.notification__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notification__main svg {
+  font-size: 27px;
+  color: #e81c24;
+}
+
+.notifyCountDiv {
+  position: absolute;
+  background: var(--primary-color);
+  font-size: 12px;
+  border-radius: 50%;
+  top: -2px;
+  right: -4px;
+  color: #ffffff;
+  height: 15px;
+  width: 15px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-name {
+  text-transform: capitalize;
+  font-family: var(--ff-kanit-reg);
+  color: #203777 !important;
+}
+
+.notifyoverlayDiv {
+  top: 40px !important;
+  left: -10px !important;
+}
+
+.notifyoverlayDiv {
+  left: auto !important;
+  z-index: 2;
+  border-radius: 20px;
+  top: 95px !important;
+  display: flex;
+  justify-content: flex-end;
+  transform: none !important;
+  right: 10% !important;
+  position: relative;
+  z-index: 20;
+}
+
+.notifyoverlayDiv ul {
+  padding: 20px 20px;
+  margin-bottom: 0px;
+}
+
+.notifyoverlayDiv ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--dashboard-main-color);
+  user-select: none;
+  cursor: pointer;
+}
+
+.notifyoverlayDiv ul li:first-child {
+  margin-bottom: 10px;
+}
+
+.notifyoverlayDiv ul li svg {
+  vertical-align: middle;
+}
+
+.notificationsDiv {
+  position: relative;
+}
+
+.notificationClick {
+  color: #4d4d4d;
+  font-family: var(--ff-kanit-reg);
+  font-size: 16px !important;
+  padding-right: 0px !important;
+}
+
+.leftHeader {
+  display: flex;
+  gap: 30px;
+}
+
+.searchBarDiv {
+  flex: 2;
+  display: flex;
+  border: 1px solid #e81c24;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-inline: 100px;
+}
+
+.inputContainer {
+  flex: 2;
+}
+
+.inputContainer input {
+  border: none;
+}
+
+.searchBarDiv button {
+  background-color: #e81c24;
+  border-radius: 0px;
+  width: 150px;
+}
+
+@media screen and (max-width: 1500px) {
+  .searchBarDiv {
+    margin-inline: 40px;
+  }
+
+  .searchBarDiv button {
+    width: 110px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .searchBarDiv {
+    margin-inline: 20px;
+  }
+
+  .searchBarDiv button {
+    width: 100px;
+    padding: 12px;
+  }
+
+  .navigationLinks {
+    margin-inline-end: 12px;
+    gap: 10px;
+  }
+
+  .leftHeader {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .notifyIconDiv {
+    margin-right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .notification-header {
+    height: 40px !important;
+    width: 40px !important;
+  }
+
+  .notifyIcon {
+    font-size: 20px;
+  }
+
+  .profileImg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 768px) {
+  .navigationLinks .navigationItem {
+    font-size: 0;
+  }
+
+  .navigationLinks a:not(:last-child) {
+    position: relative;
+  }
+
+  .navigationLinks a:not(:last-child) .navigationItem {
+    position: static;
+  }
+
+  .navigationLinks a:not(:last-child) .navigationItem::before {
+    height: 1rem;
+  }
+
+  .notificationClick {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logoDiv {
+    max-width: 60px;
+  }
+
+  .navigationLinks {
+    margin-inline: auto;
+  }
+
+  .navigationLinks {
+    gap: 1.5rem;
+  }
+
+  .navigationLinks a:not(:last-child) .navigationItem::before {
+    right: -0.7rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .notifyoverlayDiv {
+    right: 1px !important;
+    width: 100%;
+  }
+}

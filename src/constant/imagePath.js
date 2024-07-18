@@ -1,0 +1,49 @@
+export { default as Logo } from '../assets/images/Logo.png';
+export { default as whiteLogo } from '../assets/images/white_logo.png';
+export { default as userAvatar } from '../assets/images/user-avatar.png';
+export { default as postAvatar } from '../assets/images/postAvatar.png';
+export { default as postAvatarSec } from '../assets/images/postAvatarSec.png';
+export { default as postImageOne } from '../assets/images/postImageOne.png';
+export { default as postImageTwo } from '../assets/images/postImageTwo.png';
+export { default as postImageThree } from '../assets/images/postImageThree.png';
+
+export { default as testimonialAvatar } from '../assets/images/testimonialAvatar.png';
+export { default as mytripIcon } from '../assets/images/mytripIcon.png';
+export { default as dragon } from '../assets/images/dragon.png';
+
+export { default as postVideo } from '../assets/videos/postWorkout.mp4';
+export { default as footerBg } from '../assets/images/footerBg.png';
+
+export { default as signupBg } from '../assets/images/SignupBg.png';
+export { default as gymProfile } from '../assets/images/gym.png';
+export { default as gallery1 } from '../assets/images/gallery1.png';
+export { default as gallery2 } from '../assets/images/gallery2.png';
+export { default as gymCover } from '../assets/images/gymCover.webp';
+export { default as association } from '../assets/images/association.webp';
+export { default as fighterProfile } from '../assets/images/userProfile.avif';
+export { default as trainerProfile } from '../assets/images/trainerProfile.png';
+export { default as instructor } from '../assets/images/instructor.jpg';
+export { default as accolades } from '../assets/images/accolades.webp';
+export { default as trainerCover } from '../assets/images/trainerCover.png';
+export { default as studentCover } from '../assets/images/studentCover.jpeg';
+export { default as affiliated } from '../assets/images/affiliated.jpg';
+export { default as gymProfilePhoto } from '../assets/images/gymProfile.jpg';
+export { default as hero } from '../assets/images/hero.png';
+
+export { default as trainerThumbOne } from '../assets/images/trainer-thumb.png';
+export { default as trainerThumbTwo } from '../assets/images/trainer-thumb-2.png';
+export { default as trainerThumbThree } from '../assets/images/trainer-thumb-3.png';
+export { default as trainerThumbFour } from '../assets/images/trainer-thumb-4.png';
+export { default as cardAvatar } from '../assets/images/userAvatar.png';
+export { default as cardCover } from '../assets/images/cardCover.png';
+export { default as beforeLogo } from '../assets/images/beforeLogo.png';
+export { default as fallbackicon } from '../assets/images/fallbackicon.png';
+export { default as GalleryImage } from '../assets/images/gallery-Image.png';
+export { default as userProfile } from '../assets/images/userProfile.png';
+export { default as friends } from '../assets/images/friends.png';
+export { default as gyms } from '../assets/images/gyms.png';
+export { default as students } from '../assets/images/students.png';
+export { default as fighter } from '../assets/images/fighter.png';
+export { default as trainer } from '../assets/images/trainer.png';
+export { default as newsFeedHeader } from '../assets/images/newsFeedHeader.png';
+export { default as uploadImage } from '../assets/images/uploadImage.png';

@@ -1,0 +1,43 @@
+.galleryPage {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.recentHeader {
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+
+.recentHeader h1 {
+  font-size: 34px;
+}
+
+.recentHeader p {
+  cursor: pointer;
+}
+
+.detailheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.detailheader h1 {
+  font-size: 40px;
+}
+.albumCard {
+  margin-bottom: 20px;
+}
+.no_media {
+  min-height: 400px;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

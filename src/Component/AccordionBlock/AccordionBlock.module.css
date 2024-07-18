@@ -1,0 +1,19 @@
+.divider-line {
+  margin-bottom: 10px;
+}
+
+.header-heading button,
+.header-heading button:focus {
+  font-family: "rajdhani-medium";
+}
+
+.body-content {
+  color: #707070;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

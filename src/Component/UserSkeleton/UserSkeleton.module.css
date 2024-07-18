@@ -1,0 +1,21 @@
+.user {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.userContent {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%
+}
+
+.user p {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-family: var(--ff-kanit-reg);
+    text-transform: capitalize;
+    color: var(--secondary-color)
+}

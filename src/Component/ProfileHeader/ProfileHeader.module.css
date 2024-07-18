@@ -1,0 +1,407 @@
+.topHeader {
+  height: 370px;
+  position: relative;
+  width: 100%;
+}
+
+.coverImage {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.coverImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.profileDiv {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -90px;
+  border: 1px solid silver;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.coverContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileContent {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  flex-direction: column;
+}
+.profileContent button {
+  padding: 9px 25px;
+  background-color: var(--secondary-color);
+}
+.profileContent p {
+  margin-bottom: 0px;
+  font-size: 25px;
+  color: var(--black-color);
+}
+
+.profileContent h1 {
+  margin-bottom: 0px;
+  font-size: 28px;
+  font-family: var(--ff-kanit-bold);
+  color: var(--secondary-color);
+  width: 200px;
+  text-align: center;
+}
+
+.followers {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.followers {
+  font-size: 35px;
+  font-family: var(--ff-primary-semiBold);
+}
+
+.followers span {
+  font-size: 24px;
+}
+
+.editBtn {
+  border-radius: 50%;
+  background-color: var(--white-color);
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black-color);
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.editBtn {
+  font-size: 19px;
+}
+
+.editCoverBtn {
+  top: 10px;
+  right: 10px;
+}
+
+.right__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.right__wrapper button {
+  background-color: var(--bg-color);
+}
+
+.infoBtn__wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 15px;
+}
+
+.infoBtn__wrapper button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-kanit-reg);
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.shareBtn {
+  display: flex;
+  align-items: center;
+  background-color: var(--white-color) !important;
+  border: 2px solid var(--bg-color) !important;
+  color: var(--bg-color) !important;
+}
+
+.shareBtn svg {
+  color: var(--bg-color);
+}
+.previewBtn svg {
+  cursor: pointer;
+  color: var(--bg-color);
+}
+.socialIcons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: -30px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon svg {
+  font-size: 30px;
+}
+.profilePhoto {
+  margin-top: 0px;
+}
+
+.editBtn {
+  border-radius: 50%;
+  background-color: var(--white-color);
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+}
+
+.editBtn svg {
+  font-size: 19px;
+  color: var(--main-color);
+}
+.coverImg {
+  position: relative;
+  cursor: pointer;
+}
+.submitBtn {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+}
+.submitBtn .update {
+  background-color: var(--secondary-color);
+  /* height: 32px; */
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 1px #cdcdcd;
+  color: var(--white-color);
+  font-size: 15px;
+  padding: 5px;
+}
+.submitBtn .update svg {
+  color: var(--white-color);
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  display: inherit;
+}
+.outer_profile_div {
+  position: relative;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.previewBtn {
+  padding: 11px 20px;
+  border-radius: 10px;
+}
+.actionBtns {
+  display: flex;
+  gap: 10px;
+}
+.profile_actions {
+  display: flex;
+  gap: 10px;
+}
+.profile_actions span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.acceptBtn {
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+.actionBtns button {
+  padding: 7px 26px;
+}
+.acceptBtn {
+  background-color: transparent !important;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+.rejectBtn{
+  background-color: transparent !important;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+.uploadClass{
+  border-radius: 0px !important;
+}
+@media screen and (max-width: 991px) {
+  .coverImage {
+    height: 300px;
+  }
+
+  .profileImage {
+    margin-top: -100px;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+
+  .profileContent p {
+    font-size: 22px;
+  }
+
+  .profileContent h1 {
+    font-size: 28px;
+  }
+
+  .followers {
+    font-size: 26px;
+  }
+
+  .followers span {
+    font-size: 20px;
+  }
+
+  .coverContainer {
+    flex-direction: column;
+  }
+
+  .right__wrapper {
+    padding-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profileContent {
+    margin-top: 5px;
+  }
+  .profileContent h1 {
+    width: 100%;
+  }
+  .profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .coverImage {
+    height: 260px;
+  }
+  .profileDiv {
+    margin-top: -70px;
+  }
+  .profileContent p {
+    font-size: 20px;
+  }
+
+  .profileContent h1 {
+    font-size: 26px;
+  }
+
+  .followers {
+    font-size: 23px;
+  }
+
+  .followers span {
+    font-size: 19px;
+  }
+
+  .profileDiv {
+    width: 130px;
+    height: 130px;
+  }
+
+  .editBtn {
+    bottom: 10px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+  }
+  .editBtn svg {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .profileContent h1 {
+    font-size: 26px;
+    margin-top: 7px;
+  }
+
+  .infoBtn__wrapper {
+    margin-top: 10px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profileDiv {
+    margin-top: -60px;
+  }
+  .profileDiv {
+    width: 100px;
+    height: 100px;
+    /* margin-left: 20px; */
+  }
+  .right__wrapper {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .editBtn {
+    bottom: 7px;
+    right: 40px;
+    height: 25px;
+    width: 25px;
+  }
+  .editBtn svg {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profileDiv {
+    margin-top: -50px;
+  }
+  .profileContent h1 {
+    font-size: 22px;
+  }
+
+  .followers {
+    font-size: 21px;
+  }
+
+  .followers span {
+    font-size: 17px;
+  }
+}

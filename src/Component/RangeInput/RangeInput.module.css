@@ -1,0 +1,156 @@
+.__wrapper {
+  width: 100%;
+}
+.rangeInputDiv {
+  position: relative;
+  margin-top: 1rem;
+}
+.toEnd .rangeInputValue{
+  right:0;
+  left:auto !important;
+}
+.onStart .rangeInputValue{
+  left:0 !important;
+  right:auto;
+}
+.rangeInputValue {
+  position: absolute;
+  bottom: calc(100% - 4px);
+  color: var(--main-color);
+  font-family: var(--ff-primary-reg);
+}
+
+.rangeInputDiv .rangeInput {
+  /* accent-color: var(--primary-text-color); */
+  accent-color: #ab6e07;
+  border: none;
+  width: 100%;
+  padding: 0 !important;
+  cursor: pointer;
+}
+.minMaxDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.minMaxDiv span {
+  color: var(--main-color);
+  font-family: var(--ff-primary-med);
+}
+/* .rangeInputDiv .rangeInput[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.rangeInputDiv .rangeInput[type="range"]::-webkit-slider-runnable-track {
+  background: var(--secondary-color);
+  height: 0.5rem;
+} */
+.rangeInputDiv{
+  --track-color:#00000000;
+  --thumb-color:var(--main-color);
+  --clip-path:polygon(100% 0, 0% 100%, 100% 100%);
+  position:relative;
+  isolation:isolate;
+}
+.rangeInputDiv::before{
+  content:'';
+  background-color:#ccc;
+  clip-path:var(--clip-path);
+  max-height:20px;
+  width:100%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  z-index:-1;
+  margin-block:auto;
+}
+.rangeInputDiv .rangeInput {
+  --webkit-appearance: none;
+  appearance:none;
+  margin: 10px 0;
+  width: 100%;
+  background-color:transparent !important;
+}
+.rangeInputDiv .rangeInput:focus {
+  outline: none;
+}
+.rangeInputDiv .rangeInput::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: var(--track-color);
+   
+  border: 0px solid #000101;
+}
+.rangeInputDiv .rangeInput::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: var(--thumb-color);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.6px;
+}
+.rangeInputDiv .rangeInput:focus::-webkit-slider-runnable-track {
+  background: var(--track-color);
+}
+.rangeInputDiv .rangeInput::-moz-range-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: var(--track-color);
+   
+  border: 0px solid #000101;
+}
+.rangeInputDiv .rangeInput::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: var(--thumb-color);
+  cursor: pointer;
+}
+.rangeInputDiv .rangeInput::-ms-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
+}
+.rangeInputDiv .rangeInput::-ms-fill-lower {
+  background: var(--track-color);
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+.rangeInputDiv .rangeInput::-ms-fill-upper {
+  background: var(--track-color);
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+.rangeInputDiv .rangeInput::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: var(--thumb-color);
+  cursor: pointer;
+}
+.rangeInputDiv .rangeInput:focus::-ms-fill-lower {
+  background: var(--track-color);
+}
+.rangeInputDiv .rangeInput:focus::-ms-fill-upper {
+  background: var(--track-color);
+}

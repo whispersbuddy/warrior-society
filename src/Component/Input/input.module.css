@@ -1,0 +1,114 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.labelText {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-family: var(--ff-primary-bold);
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.labelText svg {
+  margin-left: 15px;
+}
+
+.inputBox {
+  font-family: "rajdhani-medium";
+  font-size: 16px;
+  color: var(--black-color);
+  letter-spacing: 1.4px;
+  border-radius: 8px;
+  background-color: inherit;
+  padding: 15px;
+  width: 100%;
+  border: 1.5px solid var(--main-color);
+}
+
+.inputBox:disabled {
+  cursor: not-allowed;
+}
+
+.noBorder {
+  border: none;
+}
+
+.inputPassContainer {
+  display: flex;
+  position: relative;
+  background-color: var(--white-color);
+  /* box-shadow: rgb(212 120 59 / 10%) 0px 9px 33px; */
+  /* box-shadow: 0px 0 5px 2px #0000000d; */
+  border-radius: 10px;
+}
+
+.inputPassContainer input::placeholder {
+  color: var(--placeholder-color);
+  font-family: "rajdhani-regular";
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.inputPassContainer input:disabled {
+  background-color: var(--disabled-input-color);
+  color: #c9c9c9;
+  user-select: none;
+}
+
+.inputPassContainer .passwordIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+  color: #cacaca;
+}
+
+.errorText {
+  color: red;
+}
+
+.disabled {
+  color: var(--disabled-label-color);
+}
+
+.leftIconBox {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  margin-block:auto;
+  height: max-content;
+}
+
+.rightIcon {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  margin-block:auto;
+  height: max-content;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*  Firefox  */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 578px) {
+  .labelText {
+    font-size: 20px;
+  }
+}

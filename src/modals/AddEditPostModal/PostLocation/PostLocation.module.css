@@ -1,0 +1,18 @@
+.locationPage {
+    padding: 20px;
+    min-height: 40vh;
+}
+
+.mapClass {
+    margin-top: 20px;
+    height: 400px;
+}
+
+.backIcon {
+    padding-block: 10px 20px;
+}
+
+.backIcon svg {
+    font-size: 24px;
+    cursor: pointer
+}

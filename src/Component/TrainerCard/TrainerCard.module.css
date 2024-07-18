@@ -1,0 +1,94 @@
+.trainerCard {
+  border: 3px solid var(--main-color);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+.imageMain {
+  height: 140px;
+}
+.imageMain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.avatar__main {
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+}
+.profile {
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+
+.trainerCard p {
+  font-family: var(--ff-kanit-med);
+}
+.trainerCard h6 {
+  font-family: var(--ff-kanit-med);
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+.about__wrapper {
+  padding: 10px 18px 15px 18px;
+  background-color: #ffd8d9;
+  height: 95px;
+}
+.about__wrapper > * {
+  text-align: left;
+}
+.about__wrapper p {
+  margin-bottom: 0;
+  color: var(--sidebar-text-color);
+}
+
+.about__wrapper p:last-child {
+  font-size: 14px;
+  font-family: var(--ff-kanit-reg) !important;
+}
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  color: var(--sidebar-text-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  font-family: var(--ff-kanit-reg) !important;
+  padding-inline: 16px;
+}
+.location svg {
+  margin-right: 2px;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.textEllipsis {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+.trainerCard__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.top_content {
+  padding-bottom: 15px;
+}
+.coverDiv {
+  /* height: 85px; */
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--secondary-color);
+}
