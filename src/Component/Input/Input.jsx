@@ -29,6 +29,7 @@ export const Input = ({
   labelLeftIcon,
   enterClick,
   customClass,
+  isEvent=false,
   ...props
 }) => {
   const [passToggle, setPassToggle] = useState(false);
@@ -74,7 +75,15 @@ export const Input = ({
               if (regexType == "number" || type == "number") {
                 setter(e?.target?.value?.replace(numberRegEx, ""));
               } else {
-                setter(e.target.value);
+                if(isEvent){
+                  const urlRegex = /^(https?:\/\/)?([\w\d\-_]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/;
+                  if(e.target.value.match(urlRegex)){
+                    setter(e.target.value);
+                  }
+                }
+                else{
+                  setter(e.target.value);
+                }
               }
             }}
             disabled={disabled}

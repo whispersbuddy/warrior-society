@@ -131,6 +131,12 @@ export const disciplineData = [
 ];
 export const martialArtTypes = [
   {
+    label: "Sellect All",
+    value: "all",
+    description:
+      "all",
+  },
+  {
     label: "Aikido",
     value: "Aikido",
     description:

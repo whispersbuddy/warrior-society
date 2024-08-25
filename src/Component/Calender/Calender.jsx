@@ -15,6 +15,7 @@ export default function Calender({
   maxValue = false,
   error,
   errorText,
+  disablePast = false,
 }) {
   return (
     <>
@@ -42,6 +43,7 @@ export default function Calender({
           {labelIcon} {calenderLabel}
         </p>
         <DatePicker
+          disablePast={disablePast}
           minDate={minValue ? dayjs() : undefined}
           maxDate={maxValue ? dayjs() : undefined}
           disabled={disabled}
@@ -49,6 +51,8 @@ export default function Calender({
           value={value ? dayjs(value) : null}
           className={classes.calender}
           onChange={(newValue) => {
+            console.log(newValue.toString());
+            
             setter(newValue);
           }}
           inputRef={(e) => {

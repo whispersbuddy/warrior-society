@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { BsInfoCircle, BsTools } from "react-icons/bs";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
@@ -19,7 +19,7 @@ import { Input } from "../../../Component/Input/Input";
 import Maps from "../../../Component/MapAndPlaces";
 import { TextArea } from "../../../Component/TextArea";
 import Tooltip from "../../../Component/Tooltip";
-import { disciplineOptions } from "../../../config/Data";
+import { disciplineOptions, martialArtTypes } from "../../../config/Data";
 import { profileTooltTipData } from "../../../config/DummyData";
 import classes from "./Signup.module.css";
 
@@ -53,9 +53,9 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
   const [coordinates, setCoordinates] = useState(
     data?.schoolDetails?.location?.coordinates?.length > 0
       ? {
-          lat: data?.schoolDetails?.location?.coordinates[1],
-          lng: data?.schoolDetails?.location?.coordinates[0],
-        }
+        lat: data?.schoolDetails?.location?.coordinates[1],
+        lng: data?.schoolDetails?.location?.coordinates[0],
+      }
       : ""
   );
   const [address, setAddress] = useState(data?.schoolDetails?.address || "");
@@ -74,6 +74,32 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
       dropin: "",
     }
   );
+  const [types, setTypes] = useState([]);
+  const [selected, setSelected] = useState(false);
+
+  useEffect(()=>{
+    // console.log(types);
+    if(types.some((e)=>e?.value === 'unselect')){
+    console.log('unselect');
+
+      
+      setSelected(false)
+      setTypes([]);
+    }
+   else if(types.some((e)=>e?.value === 'all')){
+      setSelected(true)
+      setTypes(martialArtTypes.slice(1));
+    }
+    if(selected) {
+      martialArtTypes[0].label = 'Unselect';
+      martialArtTypes[0].value = 'unselect'
+    }else{
+      martialArtTypes[0].label = 'Select All';
+      martialArtTypes[0].value = 'all'
+    }
+    console.log(selected);
+  }, [selected, types]);
+
   const [errorFields, setErrorFields] = useState([]);
   const handleSignUp = async () => {
     const errorFieldNames = [];
@@ -84,6 +110,9 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
       disciplines: disciplines?.map((ele) => {
         return {
           title: ele?.value,
+          ...(ele.value === "martial arts" && {
+            disciplineDiscription: types?.map((e) => e?.value).join(","),
+          }),
         };
       }),
       dateEstablished: dateEstablished
@@ -91,8 +120,8 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
         : "",
       noOfInstructors: noOfInstructors ? noOfInstructors * 1 : "",
       duesInformation,
-      additionInformation,
-      special,
+      // additionInformation,
+      // special,
       location: {
         type: "Point",
         coordinates: coordinates ? [coordinates.lng, coordinates.lat] : [],
@@ -258,8 +287,24 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                       </Tooltip>
                     }
                     error={handleFieldError("disciplines")}
+                    closeMenuOnSelect={false}
                   />
                 </Col>
+                {disciplines?.map((e) => e?.value)?.includes("martial arts") && (
+                  <div className={classes.inputField}>
+                    <DropDown
+                      value={types}
+                      showIndicatorAtTop={true}
+                      options={martialArtTypes}
+                      placeholder={"Martial Arts Types"}
+                      optionLabel={"label"}
+                      optionValue={"value"}
+                      setter={setTypes}
+                      closeMenuOnSelect={selected}
+                      isMulti={true}
+                    />
+                  </div>
+                )}
                 <Col md={12}>
                   <Row>
                     <p className={classes.duesHeading}>
@@ -368,7 +413,7 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                         errorText={"Dropin Fees is required"}
                       />
                     </Col>
-                    <Col md={12} className={classes.inputField}>
+                    {/* <Col md={12} className={classes.inputField}>
                       <TextArea
                         value={additionInformation}
                         setter={setAdditionInformation}
@@ -385,7 +430,7 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                         error={handleFieldError("special")}
                         errorText={"Special is required"}
                       />
-                    </Col>
+                    </Col> */}
                   </Row>
                 </Col>
                 <Col className={classes.inputField} lg={12}>
@@ -447,6 +492,7 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                     optionLabel={"equipmentName"}
                     optionValue={"_id"}
                     error={handleFieldError("equipments")}
+                    closeMenuOnSelect={false}
                   />
                 </Col>
               </Row>

@@ -15,10 +15,12 @@ const venueOptions = [
   { label: "Hall 2", value: "hall2" },
   { label: "Open Ground", value: "openGround" },
 ];
+// 1st Place, 2nd Place, 3rd Place, Did not medal 
 const resultOptions = [
-  { label: "WON", value: "WON" },
-  { label: "LOST", value: "LOST" },
-  { label: "DRAW", value: "DRAW" },
+  { label: "1st Place", value: "1st Place" },
+  { label: "2nd Place", value: "2nd Place" },
+  { label: "3rd Place", value: "3rd Place" },
+  { label: "Did not medal ", value: "Did not medal " },
 ];
 const skillOptions = [
   { label: "Amateur", value: "amateur" },
@@ -34,7 +36,6 @@ export default function AddFightingModal({
 }) {
   const [skillLevel, setSkillLevel] = useState(null);
   const [fightDate, setFightDate] = useState(null);
-  const [opponent, setOpponent] = useState(null);
   const [discipline, setDiscipline] = useState(null);
   const [result, setResult] = useState(null);
   const [venue, setVenue] = useState(null);
@@ -46,7 +47,6 @@ export default function AddFightingModal({
         value: data?.category,
       });
       setFightDate(data?.date);
-      setOpponent(data?.opponent);
       setDiscipline({
         label: data?.discipline,
         value: data?.discipline,
@@ -68,7 +68,6 @@ export default function AddFightingModal({
       date: fightDate
         ? moment(fightDate?.$d || fightDate).format("MM/DD/YYYY")
         : "",
-      opponent,
       discipline: discipline?.value,
       result: result?.value,
       via: venue?.value,
@@ -122,17 +121,18 @@ export default function AddFightingModal({
               placeholder={"Date"}
             />
           </Col>
-          <Col lg={6} className={styles.inputField}>
+          {/* <Col lg={6} className={styles.inputField}>
             <Input
               value={opponent}
               setter={setOpponent}
               placeholder={"Opponent"}
               label={"Opponent"}
             />
-          </Col>
+          </Col> */}
           <Col lg={6} className={styles.inputField}>
             <DropDown
               value={discipline}
+              isCustomAllow={true}
               setter={setDiscipline}
               placeholder={"Select"}
               label={"Discipline"}
@@ -151,6 +151,7 @@ export default function AddFightingModal({
           <Col lg={6} className={styles.inputField}>
             <DropDown
               value={venue}
+              isCustomAllow={true}
               setter={setVenue}
               placeholder={"Select"}
               label={"Venue"}

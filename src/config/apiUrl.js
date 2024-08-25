@@ -1,8 +1,7 @@
-// export const apiUrl = "https://cp8qzm1b-9090.inc1.devtunnels.ms";
+export const apiUrl = "https://thewarriorsociety.com";
 
 export const s3Url = "https://mario-warrior.s3.ap-southeast-1.amazonaws.com";
-export const googleMapApiKey = "AIzaSyDcSozS0I5ELg1f0TCG-fnJIMNu-t-4Pvo";
-
+export const googleMapApiKey = "AIzaSyALkPTaRbz9gPqS00opLeJnOAPaorBdjsU";
 export const imageUrl = (url) => `${s3Url}/${url}`;
 
 export const BaseURL = (link) => {

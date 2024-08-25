@@ -26,7 +26,7 @@ export default function AddEditUpcomingFightingModal({
   const { user: userData } = useSelector((state) => state?.authReducer);
   const [fightDate, setFightDate] = useState(null);
   const [time, setTime] = useState(null);
-  const [opponent, setOpponent] = useState(null);
+  const [event, setEvent] = useState(null);
   const [venue, setVenue] = useState(null);
   useEffect(() => {
     if (data) {
@@ -38,7 +38,7 @@ export default function AddEditUpcomingFightingModal({
       ).format();
       setFightDate(data?.date);
       setTime(mergeDateTime);
-      setOpponent(data?.opponent);
+      setEvent(data?.event);
       setVenue({
         label: data?.venue,
         value: data?.venue,
@@ -51,7 +51,7 @@ export default function AddEditUpcomingFightingModal({
       date: fightDate
         ? moment(fightDate?.$d || fightDate).format("MM/DD/YYYY")
         : "",
-      opponent,
+        event,
       venue: venue?.value,
       time: time ? moment(time?.$d || time).format("hh:mm A") : "",
     };
@@ -85,22 +85,23 @@ export default function AddEditUpcomingFightingModal({
         <Row>
           <Col lg={6} className={styles.inputField}>
             <Input
-              value={opponent}
-              setter={setOpponent}
-              placeholder={"Opponent"}
-              label={"Opponent"}
+              value={event}
+              setter={setEvent}
+              placeholder={"Link To Event"}
+              label={"Event Link"}
             />
           </Col>
           <Col md={6} className={styles.inputField}>
             <ResponsiveDatePickers
               setter={setFightDate}
+                disablePast={true}
               calenderLabel={"Date"}
               value={fightDate}
               placeholder="Date"
             />
           </Col>
           <Col md={6} className={styles.inputField}>
-            <TimePicker setter={setTime} dateLabel={"Time"} value={time} />
+            <TimePicker setter={setTime} dateLabel={"Start Time"} value={time} />
           </Col>
 
           <Col lg={6} className={styles.inputField}>
@@ -108,7 +109,8 @@ export default function AddEditUpcomingFightingModal({
               value={venue}
               setter={setVenue}
               placeholder={"Select"}
-              label={"Via"}
+              label={"Venue"}
+              isCustomAllow={true}
               options={venueOptions}
             />
           </Col>

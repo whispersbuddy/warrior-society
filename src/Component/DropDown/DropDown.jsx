@@ -7,6 +7,7 @@ import { imageUrl } from "../../config/apiUrl";
 import ProfilePhoto from "../ProfilePhoto";
 import { IoLocationOutline } from "react-icons/io5";
 import { extractTextFromElement } from "../../config/HelperFunction";
+import Creatable from "react-select/creatable";
 
 export const DropDown = ({
   options,
@@ -17,6 +18,7 @@ export const DropDown = ({
   value,
   setter,
   noBorder,
+  isCustomAllow,
   placeholder,
   placeholderColor = "var(--placeholder-color)",
   isMulti,
@@ -32,9 +34,11 @@ export const DropDown = ({
   labelLeftIcon,
   labelRightIcon,
   isSearchable = true,
+  closeMenuOnSelect = true,
   indicatorClass,
   affilatedAllow,
   errorText,
+  showIndicatorAtTop = false,
   error,
   ...props
 }) => {
@@ -64,12 +68,15 @@ export const DropDown = ({
     control: (styles, { isFocused, isDisabled, isSelected }) => ({
       ...styles,
       backgroundColor: isDisabled ? "var(--disabled-input-color)" : "#fff",
-      padding: "4px 0px 4px 4px",
+      padding: ` ${isCustomAllow ? "4px" : "4px  0px 4px 4px"}`,
       color: "var(--white-color)",
       boxShadow: "none",
       fontFamily: "rajdhani-regular",
       fontSize: "16px",
       letterSpacing: "1.4",
+      maxHeight: "250px", // Sets the maximum height of the element
+      overflowY: "auto", // Enables vertical scrolling when the content exceeds max-height
+      scrollBehavior: "smooth",
       cursor: "pointer",
       border: `1.5px solid ${error ? "red" : "var(--main-color)"}`,
       borderRadius: "8px",
@@ -179,77 +186,108 @@ export const DropDown = ({
       )}
 
       <div className={`${[classes.dropdownContainer].join(" ")}`}>
-        <ReactSelect
-          inputId={`dropdown${label}`}
-          value={value}
-          onChange={(e) => {
-            setter(e);
+        {isCustomAllow ? (
+          <Creatable
+            options={options}
+            className={`${[classes.reactSelect].join(" ")} `}
+            placeholder={placeholder}
+            components={{
+              IndicatorSeparator: () => null,
+              DropdownIndicator: (e) => DropdownIndicator(e),
+              ...Components,
+            }}
+            onChange={(e) => {
+              setter(e);
+            }}
+            styles={{ ...dropDownStyle, ...style }}
+            isDisabled={disabled}
+          />
+        ) : (
+          <ReactSelect
+            inputId={`dropdown${label}`}
+            value={value}
+            onChange={(e) => {
+              setter(e);
+            }}
+            className={`${[classes.reactSelect].join(" ")}`}
+            isMulti={isMulti}
+            isDisabled={disabled}
+            placeholder={placeholder}
+            options={options}
+            styles={{ ...dropDownStyle, ...style,
+              indicatorsContainer: (base) => ({
+                ...base,
+                ...(showIndicatorAtTop
+                  ? { 
+                      position: 'absolute',
+                      right: '5px',
+                    }
+                  : {}),
+              }),
           }}
-          className={`${[classes.reactSelect].join(" ")}`}
-          isMulti={isMulti}
-          isDisabled={disabled}
-          placeholder={placeholder}
-          options={options}
-          styles={{ ...dropDownStyle, ...style }}
-          isClearable={false}
-          classNamePrefix={customeClassName}
-          isSearchable={isSearchable}
-          components={{
-            IndicatorSeparator: () => null,
-            DropdownIndicator: (e) => DropdownIndicator(e),
-            ...Components,
-          }}
-          getOptionLabel={(option) => {
-            const label = optionLabel ? option[optionLabel] : option.label;
-            return (
-              <>
-                {option?.image && affilatedAllow ? (
-                  <div className={classes.optionSelect}>
-                    <div>
-                      <ProfilePhoto
-                        photo={option?.image}
-                        profilePhotoDimensions={option?.profilePhotoDimensions}
-                        className={classes.profileImage}
-                      />
-                    </div>
-                    <div>
-                      <p className={classes.name}>{label}</p>
+            isClearable={false}
+            closeMenuOnSelect={closeMenuOnSelect}
+            classNamePrefix={customeClassName}
+            isSearchable={isSearchable}
+            components={{
+              IndicatorSeparator: () => null,
+              DropdownIndicator: (e) => DropdownIndicator(e),
+              ...Components,
+            }}
+            getOptionLabel={(option) => {
+              const label = optionLabel ? option[optionLabel] : option.label;
+              return (
+                <>
+                  {option?.image && affilatedAllow ? (
+                    <div className={classes.optionSelect}>
+                      <div>
+                        <ProfilePhoto
+                          photo={option?.image}
+                          profilePhotoDimensions={
+                            option?.profilePhotoDimensions
+                          }
+                          className={classes.profileImage}
+                        />
+                      </div>
+                      <div>
+                        <p className={classes.name}>{label}</p>
 
-                      <p className={classes.location}>
-                        <IoLocationOutline /> {option?.address || 'N/A'}
-                      </p>
+                        <p className={classes.location}>
+                          <IoLocationOutline /> {option?.address || "N/A"}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  label
-                )}
-              </>
-            );
-          }}
-          getOptionValue={(option) =>
-            optionValue ? option[optionValue] : option.value
-          }
-          filterOption={(option, input) => {
-            if (!input) return true;
-            // let labelText = option[optionLabel] || option.label || "";
-            // if (React.isValidElement(labelText)) {
-            //   labelText = labelText.props.children;
-            // }
-            let labelText = extractTextFromElement(
-              option.label || option[optionLabel] || ""
-            );
-            return labelText
-              ?.trim()
-              ?.toLowerCase()
-              ?.startsWith(input.toLowerCase());
-          }}
-          // filterOption={({ label, value, data }, input) => {
-          //   if (!input) return true;
-          //   // Assuming labels are strings, compare the first character of the label and input, case-insensitive
-          //   return label.toLowerCase().startsWith(input.toLowerCase());
-          // }}
-          {...props}
-        />
+                  ) : (
+                    label
+                  )}
+                </>
+              );
+            }}
+            getOptionValue={(option) =>
+              optionValue ? option[optionValue] : option.value
+            }
+            filterOption={(option, input) => {
+              if (!input) return true;
+              // let labelText = option[optionLabel] || option.label || "";
+              // if (React.isValidElement(labelText)) {
+              //   labelText = labelText.props.children;
+              // }
+              let labelText = extractTextFromElement(
+                option.label || option[optionLabel] || ""
+              );
+              return labelText
+                ?.trim()
+                ?.toLowerCase()
+                ?.startsWith(input.toLowerCase());
+            }}
+            // filterOption={({ label, value, data }, input) => {
+            //   if (!input) return true;
+            //   // Assuming labels are strings, compare the first character of the label and input, case-insensitive
+            //   return label.toLowerCase().startsWith(input.toLowerCase());
+            // }}
+            {...props}
+          />
+        )}
         {leftIcon && <div className={classes.leftIconBox}>{leftIcon}</div>}
         {error && (
           <p className={`mt-1 ${[classes.errorText].join(" ")}`}>
@@ -278,6 +316,7 @@ DropDown.propTypes = {
 
 DropDown.defaultProps = {
   placeholder: "sdsad",
+  isCustomAllow: false,
   value: "aaaa",
   disabled: false,
   isMulti: false,
