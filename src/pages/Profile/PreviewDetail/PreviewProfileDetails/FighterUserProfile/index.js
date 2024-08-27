@@ -108,9 +108,8 @@ const FighterUserProfile = ({ user }) => {
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Discipline</th>
-                                <th>Opponent</th>
                                 <th>Result</th>
-                                <th>Via</th>
+                                <th>Venue</th>
                               </tr>
                             </thead>
 
@@ -124,7 +123,6 @@ const FighterUserProfile = ({ user }) => {
                                       {moment(e?.date)?.format("MM/DD/YYYY")}
                                     </td>
                                     <td>{e?.discipline}</td>
-                                    <td>{e?.opponent}</td>
                                     <td>{e?.result}</td>
                                     <td>{e?.via}</td>
                                   </tr>

@@ -10,11 +10,7 @@ export default function MapEditView({
   setPlaceDetail,
   className,
 }) {
-  // State to temporarily hold the new position and address details
-  const [tempCoordinates, setTempCoordinates] = useState(coordinates);
-  const [tempAddress, setTempAddress] = useState("");
-  const [tempPlaceDetail, setTempPlaceDetail] = useState({});
-
+  // Function to handle marker drag end event
   const onMarkerDragEnd = async (e) => {
     const newPosition = {
       lat: e.latLng.lat(),
@@ -23,7 +19,6 @@ export default function MapEditView({
 
     try {
       const results = await getGeocode({ location: newPosition });
-      console.log("Geocode results:", results);
 
       if (results && results.length > 0) {
         const zipcode = await getZipCode(results[0], false);
@@ -42,41 +37,38 @@ export default function MapEditView({
           if (state !== "" && city !== "" && country !== "") break;
         }
 
-        // Ensure state is only updated when results are valid
+        // Update state only when results are valid
         setCoordinates && setCoordinates(newPosition);
         setAddress && setAddress(results[0].formatted_address);
-        setPlaceDetail && setPlaceDetail ({ state, city, country, zipcode });
-
-     
+        setPlaceDetail && setPlaceDetail({ state, city, country, zipcode });
       } else {
         console.error("No results found for the given coordinates.");
       }
-
     } catch (error) {
       console.error("Error fetching geocode or zip code:", error);
     }
   };
 
   const handleSave = () => {
-
+    // Implement the save functionality here
+    console.log("Address saved");
   };
 
   useEffect(() => {
     console.log("Component re-rendered");
     console.log("Coordinates:", coordinates);
-    console.log("Temp Coordinates after re-render:", tempCoordinates);
-  }, [coordinates, tempCoordinates]);
+  }, [coordinates]);
 
   return (
-    <div className={`${classes?.container} ${className && className}`}>
+    <div className={`${classes?.container} ${className || ""}`}>
       <GoogleMap
         zoom={16}
-        center={tempCoordinates}
+        center={coordinates}  
         mapContainerClassName={classes["map-container"]}
       >
-        {tempCoordinates && (
+        {coordinates && (
           <Marker
-            position={tempCoordinates}
+            position={coordinates}  
             draggable={true}
             onDragEnd={onMarkerDragEnd}
           />
@@ -88,18 +80,19 @@ export default function MapEditView({
           position: 'absolute',
           right: '27px',
           top: '80px',
-          backgroundColor: '#007bff',   
-          color: '#fff',                
-          padding: '10px 20px',          
-          border: 'none',               
-          borderRadius: '8px',          
-          fontSize: '16px',             
-          cursor: 'pointer',            
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', 
-          transition: 'background-color 0.3s ease', 
+          backgroundColor: '#007bff',
+          color: '#fff',
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '8px',
+          fontSize: '16px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          transition: 'background-color 0.3s ease',
         }}
         onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#0056b3'}
         onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#007bff'}
+        onClick={handleSave}  
       >
         Save Address
       </button>

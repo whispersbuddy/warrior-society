@@ -67,6 +67,7 @@ const ProfileSettings = () => {
   const [twitter, setTwitter] = useState(user?.twitter || "");
   const [linkedin, setLinkedin] = useState(user?.linkedin || "");
   const [updateLoading, setUpdateLoading] = useState(false);
+  const [nickname, setNickname] = useState(user?.nickname || "");
   const [coverPhotoDimensions, setCoverPhotoDimensions] = useState(
     user?.coverPhotoDimensions || coverInitialDimensions
   );
@@ -261,7 +262,16 @@ const ProfileSettings = () => {
                     error={handleFieldError("lastName")}
                   />
                 </Col>
-
+                {/* <Col xl={6} className={classes.inputField}>
+                  <Input
+                    value={nickname}
+                    setter={setNickname}
+                    placeholder={"Nick Name"}
+                    label={"Nick Name"}
+                    labelLeftIcon={<ImUser />}
+                    error={handleFieldError("nickName")}
+                  />
+                </Col> */}
                 <Col md={6} className={classes.inputField}>
                   <CustomPhoneInput
                     setter={setContact}

@@ -93,9 +93,8 @@ const FighterUserProfile = ({ profileData, isLoading, setCreateRoomModal }) => {
                             <th>Category</th>
                             <th>Date</th>
                             <th>Discipline</th>
-                            <th>Opponent</th>
                             <th>Result</th>
-                            <th>Via</th>
+                             <th>Venue</th>
                           </tr>
                         </thead>
 

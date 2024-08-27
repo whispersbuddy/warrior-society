@@ -30,6 +30,7 @@ import EditBioModal from "../../../../modals/EditBioModal";
 import EditLessonModal from "../../../../modals/EditLessonModal";
 import { updateUser } from "../../../../store/auth/authSlice";
 import classes from "./FighterUserProfile.module.css";
+import EditNicknameModal from "../../../../modals/AddEditNickNameModal/EditNiceNameModal";
 
 const FighterUserProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const FighterUserProfile = ({ user }) => {
   // modals state------
   const [editModal, setEditModal] = useState(false);
   const [editBioModal, setEditBioModal] = useState(false);
+  const [editNickNameModal, setEditNickNameModal] = useState(false);
   const [addFightingModal, setAddFightingModal] = useState(false);
   const [upComingModal, setUpComingModal] = useState(false);
   const [areYouSureModal, setAreYouSureModal] = useState(false);
@@ -79,6 +81,7 @@ const FighterUserProfile = ({ user }) => {
       setDeleteModal(false);
       setAssociationModal(false);
       setDisciplineModal(false);
+      setEditNickNameModal(false);
     }
 
     setAddFightLoading(false);
@@ -137,8 +140,36 @@ const FighterUserProfile = ({ user }) => {
           ].join(" ")}
         >
           <Row>
+            
             <Col lg={8}>
               <div className={classes.leftContainer}>
+              <div className={classes.aboutContainer}>
+                  <div className={classes.header}>
+                    <h3>
+                      Nick Name{" "}
+                      <Tooltip
+                        className={classes.tooltipDiv}
+                        icon={<RxInfoCircled className={classes.tooltipSvg} />}
+                      >
+                        <span>{profileTooltTipData?.fighter?.nickName}</span>
+                      </Tooltip>
+                    </h3>
+                    <span
+                      onClick={() => setEditNickNameModal(true)}
+                      className={classes.editBtn}
+                      title="Edit About"
+                    >
+                      <LuEdit />
+                    </span>
+                  </div>
+                  <p>
+                    {userData?.fighterDetails?.nickName ? (
+                      userData?.fighterDetails?.nickName
+                    ) : (
+                      <NoData text="No Nick Name found" />
+                    )}
+                  </p>
+                </div>
                 <div className={classes.aboutContainer}>
                   <div className={classes.header}>
                     <h3>
@@ -313,24 +344,26 @@ const FighterUserProfile = ({ user }) => {
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Discipline</th>
-                                <th>Opponent</th>
                                 <th>Result</th>
-                                <th>Via</th>
+                                <th>Venue</th>
                                 <th>#</th>
                               </tr>
                             </thead>
 
                             <tbody>
-                              {userData?.fighterDetails?.fightingRecord?.map(
-                                (e, i) => (
-                                  <tr>
+                              {userData?.fighterDetails?.fightingRecord
+                                ?.slice() // create a shallow copy to avoid mutating the original array
+                                ?.sort(
+                                  (a, b) => new Date(b.date) - new Date(a.date)
+                                ) // sort in descending order by date
+                                ?.map((e, i) => (
+                                  <tr key={i}>
                                     <td>{i + 1}</td>
                                     <td>{e?.category}</td>
                                     <td>
                                       {moment(e?.date)?.format("MM/DD/YYYY")}
                                     </td>
                                     <td>{e?.discipline}</td>
-                                    <td>{e?.opponent}</td>
                                     <td>{e?.result}</td>
                                     <td>{e?.via}</td>
                                     <td>
@@ -355,8 +388,7 @@ const FighterUserProfile = ({ user }) => {
                                       />
                                     </td>
                                   </tr>
-                                )
-                              )}
+                                ))}
                             </tbody>
                           </table>
                         </>
@@ -400,7 +432,7 @@ const FighterUserProfile = ({ user }) => {
                                 <th>#</th>
                                 <th>Time</th>
                                 <th>Date</th>
-                                <th>Opponent</th>
+                                <th>Event</th>
                                 <th>Venue</th>
                                 <th>#</th>
                               </tr>
@@ -415,7 +447,7 @@ const FighterUserProfile = ({ user }) => {
                                     <td>
                                       {moment(e?.date)?.format("MM/DD/YYYY")}
                                     </td>
-                                    <td>{e?.opponent}</td>
+                                    <td>{e?.event || "-"}</td>
                                     <td>{e?.venue}</td>
                                     <td>
                                       <LuEdit
@@ -764,6 +796,15 @@ const FighterUserProfile = ({ user }) => {
               onClick={handleSubmitFight}
               isLoading={addFightLoading}
               data={userData?.fighterDetails?.bio}
+            />
+          )}
+             {editNickNameModal && (
+            <EditNicknameModal
+              show={editNickNameModal}
+              setShow={setEditNickNameModal}
+              onClick={handleSubmitFight}
+              isLoading={addFightLoading}
+              data={userData?.fighterDetails?.nickName}
             />
           )}
           {upComingModal && (

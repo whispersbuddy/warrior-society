@@ -20,6 +20,8 @@ import {
   validateDisciplineFields,
 } from "../../../config/HelperFunction";
 import classes from "./Signup.module.css";
+import { Input } from "../../../Component/Input/Input";
+import { ImUser } from "react-icons/im";
 const getPreviousRoleFields = (data, role, page, stateName = "disciplines") => {
   const lastFighterIndex = role.lastIndexOf("student");
   const lastTrainerIndex = role.lastIndexOf("trainer");
@@ -76,6 +78,8 @@ const FighterBioForm = ({
 
   const [selectFees, setSelectFees] = useState([]);
   const [bio, setBio] = useState(data?.fighterDetails?.bio || null);
+  const [nickName, setNickName] = useState(data?.fighterDetails?.nickName || null);
+
   const [booleanErrors, setBooleanErrors] = useState([]);
   const [errorFields, setErrorFields] = useState([]);
   const handleSignUp = async () => {
@@ -272,6 +276,16 @@ const FighterBioForm = ({
                     value={bio}
                     setter={setBio}
                     error={handleFieldError("bio")}
+                  />
+                </Col>
+                <Col xl={12} className={classes.inputField}>
+                  <Input
+                    value={nickName}
+                    setter={setNickName}
+                    placeholder={"Nick Name"}
+                    label={"Nick Name"}
+                    labelLeftIcon={<ImUser />}
+                    error={handleFieldError("nickName")}
                   />
                 </Col>
                 <div className={classes.checkBox}>

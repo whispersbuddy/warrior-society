@@ -19,7 +19,7 @@
 .usersContainer {
     margin-block: 14px 20px;
     padding-inline: 15px;
-    max-height: 50vh;
+    min-height: 700px;    
     overflow-y: auto;
 }
 

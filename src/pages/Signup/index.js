@@ -40,6 +40,7 @@ const Signup = () => {
   const [country, setCountry] = useState(userData?.country || null);
   const [city, setCity] = useState(userData?.city || null);
   const [state, setState] = useState(userData?.state || null);
+  const [nickname, setNickname] = useState(userData?.nickname || null);
   const [passwordConfirm, setPasswordConfirm] = useState(
     userData?.passwordConfirm || null
   );
@@ -360,6 +361,7 @@ const Signup = () => {
                           error={handleFieldError("lastName")}
                         />
                       </Col>
+                     
                       <Col md={6} className={classes.inputField}>
                         <CustomPhoneInput
                           setter={setContact}

@@ -68,19 +68,17 @@ export const DropDown = ({
     control: (styles, { isFocused, isDisabled, isSelected }) => ({
       ...styles,
       backgroundColor: isDisabled ? "var(--disabled-input-color)" : "#fff",
-      padding: ` ${isCustomAllow ? "4px" : "4px  0px 4px 4px"}`,
+      padding: `${isCustomAllow ? "4px" : "4px 0px 4px 4px"}`,
       color: "var(--white-color)",
       boxShadow: "none",
       fontFamily: "rajdhani-regular",
       fontSize: "16px",
-      letterSpacing: "1.4",
-      maxHeight: "250px", // Sets the maximum height of the element
-      overflowY: "auto", // Enables vertical scrolling when the content exceeds max-height
+      letterSpacing: "1.4px",
       scrollBehavior: "smooth",
       cursor: "pointer",
       border: `1.5px solid ${error ? "red" : "var(--main-color)"}`,
       borderRadius: "8px",
-      textTransform: "capitialize",
+      textTransform: "capitalize", // Corrected spelling from "capitialize"
       ...customStyle,
 
       ":hover": {
@@ -209,7 +207,7 @@ export const DropDown = ({
             onChange={(e) => {
               setter(e);
             }}
-            className={`${[classes.reactSelect].join(" ")}`}
+            className={`${[classes.reactSelect].join(" ")} `}
             isMulti={isMulti}
             isDisabled={disabled}
             placeholder={placeholder}
@@ -219,10 +217,15 @@ export const DropDown = ({
                 ...base,
                 ...(showIndicatorAtTop
                   ? { 
-                      position: 'absolute',
-                      right: '5px',
+                      position: "absolute",
+                      right: "0px",
                     }
                   : {}),
+              }),
+              valueContainer: (base) => ({
+                ...base,
+                maxHeight: "250px",
+                overflowY: "auto",
               }),
           }}
             isClearable={false}
