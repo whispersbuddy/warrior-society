@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { GiCrossedSwords } from "react-icons/gi";
@@ -31,7 +31,32 @@ const SingleDiscipline = ({
       return temp;
     });
   };
+  const [types, setTypes] = useState(
+    martialArtTypes?.filter((ele) =>
+    disciplineObj?.martialArtType?.[0]?.includes(ele?.value)
+  )
+);
+  const [selected, setSelected] = useState(false);
+
   useEffect(() => {
+    console.log('hello');
+    console.log(types);
+    if (types.some((e) => e?.value === 'unselect')) {
+      console.log('unselect');
+      setSelected(false)
+      setTypes([]);
+    }
+    else if (types.some((e) => e?.value === 'all')) {
+      setSelected(true)
+      setTypes(martialArtTypes.slice(1));
+    }
+    if (selected) {
+      martialArtTypes[0].label = 'Unselect';
+      martialArtTypes[0].value = 'unselect'
+    } else {
+      martialArtTypes[0].label = 'Select All';
+      martialArtTypes[0].value = 'all'
+    }
     const selectedDiscipline = disciplineOptions?.find(
       (ele) => ele?.value == disciplineObj?.domain
     );
@@ -60,13 +85,16 @@ const SingleDiscipline = ({
           knowledgeLevel: temp?.[index]?.knowledgeLevel,
           journey: temp?.[index]?.journey,
           ...(selectedDiscipline?.value === "Martial Arts" && {
-            martialArtType: temp?.[index]?.martialArtType,
+            martialArtType: types.map((e)=>e.value).join(','),
           }),
         };
         return temp;
       });
+      // setTypes(martialArtTypes?.filter((ele) =>
+      //   disciplineObj?.martialArtType?.[0].includes(ele?.value)
+      // ));
     }
-  }, []);
+  }, [disciplineObj?.domain, disciplineOptions, index, selected, setDiscipline, types]);
   return (
     <div className={[classes.disciplineBox].join(" ")}>
       {discipline?.length !== 1 && (
@@ -111,7 +139,7 @@ const SingleDiscipline = ({
                   knowledgeLevel: "",
                   journey: "",
                   ...(e?.value === "Martial Arts" && {
-                    martialArtType: [],
+                    martialArtType: types.map((e)=>e.value).join(','),
                   }),
                 };
                 return temp;
@@ -135,23 +163,25 @@ const SingleDiscipline = ({
           <Col lg={12} className={classes.inputField}>
             <DropDown
               // martialArtTypes is the array of martial arts types
-              value={martialArtTypes?.filter((ele) =>
-                disciplineObj?.martialArtType?.includes(ele?.value)
-              )}
+              value={types
+              }
               options={martialArtTypes}
-              placeholder={"Martial Arts Types"}
+              placeholder={"Martial Arts Types..."}
               optionLabel={"label"}
               optionValue={"value"}
-              setter={(e) => {
-                setDiscipline((prev) => {
-                  const tempArr = structuredClone([...prev]);
-                  tempArr[index] = {
-                    ...disciplineObj,
-                    martialArtType: e?.map((ele) => ele?.value),
-                  };
-                  return tempArr;
-                });
-              }}
+              setter={
+                setTypes
+                //   (e) => {
+                //   setDiscipline((prev) => {
+                //     const tempArr = structuredClone([...prev]);
+                //     tempArr[index] = {
+                //       ...disciplineObj,
+                //       martialArtType: e?.map((ele) => ele?.value),
+                //     };
+                //     return tempArr;
+                //   });
+                // }
+              }
               isSearchable={true}
               error={
                 activateError &&

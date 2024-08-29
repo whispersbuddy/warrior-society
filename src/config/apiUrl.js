@@ -1,4 +1,5 @@
 export const apiUrl = "https://thewarriorsociety.com";
+// export const apiUrl = "http://localhost:5000";
 
 export const s3Url = "https://mario-warrior.s3.ap-southeast-1.amazonaws.com";
 export const googleMapApiKey = "AIzaSyALkPTaRbz9gPqS00opLeJnOAPaorBdjsU";

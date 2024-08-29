@@ -362,12 +362,12 @@ export const martialArtTypes = [
     description:
       "A Japanese martial arts that utilizes the Sabaki method, involving kicks, punches, sweeps, throws, etc.",
   },
-  {
-    label: "Eskrima, Arnis & Kali",
-    value: "Eskrima, Arnis & Kali",
-    description:
-      "A martial arts style from the Philippines focused on the use of stick and blade weapons.",
-  },
+  // {
+  //   label: "Eskrima, Arnis & Kali",
+  //   value: "Eskrima, Arnis & Kali",
+  //   description:
+  //     "A martial arts style from the Philippines focused on the use of stick and blade weapons.",
+  // },
   {
     label: "Fencing",
     value: "Fencing",

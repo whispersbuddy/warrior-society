@@ -162,13 +162,13 @@ const FighterUserProfile = ({ user }) => {
                       <LuEdit />
                     </span>
                   </div>
-                  <p>
+                  <h5>
                     {userData?.fighterDetails?.nickName ? (
                       userData?.fighterDetails?.nickName
                     ) : (
                       <NoData text="No Nick Name found" />
                     )}
-                  </p>
+                  </h5>
                 </div>
                 <div className={classes.aboutContainer}>
                   <div className={classes.header}>

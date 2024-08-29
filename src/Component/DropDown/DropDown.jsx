@@ -229,7 +229,7 @@ export const DropDown = ({
               }),
           }}
             isClearable={false}
-            closeMenuOnSelect={closeMenuOnSelect}
+            closeMenuOnSelect={!isMulti}
             classNamePrefix={customeClassName}
             isSearchable={isSearchable}
             components={{

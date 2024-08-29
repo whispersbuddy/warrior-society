@@ -87,6 +87,7 @@ const FighterBioForm = ({
 
     let params = {
       bio,
+      nickName,
       association: association?.map((ele) => {
         return { association: ele._id };
       }),

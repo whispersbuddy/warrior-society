@@ -18,6 +18,18 @@ const FighterUserProfile = ({ user }) => {
               <div className={classes.leftContainer}>
                 <div className={classes.aboutContainer}>
                   <div className={classes.header}>
+                    <h3>Nick Name </h3>
+                  </div>
+                  <h5>
+                    {userData?.fighterDetails?.nickName ? (
+                      userData?.fighterDetails?.nickName
+                    ) : (
+                      <NoData text="No nickname found" />
+                    )}
+                  </h5>
+                </div>
+                <div className={classes.aboutContainer}>
+                  <div className={classes.header}>
                     <h3>About Me </h3>
                   </div>
                   <p>

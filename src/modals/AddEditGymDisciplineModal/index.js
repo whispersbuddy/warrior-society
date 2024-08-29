@@ -15,6 +15,7 @@ const AddEditGymDisciplineModal = ({
 }) => {
   const [disciplines, setDisciplines] = useState([]);
   const [types, setTypes] = useState([]);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     if (roleAffiliated || data) {
@@ -83,7 +84,25 @@ const AddEditGymDisciplineModal = ({
                 placeholder={"Martial Arts Types"}
                 optionLabel={"label"}
                 optionValue={"value"}
-                setter={setTypes}
+                setter={(e) => {
+                  console.log(e);
+                  if (e.some((e) => e?.value === 'unselect')) {
+                    console.log('unselect');
+                    setSelected(false)
+                    martialArtTypes[0].label = 'Select All';
+                    martialArtTypes[0].value = 'all'
+                    setTypes([]);
+                  }
+                  else if (e.some((e) => e?.value === 'all')) {
+                    console.log('all')
+                    setSelected(true)
+                    martialArtTypes[0].label = 'Unselect';
+                    martialArtTypes[0].value = 'unselect'
+                    setTypes(martialArtTypes.slice(1));
+                  }else{
+                    setTypes(e);
+                  }
+                }}
                 isSearchable={true}
                 isMulti={true}
               />

@@ -1,9 +1,11 @@
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
 import * as React from "react";
+import { useState } from "react";
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import classes from "./Calender.module.css";
+import DateFnsUtils from "@date-io/date-fns";
+import { InputAdornment } from "@material-ui/core";
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+
 export default function Calender({
   setter,
   placeholder = "date",
@@ -17,6 +19,20 @@ export default function Calender({
   errorText,
   disablePast = false,
 }) {
+  const [localError, setLocalError] = useState(false);
+  const [localErrorText, setLocalErrorText] = useState("");
+
+  const handleDateChange = (newValue) => {
+    if (newValue && newValue.toString() === 'Invalid Date') {
+      setLocalError(true);
+      setLocalErrorText("Invalid date selected");
+    } else {
+      setLocalError(false);
+      setLocalErrorText("");
+      setter(newValue);
+    }
+  };
+
   return (
     <>
       <style jsx>{`
@@ -27,7 +43,7 @@ export default function Calender({
           width: 100% !important;
           position: relative;
           border-radius: 8px;
-          border: 1.5px solid ${error ? "red" : "var(--main-color)"};
+          border: 1.5px solid ${error || localError ? "red" : "var(--main-color)"};
           overflow: hidden;
         }
         .MuiInputBase-root {
@@ -38,35 +54,38 @@ export default function Calender({
           z-index: 9999 !important;
         }
       `}</style>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <p className={classes.calenderLabel}>
           {labelIcon} {calenderLabel}
         </p>
-        <DatePicker
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          placeholder="MM/dd/yyyy"
+          margin="none"
+          id="date-picker-dialog"
+          value={value || null}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            "aria-label": "change date",
+          }}
           disablePast={disablePast}
-          minDate={minValue ? dayjs() : undefined}
-          maxDate={maxValue ? dayjs() : undefined}
           disabled={disabled}
-          placeholder={calenderLabel}
-          value={value ? dayjs(value) : null}
-          className={classes.calender}
-          onChange={(newValue) => {
-            console.log(newValue.toString());
-            
-            setter(newValue);
+          minDate={minValue}
+          maxDate={maxValue}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <CalendarTodayIcon />
+              </InputAdornment>
+            ),
           }}
-          inputRef={(e) => {
-            if (e) {
-              e.placeholder = placeholder;
-            }
-          }}
+          inputVariant="outlined"
+          error={!!error || localError}
+          helperText={(error || localError) ? (errorText || localErrorText || `${calenderLabel} is required`) : ""}
         />
-        {error && (
-          <p className={`mt-1 ${[classes.errorText].join(" ")}`}>
-            {errorText ? errorText : calenderLabel + " is required"}
-          </p>
-        )}
-      </LocalizationProvider>
+      </MuiPickersUtilsProvider>
     </>
   );
 }
