@@ -70,7 +70,7 @@ const TagPeople = ({ tags, setTags, setTagsModal }) => {
         )}
         <div className={classes.usersContainer}>
           {isLoading ? (
-            <UserSkeleton records={10} />
+            <UserSkeleton records={7} />
           ) : users?.length > 0 ? (
             users?.map((user) => {
               const alreadyTagged = tags.find((item) => item?._id === user._id);

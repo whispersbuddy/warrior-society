@@ -146,6 +146,8 @@ export const DropDown = ({
       },
     }),
   };
+  console.log("optionsasdasd", value);
+
   return (
     <div className={`${[classes.Container].join(" ")}`}>
       <style jsx>{`
@@ -182,13 +184,14 @@ export const DropDown = ({
           {labelRightIcon}
         </label>
       )}
-
+      
       <div className={`${[classes.dropdownContainer].join(" ")}`}>
         {isCustomAllow ? (
           <Creatable
             options={options}
             className={`${[classes.reactSelect].join(" ")} `}
             placeholder={placeholder}
+            value={value}
             components={{
               IndicatorSeparator: () => null,
               DropdownIndicator: (e) => DropdownIndicator(e),
@@ -204,6 +207,7 @@ export const DropDown = ({
           <ReactSelect
             inputId={`dropdown${label}`}
             value={value}
+            defaultInputValue={value}
             onChange={(e) => {
               setter(e);
             }}

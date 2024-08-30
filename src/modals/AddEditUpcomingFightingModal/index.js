@@ -28,7 +28,12 @@ export default function AddEditUpcomingFightingModal({
   const [time, setTime] = useState(null);
   const [event, setEvent] = useState(null);
   const [venue, setVenue] = useState(null);
+
+  console.log("dataaaaa",data);
+  
   useEffect(() => {
+    console.log(data);
+    
     if (data) {
       const momentDate = data?.date;
       const momentTime = data?.time;
@@ -44,7 +49,7 @@ export default function AddEditUpcomingFightingModal({
         value: data?.venue,
       });
     }
-  }, []);
+  }, [data]);
 
   const handleSubmit = async () => {
     const params = {
