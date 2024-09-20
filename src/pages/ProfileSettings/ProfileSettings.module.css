@@ -126,9 +126,30 @@
   height: 16px;
   display: inherit;
 }
-.passowrdBtn{
-  
+
+.outer_profile_div {
+  position: relative;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.profileDiv {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid silver;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.profileDiv div {
+  margin-top: 0px;
+}
+
 @media screen and (max-width: 400px) {
   .changePassowrdDiv {
     margin-top: 20px;

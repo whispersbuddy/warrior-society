@@ -27,6 +27,7 @@ function RoundCropImage({
   acceptedTypes = "*",
   setCoverPhotoDimensions,
   coverPhotoDimensions,
+  cropActive = false,
 }) {
   const inputRef = useRef(null);
   const scale = 100 / coverPhotoDimensions?.width;
@@ -48,7 +49,7 @@ function RoundCropImage({
 
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  const [isCrop, setIsCrop] = useState(false);
+  const [isCrop, setIsCrop] = useState(cropActive);
   const onCropComplete = (croppedArea) => {
     setCoverPhotoDimensions(croppedArea);
   };

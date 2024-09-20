@@ -1,0 +1,16 @@
+.submitBtn {
+    margin-top: 20px;
+}
+.uploadCover{
+    width: 400px;
+}
+.profileContainer{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(227, 223, 223);
+    padding: 10px;
+}
+.submitBtn button {
+    width: 100%;
+
+}

@@ -285,7 +285,7 @@ export const DropDown = ({
               return labelText
                 ?.trim()
                 ?.toLowerCase()
-                ?.startsWith(input.toLowerCase());
+                ?.startsWith(input?.toLowerCase());
             }}
             // filterOption={({ label, value, data }, input) => {
             //   if (!input) return true;

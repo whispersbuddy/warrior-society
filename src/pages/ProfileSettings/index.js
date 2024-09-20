@@ -9,7 +9,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { ImUser } from "react-icons/im";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,8 +30,10 @@ import { validateUserFields } from "../../config/HelperFunction";
 import { BaseURL, CreateFormData, apiHeader } from "../../config/apiUrl";
 import ChangePasswordModal from "../../modals/ChangePasswordModal";
 import EditCoverModal from "../../modals/EditCoverModal";
+import EditFighterLogoModal from "../../modals/EditFighterLogoModal";
 import { saveLoginUserData, updateUser } from "../../store/auth/authSlice";
 import classes from "./ProfileSettings.module.css";
+
 let coverInitialDimensions = {
   x: 0,
   y: 6.231578947368419,
@@ -78,6 +80,8 @@ const ProfileSettings = () => {
   const [errorFields, setErrorFields] = useState([]);
   const [coverUpdated, setCoverUpdated] = useState(false);
   const [updateCoverLoading, setUpdateCoverLoading] = useState(false);
+  const [logoModal, setLogoModal] = useState(false);
+
   const handleSubmit = async () => {
     const errorFieldNames = [];
     const params = {
@@ -229,7 +233,7 @@ const ProfileSettings = () => {
                 className={classes.editBtn}
                 onClick={() => setEditProfileModal(true)}
               >
-                <LuEdit title="Edit Profile Photo" />
+                <FaRegEdit title="Edit Profile Photo" />
               </div>
             </div>
             <div className={classes.changePassowrdDiv}>
@@ -359,6 +363,31 @@ const ProfileSettings = () => {
                     </Col>
                   </Row>
                 </div>
+
+                <div className={classes.socialContainer}>
+                  <div className={classes.heading}>
+                    <h2>Company Details</h2>
+                    <div className="mt-2">
+                      <div className={classes.outer_profile_div}>
+                        <div className={classes.profileDiv}>
+                          <ProfilePhoto
+                            photo={user?.logo}
+                            profilePhotoDimensions={user?.logoDimensions}
+                          />
+                        </div>
+                        <div
+                          className={classes.editBtn}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setLogoModal(true);
+                          }}
+                        >
+                          <FaRegEdit title="Edit Company Logo" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Col lg={!2} className={classes.inputField}>
                   <Button
                     label={updateLoading ? "Updating..." : "Update Profile"}
@@ -391,6 +420,14 @@ const ProfileSettings = () => {
           isLoading={isUpdating}
           setShow={setModalOpen}
           show={modalOpen}
+        />
+      )}
+      {logoModal && (
+        <EditFighterLogoModal
+          show={logoModal}
+          setShow={setLogoModal}
+          logo={user?.logo}
+          logoDimensions={user?.logoDimensions}
         />
       )}
     </>
