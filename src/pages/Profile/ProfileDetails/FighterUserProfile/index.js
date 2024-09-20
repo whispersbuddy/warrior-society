@@ -2,7 +2,7 @@ import moment from "moment";
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { HiPlus } from "react-icons/hi";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { RxInfoCircled } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -140,10 +140,9 @@ const FighterUserProfile = ({ user }) => {
           ].join(" ")}
         >
           <Row>
-            
             <Col lg={8}>
               <div className={classes.leftContainer}>
-              <div className={classes.aboutContainer}>
+                <div className={classes.aboutContainer}>
                   <div className={classes.header}>
                     <h3>
                       Nick Name{" "}
@@ -159,7 +158,7 @@ const FighterUserProfile = ({ user }) => {
                       className={classes.editBtn}
                       title="Edit About"
                     >
-                      <LuEdit />
+                      <FaRegEdit />
                     </span>
                   </div>
                   <h5>
@@ -186,7 +185,7 @@ const FighterUserProfile = ({ user }) => {
                       className={classes.editBtn}
                       title="Edit About"
                     >
-                      <LuEdit />
+                      <FaRegEdit />
                     </span>
                   </div>
                   <p>
@@ -239,7 +238,7 @@ const FighterUserProfile = ({ user }) => {
                                   <div className={classes.domainHeading}>
                                     <h5>{discipline?.domain}</h5>
                                     <div className={classes.editDiscipline}>
-                                      <LuEdit
+                                      <FaRegEdit
                                         className={classes.edit}
                                         onClick={() => {
                                           setSelectedData(discipline);
@@ -367,7 +366,7 @@ const FighterUserProfile = ({ user }) => {
                                     <td>{e?.result}</td>
                                     <td>{e?.via}</td>
                                     <td>
-                                      <LuEdit
+                                      <FaRegEdit
                                         className={classes.edit}
                                         onClick={() => {
                                           setSelectedData(e);
@@ -450,7 +449,7 @@ const FighterUserProfile = ({ user }) => {
                                     <td>{e?.event || "-"}</td>
                                     <td>{e?.venue}</td>
                                     <td>
-                                      <LuEdit
+                                      <FaRegEdit
                                         className={classes.edit}
                                         onClick={() => {
                                           setSelectedData(e);
@@ -529,7 +528,7 @@ const FighterUserProfile = ({ user }) => {
                                 }}
                                 title="Edit Accolade"
                               >
-                                <LuEdit className={classes.edit} />
+                                <FaRegEdit className={classes.edit} />
                               </span>
 
                               <span
@@ -599,7 +598,7 @@ const FighterUserProfile = ({ user }) => {
                                 <div className={classes.domainHeading}>
                                   <p>{club?.gym?.name}</p>
                                   <div className={classes.editDiscipline}>
-                                    <LuEdit
+                                    <FaRegEdit
                                       className={classes.edit}
                                       onClick={() => {
                                         setSelectedData(club);
@@ -691,7 +690,7 @@ const FighterUserProfile = ({ user }) => {
                               <div className={classes.domainHeading}>
                                 <p>{club?.association?.associationName}</p>
                                 <div className={classes.editDiscipline}>
-                                  <LuEdit
+                                  <FaRegEdit
                                     className={classes.edit}
                                     onClick={() => {
                                       setSelectedData(club);
@@ -798,7 +797,7 @@ const FighterUserProfile = ({ user }) => {
               data={userData?.fighterDetails?.bio}
             />
           )}
-             {editNickNameModal && (
+          {editNickNameModal && (
             <EditNicknameModal
               show={editNickNameModal}
               setShow={setEditNickNameModal}

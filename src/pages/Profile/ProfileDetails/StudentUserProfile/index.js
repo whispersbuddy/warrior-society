@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { GoInfo } from "react-icons/go";
 import { HiPlus } from "react-icons/hi";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { RxInfoCircled } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -137,7 +137,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                       }}
                       title="Edit Bio"
                     >
-                      <LuEdit />
+                      <FaRegEdit />
                     </span>
                   </div>
                   <p>
@@ -186,7 +186,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                               <div className={classes.domainHeading}>
                                 <h5>{discipline?.domain}</h5>
                                 <div className={classes.editDiscipline}>
-                                  <LuEdit
+                                  <FaRegEdit
                                     className={classes.edit}
                                     onClick={() => {
                                       setSelectedData(discipline);
@@ -289,7 +289,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                                 }}
                                 title="Edit Accolade"
                               >
-                                <LuEdit className={classes.edit} />
+                                <FaRegEdit className={classes.edit} />
                               </span>
                               <span
                                 className={[
@@ -358,7 +358,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                               <div className={classes.domainHeading}>
                                 <p>{club?.gym?.name}</p>
                                 <div className={classes.editField}>
-                                  <LuEdit
+                                  <FaRegEdit
                                     className={classes.edit}
                                     onClick={() => {
                                       setSelectedData(club);
@@ -448,7 +448,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                               <div className={classes.domainHeading}>
                                 <p>{club?.association?.associationName}</p>
                                 <div className={classes.editField}>
-                                  <LuEdit
+                                  <FaRegEdit
                                     className={classes.edit}
                                     onClick={() => {
                                       setSelectedData(club);

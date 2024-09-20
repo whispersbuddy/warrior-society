@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { RxInfoCircled } from "react-icons/rx";
@@ -215,7 +215,7 @@ const GymUserProfile = () => {
                           onClick={() => setEditBioModal(true)}
                           className={classes.editBtn}
                         >
-                          <LuEdit title="Edit Bio" />
+                          <FaRegEdit title="Edit Bio" />
                         </span>
                       </div>
                       <p>
@@ -341,7 +341,7 @@ const GymUserProfile = () => {
                           {userData?.schoolDetails?.disciplines?.length == 0 ? (
                             <HiPlus />
                           ) : (
-                            <LuEdit />
+                            <FaRegEdit />
                           )}
                         </span>
                       </div>
@@ -383,7 +383,7 @@ const GymUserProfile = () => {
                             className={classes.editBtn}
                             title="Edit Dues Fees, private lessons, drop ins, specials and additional information"
                           >
-                            <LuEdit />
+                            <FaRegEdit />
                           </span>
                         </div>
                         {userData?.schoolDetails?.duesInformation
@@ -555,7 +555,7 @@ const GymUserProfile = () => {
                                   }}
                                   title="Edit Accolade"
                                 >
-                                  <LuEdit className={classes.edit} />
+                                  <FaRegEdit className={classes.edit} />
                                 </span>
 
                                 <span
@@ -775,7 +775,7 @@ const GymUserProfile = () => {
                               <div className={classes.domainHeading}>
                                 <p>{club?.association?.associationName}</p>
                                 <div className={classes.editDlt__wrapper}>
-                                  <LuEdit
+                                  <FaRegEdit
                                     className={classes.edit}
                                     onClick={() => {
                                       setSelectedData(club);

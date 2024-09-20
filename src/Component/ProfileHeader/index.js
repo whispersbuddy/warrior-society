@@ -8,7 +8,7 @@ import {
   FaShare,
   FaTwitter,
 } from "react-icons/fa";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -243,7 +243,7 @@ const ProfileHeader = ({
                     setEditProfileModal(true);
                   }}
                 >
-                  <LuEdit title="Edit Profile Photo" />
+                  <FaRegEdit title="Edit Profile Photo" />
                 </div>
               )}
             </div>

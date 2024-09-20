@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./AlbumCard.module.css";
 import { postImageOne } from "../../constant/imagePath";
 import { imageUrl, mediaUrl } from "../../config/apiUrl";
-import { LuEdit } from "react-icons/lu";
+import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import ReactPlayer from "react-player";
 import { FaPlay } from "react-icons/fa";
@@ -41,7 +41,7 @@ const AlbumCard = ({ album, onEditClick, onDelClick }) => {
             onClick={onEditClick}
             title="Edit Album"
           >
-            <LuEdit />
+            <FaRegEdit />
           </span>
         )}
         {onDelClick && (
