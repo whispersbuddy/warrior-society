@@ -19,6 +19,10 @@ const ProfileDetails = ({
   setCreateRoomModal,
   setCurrentRole,
   currentRole,
+  amount,
+  setAmount,
+  handleSponsorAmount,
+  acceptedSponsorRequests,
 }) => {
   const filteredRoles = allRoles.filter((role) => profileData?.[role.value]);
 
@@ -50,6 +54,10 @@ const ProfileDetails = ({
             profileData={profileData}
             isLoading={isLoading}
             setCreateRoomModal={setCreateRoomModal}
+            amount={amount}
+            setAmount={setAmount}
+            handleSponsorAmount={handleSponsorAmount}
+            acceptedSponsorRequests={acceptedSponsorRequests}
           />
         );
       default:

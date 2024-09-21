@@ -1,0 +1,23 @@
+.modalBody {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.requestsTable {
+  text-align: center;
+}
+
+.requestsTable tbody tr td {
+  padding: 10px;
+}
+
+.acceptBtn {
+  background-color: #198754;
+  padding: 7px 22px;
+}
+
+.rejectBtn {
+  background-color: #dc3545;
+  padding: 7px 22px;
+  margin-left: 10px;
+}

@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { HiPlus } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
@@ -7,10 +7,11 @@ import { MdDelete } from "react-icons/md";
 import { RxInfoCircled } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Delete, Patch, Post } from "../../../../Axios/AxiosFunctions";
+import { Delete, Get, Patch, Post } from "../../../../Axios/AxiosFunctions";
 import { Button } from "../../../../Component/Button/Button";
 import NoData from "../../../../Component/NoData/NoData";
 import Tooltip from "../../../../Component/Tooltip";
+import ProfilePhoto from "../../../../Component/ProfilePhoto";
 import { profileTooltTipData } from "../../../../config/DummyData";
 import {
   BaseURL,
@@ -27,10 +28,11 @@ import AddFightingModal from "../../../../modals/AddFightingModal";
 import AreYouSureModal from "../../../../modals/AreYouSureModal";
 import EditAffiliatedModal from "../../../../modals/EditAffiliatedModal";
 import EditBioModal from "../../../../modals/EditBioModal";
-import EditLessonModal from "../../../../modals/EditLessonModal";
+import EditLessonModal from "../../../../modals/SponsorRequestsModal";
+import EditNicknameModal from "../../../../modals/AddEditNickNameModal/EditNiceNameModal";
+import SponsorRequestsModal from "../../../../modals/SponsorRequestsModal";
 import { updateUser } from "../../../../store/auth/authSlice";
 import classes from "./FighterUserProfile.module.css";
-import EditNicknameModal from "../../../../modals/AddEditNickNameModal/EditNiceNameModal";
 
 const FighterUserProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -64,6 +66,28 @@ const FighterUserProfile = ({ user }) => {
   const [enableEdit, setEnableEdit] = useState(
     userData?.fighterDetails || false
   );
+  const [sponsorRequests, setSponsorRequests] = useState([]);
+  const [acceptedSponsorRequests, setAcceptedSponsorRequests] = useState([]);
+  const [requestModal, setRequestModal] = useState(false);
+
+  const getSponsorRequests = async () => {
+    const apiUrl = BaseURL(`sponsors/request/${userData?._id}?status=pending`);
+    const apiUrl2 = BaseURL(
+      `sponsors/request/${userData?._id}?status=accepted`
+    );
+    const response = await Get(apiUrl, apiHeader(access_token));
+    const response2 = await Get(apiUrl2, apiHeader(access_token));
+
+    if (response) {
+      setSponsorRequests(response?.data);
+      setAcceptedSponsorRequests(response2?.data);
+    }
+  };
+
+  useEffect(() => {
+    getSponsorRequests();
+  }, [userData]);
+
   const handleSubmitFight = async (key, params) => {
     const apiUrl = BaseURL("profile/update?profile=fighter");
     let data = {
@@ -117,6 +141,7 @@ const FighterUserProfile = ({ user }) => {
     }
     setIsAccoladesDeleting(false);
   };
+
   const updateSelectedFees = async (body) => {
     const params = {
       fighterDetails: { ...userData?.fighterDetails, ...body },
@@ -130,6 +155,23 @@ const FighterUserProfile = ({ user }) => {
     }
     setSelectFeesLoading(false);
   };
+
+  const handleUpdateRequest = async (id, type) => {
+    setSelectFeesLoading(true);
+    const params = {
+      status: type,
+    };
+    const apiUrl = BaseURL(`sponsors/${id}`);
+    const response = await Patch(apiUrl, params, apiHeader(access_token));
+    console.log(response);
+    setSelectFeesLoading(false);
+
+    if (response) {
+      getSponsorRequests();
+      toast.success("Request updated successfully");
+    }
+  };
+
   return (
     <div className={classes.profilePage}>
       <Container>
@@ -755,7 +797,66 @@ const FighterUserProfile = ({ user }) => {
                     }}
                     title="Edit your availability for MMA and Sparring Partner"
                   />
+                  <Button
+                    className="mt-4"
+                    label="Sponsor Requests"
+                    onClick={() => {
+                      setRequestModal(true);
+                    }}
+                    title="Edit your availability for MMA and Sparring Partner"
+                  />
                 </div>
+                {acceptedSponsorRequests?.length ? (
+                  <div className={classes.sponsorRequests}>
+                    <h3 className="mt-4">Sponsors</h3>
+                    <div className="mt-2">
+                      {acceptedSponsorRequests?.map((sponsor, ind) => {
+                        let sponsorshipLevel = "";
+                        let sponsorshipClass = "";
+                        if (ind === 0) {
+                          sponsorshipLevel = "Gold";
+                          sponsorshipClass = classes.gold;
+                        } else if (ind === 1) {
+                          sponsorshipLevel = "Silver";
+                          sponsorshipClass = classes.silver;
+                        } else if (ind === 2) {
+                          sponsorshipLevel = "Bronze";
+                          sponsorshipClass = classes.bronze;
+                        }
+                        return (
+                          <div
+                            key={sponsor?._id}
+                            className={`card p-4 d-flex align-items-center mt-2`}
+                          >
+                            <div className={classes.sponsorRequests__header}>
+                              <ProfilePhoto
+                                photo={sponsor?.receiver?.logo}
+                                profilePhotoDimensions={
+                                  sponsor?.receiver?.logoDimensions
+                                }
+                                className={classes.profileImg}
+                              />
+                            </div>
+
+                            {sponsorshipLevel && (
+                              <p className={sponsorshipClass}>
+                                {sponsorshipLevel}
+                              </p>
+                            )}
+
+                            <h5 className="mt-1">
+                              {sponsor?.sender?.firstName}{" "}
+                              {sponsor?.sender?.lastName}
+                            </h5>
+                            <div className={classes.sponsorRequests__amount}>
+                              <h6>${sponsor?.amount}</h6>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </Col>
           </Row>
@@ -872,6 +973,15 @@ const FighterUserProfile = ({ user }) => {
               data={userData?.fighterDetails}
               onclick={updateSelectedFees}
               modalLoading={selectFeesLoading}
+            />
+          )}
+          {requestModal && (
+            <SponsorRequestsModal
+              show={requestModal}
+              setShow={setRequestModal}
+              data={sponsorRequests}
+              onClick={handleUpdateRequest}
+              loading={selectFeesLoading}
             />
           )}
         </div>

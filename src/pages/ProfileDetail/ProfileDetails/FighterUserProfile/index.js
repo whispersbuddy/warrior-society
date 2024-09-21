@@ -1,12 +1,26 @@
 import moment from "moment";
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
 import { Button } from "../../../../Component/Button/Button";
 import { Loader } from "../../../../Component/Loader";
 import NoData from "../../../../Component/NoData/NoData";
+import { Input } from "../../../../Component/Input/Input";
+import ProfilePhoto from "../../../../Component/ProfilePhoto";
 import { imageUrl } from "../../../../config/apiUrl";
 import classes from "./FighterUserProfile.module.css";
-const FighterUserProfile = ({ profileData, isLoading, setCreateRoomModal }) => {
+
+const FighterUserProfile = ({
+  profileData,
+  isLoading,
+  setCreateRoomModal,
+  amount,
+  setAmount,
+  handleSponsorAmount,
+  acceptedSponsorRequests,
+}) => {
+  const { user } = useSelector((state) => state.authReducer);
   const showAvailabilityBorder =
     profileData?.fighterDetails?.availableForFight ||
     profileData?.fighterDetails?.availableForSparring;
@@ -94,7 +108,7 @@ const FighterUserProfile = ({ profileData, isLoading, setCreateRoomModal }) => {
                             <th>Date</th>
                             <th>Discipline</th>
                             <th>Result</th>
-                             <th>Venue</th>
+                            <th>Venue</th>
                           </tr>
                         </thead>
 
@@ -265,6 +279,75 @@ const FighterUserProfile = ({ profileData, isLoading, setCreateRoomModal }) => {
                   width: "100%",
                 }}
               />
+              {user?.logo ? (
+                <>
+                  <Input
+                    customClass="mt-4"
+                    value={amount}
+                    setter={setAmount}
+                    placeholder={"Amount"}
+                    type="number"
+                  />
+                  <Button
+                    onClick={handleSponsorAmount}
+                    label="Sponsor"
+                    className="mt-2 w-100"
+                  />
+                </>
+              ) : null}
+              {acceptedSponsorRequests?.length ? (
+                <div className={classes.sponsorRequests}>
+                  <h3 className="mt-4">Sponsors</h3>
+                  <div className="mt-2">
+                    {acceptedSponsorRequests?.map((sponsor, ind) => {
+                      let sponsorshipLevel = "";
+                      let sponsorshipClass = "";
+
+                      if (ind === 0) {
+                        sponsorshipLevel = "Gold";
+                        sponsorshipClass = classes.gold;
+                      } else if (ind === 1) {
+                        sponsorshipLevel = "Silver";
+                        sponsorshipClass = classes.silver;
+                      } else if (ind === 2) {
+                        sponsorshipLevel = "Bronze";
+                        sponsorshipClass = classes.bronze;
+                      }
+
+                      return (
+                        <div
+                          key={sponsor?._id}
+                          className={`card p-4 d-flex align-items-center mt-2`}
+                        >
+                          <div className={classes.sponsorRequests__header}>
+                            <ProfilePhoto
+                              photo={sponsor?.sender?.logo}
+                              profilePhotoDimensions={
+                                sponsor?.sender?.logoDimensions
+                              }
+                              className={classes.profileImg}
+                            />
+                          </div>
+
+                          {sponsorshipLevel && (
+                            <p className={sponsorshipClass}>
+                              {sponsorshipLevel}
+                            </p>
+                          )}
+
+                          <h5 className="mt-1">
+                            {sponsor?.sender?.firstName}{" "}
+                            {sponsor?.sender?.lastName}
+                          </h5>
+                          <div className={classes.sponsorRequests__amount}>
+                            <h6>${sponsor?.amount}</h6>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </Col>
         </Row>

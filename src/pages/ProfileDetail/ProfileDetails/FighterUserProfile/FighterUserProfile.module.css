@@ -365,6 +365,50 @@
   color: var(--bg-color);
   cursor: pointer;
 }
+
+.sponsorRequests h3 {
+  font-size: 32px;
+  color: var(--secondary-color);
+  margin-bottom: 0px;
+}
+
+.profileImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #929eaa;
+  background-color: #d6d6d6;
+  position: relative;
+  overflow: hidden;
+}
+
+.gold {
+  color: #ffd700;
+  font-weight: bold;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-top: 8px;
+}
+
+.silver {
+  color: #c0c0c0;
+  font-weight: bold;
+  border: 2px solid #c0c0c0;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-top: 8px;
+}
+
+.bronze {
+  color: #cd7f32;
+  font-weight: bold;
+  border: 2px solid #cd7f32;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-top: 8px;
+}
+
 @media screen and (max-width: 1200px) and (min-width: 991px) {
   .fee {
     grid-column-gap: 0px;

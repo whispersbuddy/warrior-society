@@ -33,6 +33,8 @@ const Profile = () => {
     loading: false,
   });
   const [currentRole, setCurrentRole] = useState(null);
+  const [amount, setAmount] = useState(null);
+  const [acceptedSponsorRequests, setAcceptedSponsorRequests] = useState([]);
 
   const updateImage = async (params) => {
     const apiUrl = BaseURL(`profile/updatePicture`);
@@ -58,7 +60,7 @@ const Profile = () => {
       Get(profileUrl, access_token),
       Get(meUrl, access_token),
     ]);
-    if (profileRes?.value !== undefined || meRes?.value !== undefined)  {
+    if (profileRes?.value !== undefined || meRes?.value !== undefined) {
       const { recentMedia, ...rest } = profileRes?.value?.data?.data;
       const { images, videos } = filterImagesVideos(recentMedia);
       setProfileData({
@@ -67,6 +69,11 @@ const Profile = () => {
         ...rest,
       });
       dispatch(updateUser(meRes?.value.data.data));
+      const requestsUrl = BaseURL(
+        `sponsors/request/${profileRes?.value?.data?.data?._id}?status=accepted`
+      );
+      const requests = await Get(requestsUrl, apiHeader(access_token));
+      setAcceptedSponsorRequests(requests?.data);
     }
     setIsLoading(false);
   };
@@ -86,9 +93,25 @@ const Profile = () => {
     }
     setIsUpdating(false);
   };
+
   useEffect(() => {
     getProfileData();
   }, [slug]);
+
+  const handleSponsorAmount = async () => {
+    if (amount < 100) return toast.warning("Amount should be greater than 100");
+    const url = BaseURL("sponsors");
+    let data = {
+      amount,
+      receiver: profileData?._id,
+    };
+    const response = await Post(url, data, apiHeader(access_token));
+    if (response) {
+      toast.success("Sponsor amount sent successfully!");
+      setAmount(0);
+    }
+  };
+
   return (
     <>
       {/* <AfterLoginHeader /> */}
@@ -152,6 +175,10 @@ const Profile = () => {
                 setCreateRoomModal={setCreateRoomModal}
                 setCurrentRole={setCurrentRole}
                 currentRole={currentRole}
+                amount={amount}
+                setAmount={setAmount}
+                handleSponsorAmount={handleSponsorAmount}
+                acceptedSponsorRequests={acceptedSponsorRequests}
               />
             ) : pageName === "Gallery" ? (
               <GalleryDetails profileData={profileData} isLoading={isLoading} />
