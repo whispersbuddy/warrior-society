@@ -34,7 +34,7 @@ export default function SponsorRequestsModal({
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Image</th>
+                    <th>Logo</th>
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Date</th>

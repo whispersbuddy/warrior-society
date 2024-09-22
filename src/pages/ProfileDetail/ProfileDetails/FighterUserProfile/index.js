@@ -329,11 +329,11 @@ const FighterUserProfile = ({
                             />
                           </div>
 
-                          {sponsorshipLevel && (
+                          {/* {sponsorshipLevel && (
                             <p className={sponsorshipClass}>
                               {sponsorshipLevel}
                             </p>
-                          )}
+                          )} */}
 
                           <h5 className="mt-1">
                             {sponsor?.sender?.firstName}{" "}

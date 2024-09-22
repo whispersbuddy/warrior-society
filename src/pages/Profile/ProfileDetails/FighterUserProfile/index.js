@@ -75,8 +75,8 @@ const FighterUserProfile = ({ user }) => {
     const apiUrl2 = BaseURL(
       `sponsors/request/${userData?._id}?status=accepted`
     );
-    const response = await Get(apiUrl, apiHeader(access_token));
-    const response2 = await Get(apiUrl2, apiHeader(access_token));
+    const response = await Get(apiUrl, access_token);
+    const response2 = await Get(apiUrl2, access_token);
 
     if (response) {
       setSponsorRequests(response?.data);
@@ -808,7 +808,7 @@ const FighterUserProfile = ({ user }) => {
                 </div>
                 {acceptedSponsorRequests?.length ? (
                   <div className={classes.sponsorRequests}>
-                    <h3 className="mt-4">Sponsors</h3>
+                    <h3 className="mt-4">Your Sponsors</h3>
                     <div className="mt-2">
                       {acceptedSponsorRequests?.map((sponsor, ind) => {
                         let sponsorshipLevel = "";
@@ -838,11 +838,11 @@ const FighterUserProfile = ({ user }) => {
                               />
                             </div>
 
-                            {sponsorshipLevel && (
+                            {/* {sponsorshipLevel && (
                               <p className={sponsorshipClass}>
                                 {sponsorshipLevel}
                               </p>
-                            )}
+                            )} */}
 
                             <h5 className="mt-1">
                               {sponsor?.sender?.firstName}{" "}

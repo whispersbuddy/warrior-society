@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Get, Patch, Post } from "../../Axios/AxiosFunctions";
 import Footer from "../../Component/Footer";
@@ -18,6 +18,7 @@ import classes from "./Profile.module.css";
 import ProfileDetails from "./ProfileDetails";
 import Timeline from "./Timeline";
 import { filterImagesVideos } from "../../config/HelperFunction";
+
 const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ const Profile = () => {
       const requestsUrl = BaseURL(
         `sponsors/request/${profileRes?.value?.data?.data?._id}?status=accepted`
       );
-      const requests = await Get(requestsUrl, apiHeader(access_token));
+      const requests = await Get(requestsUrl, access_token);
       setAcceptedSponsorRequests(requests?.data);
     }
     setIsLoading(false);
