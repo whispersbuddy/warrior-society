@@ -797,14 +797,14 @@ const FighterUserProfile = ({ user }) => {
                     }}
                     title="Edit your availability for MMA and Sparring Partner"
                   />
-                  <Button
+                  {/* <Button
                     className="mt-4"
                     label="Sponsor Requests"
                     onClick={() => {
                       setRequestModal(true);
                     }}
                     title="Edit your availability for MMA and Sparring Partner"
-                  />
+                  /> */}
                 </div>
                 {acceptedSponsorRequests?.length ? (
                   <div className={classes.sponsorRequests}>

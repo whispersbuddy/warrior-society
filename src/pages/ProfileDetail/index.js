@@ -105,6 +105,7 @@ const Profile = () => {
     let data = {
       amount,
       receiver: profileData?._id,
+      status: "accepted"
     };
     const response = await Post(url, data, apiHeader(access_token));
     if (response) {
