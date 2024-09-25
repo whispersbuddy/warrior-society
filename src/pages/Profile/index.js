@@ -16,6 +16,7 @@ import PreviewDetail from "./PreviewDetail";
 import classes from "./Profile.module.css";
 import ProfileDetails from "./ProfileDetails";
 import Timeline from "./Timeline";
+import Wallet from "./Wallet";
 const filterInitialObject = {
   discipline: [],
   amenities: [],
@@ -142,6 +143,14 @@ const Profile = () => {
                       Followers ({user?.followers?.length})
                     </h3>
                   </div>
+                  <div
+                    className={[
+                      classes.tab,
+                      pageName === "Wallet" && classes.active,
+                    ].join(" ")}
+                  >
+                    <h3 onClick={() => setPageName("Wallet")}>Wallet</h3>
+                  </div>
                 </Container>
               </div>
               <div className={classes.profileContainer}>
@@ -155,6 +164,8 @@ const Profile = () => {
                   <GalleryDetails />
                 ) : pageName === "Followers" ? (
                   <FollowerDetails />
+                ) : pageName === "Wallet" ? (
+                  <Wallet />
                 ) : (
                   <Timeline />
                 )}
