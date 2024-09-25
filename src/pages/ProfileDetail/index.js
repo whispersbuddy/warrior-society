@@ -102,8 +102,8 @@ const Profile = () => {
   }, [slug]);
 
   const handleSponsorAmount = async () => {
-    if (amount < 100 || !amount)
-      return toast.warning("Amount should be greater than 100");
+    if (amount <= 100 || !amount)
+      return toast.warning("Amount should be greater than $100");
     setAddCardModal(true);
     // const url = BaseURL("sponsors");
     // let data = {

@@ -830,9 +830,9 @@ const FighterUserProfile = ({ user }) => {
                           >
                             <div className={classes.sponsorRequests__header}>
                               <ProfilePhoto
-                                photo={sponsor?.receiver?.logo}
+                                photo={sponsor?.sender?.logo}
                                 profilePhotoDimensions={
-                                  sponsor?.receiver?.logoDimensions
+                                  sponsor?.sender?.logoDimensions
                                 }
                                 className={classes.profileImg}
                               />

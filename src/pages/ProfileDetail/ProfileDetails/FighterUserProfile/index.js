@@ -10,6 +10,7 @@ import { Input } from "../../../../Component/Input/Input";
 import ProfilePhoto from "../../../../Component/ProfilePhoto";
 import { imageUrl } from "../../../../config/apiUrl";
 import classes from "./FighterUserProfile.module.css";
+import { useNavigate } from "react-router-dom";
 
 const FighterUserProfile = ({
   profileData,
@@ -20,6 +21,10 @@ const FighterUserProfile = ({
   handleSponsorAmount,
   acceptedSponsorRequests,
 }) => {
+  const navigate = useNavigate();
+  const handleSettingNavigation = () => {
+    navigate('/settings?scroll=end')
+  }
   const { user } = useSelector((state) => state.authReducer);
   const showAvailabilityBorder =
     profileData?.fighterDetails?.availableForFight ||
@@ -290,13 +295,17 @@ const FighterUserProfile = ({
                     placeholder={"Amount"}
                     type="number"
                   />
+                   <p className="mt-2">Amount should be greater than $100</p>
                   <Button
                     onClick={handleSponsorAmount}
                     label="Sponsor"
                     className="mt-2 w-100"
                   />
                 </>
-              ) : null}
+              ) : <div> 
+                <h5 className="mt-4">Add Logo to your profile to sponsor a fighter</h5>
+                <a color="#111012" onClick={handleSettingNavigation} href="#">Click to Add logo</a>
+                </div>}
               {acceptedSponsorRequests?.length ? (
                 <div className={classes.sponsorRequests}>
                   <h3 className="mt-4">Sponsors</h3>

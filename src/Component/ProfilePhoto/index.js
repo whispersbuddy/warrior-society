@@ -36,7 +36,7 @@ const ProfilePhoto = ({ profilePhotoDimensions, className, photo }) => {
         src={
           typeof photo !== "object"
             ? imageUrl(photo)
-            : URL.createObjectURL(photo)
+            : null
         }
         style={{
           ...imageStyle,

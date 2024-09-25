@@ -13,7 +13,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Patch } from "../../Axios/AxiosFunctions";
 import { Button } from "../../Component/Button/Button";
@@ -180,10 +180,17 @@ const ProfileSettings = () => {
     }
     setUpdateCoverLoading(false);
   };
+  const location = useLocation();
   useEffect(() => {
     coverInitialDimensions =
       user?.coverPhotoDimensions || coverInitialDimensions;
-  }, []);
+      const params = new URLSearchParams(location.search);
+      const scroll = params.get('scroll');
+  
+      if (scroll === 'end') {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+  }, [location]);
   const handleFieldError = (field, actualField) => {
     const theField = actualField ? actualField : field;
 

@@ -35,6 +35,13 @@ const EditFighterLogoModal = ({
 
   const handleSubmit = async () => {
     setIsLoading(true);
+
+    if (image && image.size > 4 * 1024 * 1024) {
+      toast.error('Logo size cannot exceed 4 MB');
+      setIsLoading(false); // Stop loading
+      return;
+    }
+    
     const apiUrl = BaseURL(`profile/updateLogo`);
     const params = {
       image: image,
