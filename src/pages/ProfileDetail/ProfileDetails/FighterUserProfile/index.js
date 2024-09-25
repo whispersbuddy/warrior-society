@@ -279,7 +279,9 @@ const FighterUserProfile = ({
                   width: "100%",
                 }}
               />
-              {user?.logo ? (
+              {user?.logo &&
+              user?.stripeAccountId &&
+              profileData?.stripeAccountId ? (
                 <>
                   <Input
                     customClass="mt-4"

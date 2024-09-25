@@ -146,7 +146,7 @@ export const DropDown = ({
       },
     }),
   };
-  console.log("optionsasdasd", value);
+  // console.log("optionsasdasd", value);
 
   return (
     <div className={`${[classes.Container].join(" ")}`}>

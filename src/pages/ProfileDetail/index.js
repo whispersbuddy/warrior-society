@@ -18,6 +18,7 @@ import classes from "./Profile.module.css";
 import ProfileDetails from "./ProfileDetails";
 import Timeline from "./Timeline";
 import { filterImagesVideos } from "../../config/HelperFunction";
+import AddCardModal from "../../modals/AddCardModal";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Profile = () => {
   const [currentRole, setCurrentRole] = useState(null);
   const [amount, setAmount] = useState(null);
   const [acceptedSponsorRequests, setAcceptedSponsorRequests] = useState([]);
+  const [addCardModal, setAddCardModal] = useState(false);
 
   const updateImage = async (params) => {
     const apiUrl = BaseURL(`profile/updatePicture`);
@@ -100,18 +102,20 @@ const Profile = () => {
   }, [slug]);
 
   const handleSponsorAmount = async () => {
-    if (amount < 100) return toast.warning("Amount should be greater than 100");
-    const url = BaseURL("sponsors");
-    let data = {
-      amount,
-      receiver: profileData?._id,
-      status: "accepted"
-    };
-    const response = await Post(url, data, apiHeader(access_token));
-    if (response) {
-      toast.success("Sponsor amount sent successfully!");
-      setAmount(0);
-    }
+    if (amount < 100 || !amount)
+      return toast.warning("Amount should be greater than 100");
+    setAddCardModal(true);
+    // const url = BaseURL("sponsors");
+    // let data = {
+    //   amount,
+    //   receiver: profileData?._id,
+    //   status: "accepted",
+    // };
+    // const response = await Post(url, data, apiHeader(access_token));
+    // if (response) {
+    //   toast.success("Sponsor amount sent successfully!");
+    //   setAmount(0);
+    // }
   };
 
   return (
@@ -217,6 +221,17 @@ const Profile = () => {
           onClick={handleCreateRoom}
           setShow={setCreateRoomModal}
           show={createRoomModal}
+        />
+      )}
+      {addCardModal && (
+        <AddCardModal
+          isLoading={isUpdating}
+          setShow={setAddCardModal}
+          show={addCardModal}
+          amount={amount}
+          setAmount={setAmount}
+          userId={profileData?._id}
+          onClick={getProfileData}
         />
       )}
     </>
