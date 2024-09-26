@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../../Component/Button/Button";
 import { DropDown } from "../../../Component/DropDown/DropDown";
@@ -50,20 +50,10 @@ export default function StudentSignup({
   const {
     publicFields: { associations: associationOptions, gyms: gymOptions },
   } = useSelector((state) => state.commonReducer);
-  const [disciplines, setDisciplines] = useState(
-    getPreviousRoleFields(data, role, page, "disciplines") || [{}]
-  );
-  const [association, setAssociation] = useState(
-    getPreviousRoleFields(data, role, page, "association")?.map((ele) =>
-      associationOptions?.find((item) => item._id === ele?.association)
-    ) || []
-  );
+  const [disciplines, setDisciplines] = useState([{}]);
+  const [association, setAssociation] = useState([]);
 
-  const [affiliatedGyms, setAffiliatedGyms] = useState(
-    getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
-      gymOptions?.find((item) => item._id === ele?.gym?._id)
-    ) || []
-  );
+  const [affiliatedGyms, setAffiliatedGyms] = useState([]);
   const [booleanErrors, setBooleanErrors] = useState([]);
   const [errorFields, setErrorFields] = useState([]);
 
@@ -112,6 +102,23 @@ export default function StudentSignup({
       errorFields?.includes(field)
     );
   };
+
+  useEffect(() => {
+    setDisciplines(
+      getPreviousRoleFields(data, role, page, "disciplines") || [{}]
+    );
+    setAssociation(
+      getPreviousRoleFields(data, role, page, "association")?.map((ele) =>
+        associationOptions?.find((item) => item._id === ele?.association)
+      )
+    );
+    setAffiliatedGyms(
+      getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
+        gymOptions?.find((item) => item._id === ele?.gym?._id)
+      )
+    );
+  }, [page]);
+
   return (
     <>
       <style>

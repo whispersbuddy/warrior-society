@@ -22,6 +22,8 @@ const SingleDiscipline = ({
   disciplineOptions,
   activateError,
 }) => {
+  const [physicalSkill, setPhysicalSkill] = useState(null);
+  const [knowledgeLevel, setKnowledgeLevel] = useState(null);
   // disciplineObj is the object of single discipline
   const disciplineObj = discipline?.[index];
   const handleDelete = (index) => {
@@ -33,29 +35,43 @@ const SingleDiscipline = ({
   };
   const [types, setTypes] = useState(
     martialArtTypes?.filter((ele) =>
-    disciplineObj?.martialArtType?.[0]?.includes(ele?.value)
-  )
-);
+      disciplineObj?.martialArtType?.[0]?.includes(ele?.value)
+    )
+  );
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    console.log('hello');
-    console.log(types);
-    if (types.some((e) => e?.value === 'unselect')) {
-      console.log('unselect');
-      setSelected(false)
-      setTypes([]);
+    if (disciplineObj?.domain) {
+      setPhysicalSkill(
+        disciplineObj?.physicalSkillLevelOptions?.find(
+          (level) => level?.value == disciplineObj?.physicalSkillLevel
+        )
+      );
+      setKnowledgeLevel(
+        disciplineObj?.knowledgeLevelOptions?.find(
+          (level) => level?.value == disciplineObj?.knowledgeLevel
+        )
+      );
     }
-    else if (types.some((e) => e?.value === 'all')) {
-      setSelected(true)
+  }, [disciplineObj]);
+
+  useEffect(() => {
+    // console.log('hello');
+    // console.log(types);
+    if (types.some((e) => e?.value === "unselect")) {
+      console.log("unselect");
+      setSelected(false);
+      setTypes([]);
+    } else if (types.some((e) => e?.value === "all")) {
+      setSelected(true);
       setTypes(martialArtTypes.slice(1));
     }
     if (selected) {
-      martialArtTypes[0].label = 'Unselect';
-      martialArtTypes[0].value = 'unselect'
+      martialArtTypes[0].label = "Unselect";
+      martialArtTypes[0].value = "unselect";
     } else {
-      martialArtTypes[0].label = 'Select All';
-      martialArtTypes[0].value = 'all'
+      martialArtTypes[0].label = "Select All";
+      martialArtTypes[0].value = "all";
     }
     const selectedDiscipline = disciplineOptions?.find(
       (ele) => ele?.value == disciplineObj?.domain
@@ -85,7 +101,7 @@ const SingleDiscipline = ({
           knowledgeLevel: temp?.[index]?.knowledgeLevel,
           journey: temp?.[index]?.journey,
           ...(selectedDiscipline?.value === "Martial Arts" && {
-            martialArtType: types.map((e)=>e.value).join(','),
+            martialArtType: types.map((e) => e.value).join(","),
           }),
         };
         return temp;
@@ -94,7 +110,14 @@ const SingleDiscipline = ({
       //   disciplineObj?.martialArtType?.[0].includes(ele?.value)
       // ));
     }
-  }, [disciplineObj?.domain, disciplineOptions, index, selected, setDiscipline, types]);
+  }, [
+    disciplineObj?.domain,
+    disciplineOptions,
+    index,
+    selected,
+    setDiscipline,
+    types,
+  ]);
   return (
     <div className={[classes.disciplineBox].join(" ")}>
       {discipline?.length !== 1 && (
@@ -139,7 +162,7 @@ const SingleDiscipline = ({
                   knowledgeLevel: "",
                   journey: "",
                   ...(e?.value === "Martial Arts" && {
-                    martialArtType: types.map((e)=>e.value).join(','),
+                    martialArtType: types.map((e) => e.value).join(","),
                   }),
                 };
                 return temp;
@@ -163,8 +186,7 @@ const SingleDiscipline = ({
           <Col lg={12} className={classes.inputField}>
             <DropDown
               // martialArtTypes is the array of martial arts types
-              value={types
-              }
+              value={types}
               options={martialArtTypes}
               placeholder={"Martial Arts Types..."}
               optionLabel={"label"}
@@ -294,12 +316,7 @@ const SingleDiscipline = ({
             <Col lg={12} className={classes.inputField}>
               <DropDown
                 placeholder={"Physical Skill Level"}
-                value={
-                  // value is set in string form so we have to find the object of that string value
-                  disciplineObj?.physicalSkillLevelOptions?.find(
-                    (level) => level?.value == disciplineObj?.physicalSkillLevel
-                  )
-                }
+                value={physicalSkill}
                 setter={(e) =>
                   setDiscipline((prev) => {
                     const tempArr = structuredClone([...prev]);
@@ -322,9 +339,7 @@ const SingleDiscipline = ({
             <Col lg={12} className={classes.inputField}>
               <DropDown
                 placeholder={"Knowledge Level"}
-                value={disciplineObj?.knowledgeLevelOptions?.find(
-                  (level) => level?.value == disciplineObj?.knowledgeLevel
-                )}
+                value={knowledgeLevel}
                 setter={(e) =>
                   setDiscipline((prev) => {
                     const tempArr = structuredClone([...prev]);

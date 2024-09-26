@@ -23,7 +23,15 @@ import { disciplineOptions, martialArtTypes } from "../../../config/Data";
 import { profileTooltTipData } from "../../../config/DummyData";
 import classes from "./Signup.module.css";
 
-const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
+const BioForm = ({
+  data,
+  setData,
+  page,
+  setPage,
+  onClick,
+  loading,
+  isSubmit,
+}) => {
   const {
     publicFields: { equipment: equipmentOptions },
   } = useSelector((state) => state.commonReducer);
@@ -32,11 +40,7 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
   const [schoolDescription, setSchoolDescription] = useState(
     data?.schoolDetails?.bio || ""
   );
-  const [disciplines, setDisciplines] = useState(
-    data?.schoolDetails?.disciplines?.map((ele) =>
-      disciplineOptions?.find((find) => find.value === ele?.title)
-    ) || []
-  );
+  const [disciplines, setDisciplines] = useState([]);
   const [noOfStudents, setNoOfStudents] = useState(
     data?.schoolDetails?.noOfStudents || null
   );
@@ -53,18 +57,14 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
   const [coordinates, setCoordinates] = useState(
     data?.schoolDetails?.location?.coordinates?.length > 0
       ? {
-        lat: data?.schoolDetails?.location?.coordinates[1],
-        lng: data?.schoolDetails?.location?.coordinates[0],
-      }
+          lat: data?.schoolDetails?.location?.coordinates[1],
+          lng: data?.schoolDetails?.location?.coordinates[0],
+        }
       : ""
   );
   const [address, setAddress] = useState(data?.schoolDetails?.address || "");
   const [addressDetail, setAddressDetail] = useState("");
-  const [equipments, setEquipments] = useState(
-    data?.schoolDetails?.equipments?.map((ele) =>
-      equipmentOptions?.find((find) => find._id === ele?._id)
-    ) || []
-  );
+  const [equipments, setEquipments] = useState([]);
   const [duesInformation, setDuesInformation] = useState(
     data?.schoolDetails?.duesInformation || {
       monthlyDueMin: "",
@@ -77,25 +77,36 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
   const [types, setTypes] = useState([]);
   const [selected, setSelected] = useState(false);
 
-  useEffect(()=>{
-    // console.log(types);
-    if(types.some((e)=>e?.value === 'unselect')){
-    console.log('unselect');
+  useEffect(() => {
+    setDisciplines(
+      data?.schoolDetails?.disciplines?.map((ele) =>
+        disciplineOptions?.find((find) => find.value === ele?.title)
+      )
+    );
+    setEquipments(
+      data?.schoolDetails?.equipments?.map((ele) =>
+        equipmentOptions?.find((find) => find._id === ele?._id)
+      )
+    );
+  }, [page]);
 
-      
-      setSelected(false)
+  useEffect(() => {
+    // console.log(types);
+    if (types.some((e) => e?.value === "unselect")) {
+      console.log("unselect");
+
+      setSelected(false);
       setTypes([]);
-    }
-   else if(types.some((e)=>e?.value === 'all')){
-      setSelected(true)
+    } else if (types.some((e) => e?.value === "all")) {
+      setSelected(true);
       setTypes(martialArtTypes.slice(1));
     }
-    if(selected) {
-      martialArtTypes[0].label = 'Unselect';
-      martialArtTypes[0].value = 'unselect'
-    }else{
-      martialArtTypes[0].label = 'Select All';
-      martialArtTypes[0].value = 'all'
+    if (selected) {
+      martialArtTypes[0].label = "Unselect";
+      martialArtTypes[0].value = "unselect";
+    } else {
+      martialArtTypes[0].label = "Select All";
+      martialArtTypes[0].value = "all";
     }
     console.log(selected);
   }, [selected, types]);
@@ -262,7 +273,7 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                     setter={setDateEstablished}
                     labelIcon={<SlCalender />}
                     error={handleFieldError("dateEstablished")}
-                    maxValue={true}
+                    // maxValue={true}
                   />{" "}
                 </Col>
                 <Col md={12} className={classes.inputField}>
@@ -290,7 +301,9 @@ const BioForm = ({ data, setData, setPage, onClick, loading, isSubmit }) => {
                     closeMenuOnSelect={false}
                   />
                 </Col>
-                {disciplines?.map((e) => e?.value)?.includes("martial arts") && (
+                {disciplines
+                  ?.map((e) => e?.value)
+                  ?.includes("martial arts") && (
                   <div className={classes.inputField}>
                     <DropDown
                       value={types}

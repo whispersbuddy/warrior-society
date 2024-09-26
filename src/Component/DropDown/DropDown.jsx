@@ -184,7 +184,7 @@ export const DropDown = ({
           {labelRightIcon}
         </label>
       )}
-      
+
       <div className={`${[classes.dropdownContainer].join(" ")}`}>
         {isCustomAllow ? (
           <Creatable
@@ -207,7 +207,7 @@ export const DropDown = ({
           <ReactSelect
             inputId={`dropdown${label}`}
             value={value}
-            defaultInputValue={value}
+            //defaultInputValue={value}
             onChange={(e) => {
               setter(e);
             }}
@@ -216,11 +216,13 @@ export const DropDown = ({
             isDisabled={disabled}
             placeholder={placeholder}
             options={options}
-            styles={{ ...dropDownStyle, ...style,
+            styles={{
+              ...dropDownStyle,
+              ...style,
               indicatorsContainer: (base) => ({
                 ...base,
                 ...(showIndicatorAtTop
-                  ? { 
+                  ? {
                       position: "absolute",
                       right: "0px",
                     }
@@ -231,7 +233,7 @@ export const DropDown = ({
                 maxHeight: "250px",
                 overflowY: "auto",
               }),
-          }}
+            }}
             isClearable={false}
             closeMenuOnSelect={!isMulti}
             classNamePrefix={customeClassName}
@@ -282,10 +284,8 @@ export const DropDown = ({
               let labelText = extractTextFromElement(
                 option.label || option[optionLabel] || ""
               );
-              return labelText
-                ?.trim()
-                ?.toLowerCase()
-                ?.startsWith(input?.toLowerCase());
+              return labelText?.trim()?.toLowerCase();
+              // ?.startsWith(input ? input?.toLowerCase() : "");
             }}
             // filterOption={({ label, value, data }, input) => {
             //   if (!input) return true;
@@ -322,9 +322,9 @@ DropDown.propTypes = {
 };
 
 DropDown.defaultProps = {
-  placeholder: "sdsad",
+  placeholder: "",
   isCustomAllow: false,
-  value: "aaaa",
+  value: "",
   disabled: false,
   isMulti: false,
   options: [],

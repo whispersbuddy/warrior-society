@@ -151,6 +151,7 @@ const Signup = () => {
       <SchoolSignup
         data={userData}
         setData={setUserData}
+        page={current}
         setPage={setCurrent}
         onClick={handleSubmit}
         isSubmit={isSubmit}
@@ -377,7 +378,7 @@ const Signup = () => {
                           calenderLabel={"Date Of Birth"}
                           value={DOB}
                           labelIcon={<SlCalender />}
-                          maxValue={true}
+                          // maxValue={true}
                           placeholder="Date Of Birth"
                           error={handleFieldError("DOB")}
                         />

@@ -84,11 +84,11 @@ const AddExperience = ({
                   <ResponsiveDatePickers
                     setter={(e) => {
                       const tempArr = [...value];
-                      tempArr[index] = { ...tempArr[index], startDate: e?.$d };
+                      tempArr[index] = { ...tempArr[index], startDate: e };
                       setter(tempArr);
                     }}
                     value={ele?.startDate}
-                    maxValue={true}
+                    // maxValue={true}
                     placeholder={"Start Date"}
                     error={!ele?.startDate && activateErrorFields[index]}
                     errorText={"Start Date is required"}
@@ -97,10 +97,10 @@ const AddExperience = ({
                 {!ele?.stillWorking && (
                   <Col md={6} className={classes.inputField}>
                     <ResponsiveDatePickers
-                      maxValue={true}
+                      // maxValue={true}
                       setter={(e) => {
                         const tempArr = [...value];
-                        tempArr[index] = { ...tempArr[index], endDate: e?.$d };
+                        tempArr[index] = { ...tempArr[index], endDate: e};
                         setter(tempArr);
                       }}
                       value={ele?.endDate}

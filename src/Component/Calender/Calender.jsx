@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
 import classes from "./Calender.module.css";
 import DateFnsUtils from "@date-io/date-fns";
 import { InputAdornment } from "@material-ui/core";
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 
 export default function Calender({
   setter,
@@ -13,8 +16,8 @@ export default function Calender({
   value,
   disabled,
   labelIcon,
-  minValue = false,
-  maxValue = false,
+  minValue = null,
+  maxValue = new Date(),
   error,
   errorText,
   disablePast = false,
@@ -23,7 +26,7 @@ export default function Calender({
   const [localErrorText, setLocalErrorText] = useState("");
 
   const handleDateChange = (newValue) => {
-    if (newValue && newValue.toString() === 'Invalid Date') {
+    if (newValue && newValue.toString() === "Invalid Date") {
       setLocalError(true);
       setLocalErrorText("Invalid date selected");
     } else {
@@ -43,7 +46,8 @@ export default function Calender({
           width: 100% !important;
           position: relative;
           border-radius: 8px;
-          border: 1.5px solid ${error || localError ? "red" : "var(--main-color)"};
+          border: 1.5px solid
+            ${error || localError ? "red" : "var(--main-color)"};
           overflow: hidden;
         }
         .MuiInputBase-root {
@@ -72,7 +76,7 @@ export default function Calender({
           }}
           disablePast={disablePast}
           disabled={disabled}
-          minDate={minValue}
+          // minDate={minValue}
           maxDate={maxValue}
           InputProps={{
             endAdornment: (
@@ -83,7 +87,11 @@ export default function Calender({
           }}
           inputVariant="outlined"
           error={!!error || localError}
-          helperText={(error || localError) ? (errorText || localErrorText || `${calenderLabel} is required`) : ""}
+          helperText={
+            error || localError
+              ? errorText || localErrorText || `${calenderLabel} is required`
+              : ""
+          }
         />
       </MuiPickersUtilsProvider>
     </>

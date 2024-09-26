@@ -60,16 +60,8 @@ const TrainerBioForm = ({
   const [disciplines, setDisciplines] = useState(
     getPreviousRoleFields(data, role, page, "disciplines") || [{}]
   );
-  const [association, setAssociation] = useState(
-    getPreviousRoleFields(data, role, page, "association")?.map((ele) =>
-      associationOptions?.find((item) => item._id === ele?.association)
-    ) || []
-  );
-  const [affiliatedGyms, setAffiliatedGyms] = useState(
-    getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
-      gymOptions?.find((item) => item._id === ele?.gym?._id)
-    ) || []
-  );
+  const [association, setAssociation] = useState([]);
+  const [affiliatedGyms, setAffiliatedGyms] = useState([]);
   const [selectFees, setSelectFees] = useState([]);
   const [bio, setBio] = useState(data?.trainerDetails?.bio || null);
   const [booleanDiscipline, setBooleanDiscipline] = useState([]);
@@ -180,6 +172,20 @@ const TrainerBioForm = ({
       return availableOptions;
     });
   }, []);
+
+  useEffect(() => {
+    setAssociation(
+      getPreviousRoleFields(data, role, page, "association")?.map((ele) =>
+        associationOptions?.find((item) => item._id === ele?.association)
+      )
+    );
+    setAffiliatedGyms(
+      getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
+        gymOptions?.find((item) => item._id === ele?.gym?._id)
+      )
+    );
+  }, [page]);
+
   return (
     <>
       <style>

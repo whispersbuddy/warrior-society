@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { DropDown } from "../DropDown/DropDown";
 import { Col, Row } from "react-bootstrap";
@@ -17,6 +17,10 @@ const StateCitySelect = ({
   style,
   label,
 }) => {
+  const [country, setCountry] = useState(null);
+  const [state, setState] = useState(null);
+  const [city, setCity] = useState(null);
+
   const getStatesOfCountry = (country) => {
     if (typeof country == "string") {
       return State?.getStatesOfCountry(
@@ -27,6 +31,7 @@ const StateCitySelect = ({
       return State?.getStatesOfCountry(country?.isoCode);
     }
   };
+
   const getCitiesOfState = (state, country) => {
     if (typeof state == "string") {
       return City.getCitiesOfState(
@@ -41,6 +46,46 @@ const StateCitySelect = ({
       return City.getCitiesOfState(state?.countryCode, state?.isoCode);
     }
   };
+
+  useEffect(() => {
+    if (selectedCountry) {
+      setCountry(
+        typeof selectedCountry == "string"
+          ? Country.getAllCountries()?.find(
+              (item) => item?.name == selectedCountry
+            )
+          : selectedCountry
+      );
+    }
+    if (selectedState) {
+      setState(
+        typeof selectedState == "string"
+          ? State?.getStatesOfCountry(
+              Country.getAllCountries()?.find(
+                (item) => item?.name == selectedCountry
+              )?.isoCode
+            )?.find((item) => item?.name == selectedState)
+          : selectedState
+      );
+    }
+    if (selectedCity) {
+      setCity(
+        typeof selectedCity == "string"
+          ? City.getCitiesOfState(
+              Country.getAllCountries()?.find(
+                (item) => item?.name == selectedCountry
+              )?.isoCode,
+              State?.getStatesOfCountry(
+                Country.getAllCountries()?.find(
+                  (item) => item?.name == selectedCountry
+                )?.isoCode
+              )?.find((item) => item?.name == selectedState)?.isoCode
+            )?.find((item) => item?.name == selectedCity)
+          : selectedCity
+      );
+    }
+  }, [selectedCountry, selectedState, selectedCity]);
+
   return (
     <>
       <style>{`
@@ -57,13 +102,7 @@ const StateCitySelect = ({
           getOptionValue={(options) => {
             return options["name"];
           }}
-          value={
-            typeof selectedCountry == "string"
-              ? Country.getAllCountries()?.find(
-                  (item) => item?.name == selectedCountry
-                )
-              : selectedCountry
-          }
+          value={country}
           setter={(e) => {
             setSelectedState("");
             setSelectedCity("");
@@ -98,15 +137,7 @@ const StateCitySelect = ({
             options={getStatesOfCountry(selectedCountry)}
             optionValue={"name"}
             optionLabel={"name"}
-            value={
-              typeof selectedState == "string"
-                ? State?.getStatesOfCountry(
-                    Country.getAllCountries()?.find(
-                      (item) => item?.name == selectedCountry
-                    )?.isoCode
-                  )?.find((item) => item?.name == selectedState)
-                : selectedState
-            }
+            value={state}
             setter={(e) => {
               setSelectedState(e);
               setSelectedCity("");
@@ -144,20 +175,7 @@ const StateCitySelect = ({
             getOptionValue={(options) => {
               return options["name"];
             }}
-            value={
-              typeof selectedCity == "string"
-                ? City.getCitiesOfState(
-                    Country.getAllCountries()?.find(
-                      (item) => item?.name == selectedCountry
-                    )?.isoCode,
-                    State?.getStatesOfCountry(
-                      Country.getAllCountries()?.find(
-                        (item) => item?.name == selectedCountry
-                      )?.isoCode
-                    )?.find((item) => item?.name == selectedState)?.isoCode
-                  )?.find((item) => item?.name == selectedCity)
-                : selectedCity
-            }
+            value={city}
             setter={setSelectedCity}
             placeholder="Select City"
             label={"Town / City"}

@@ -58,18 +58,8 @@ const FighterBioForm = ({
   const [disciplines, setDisciplines] = useState(
     getPreviousRoleFields(data, role, page, "disciplines") || [{}]
   );
-  const [association, setAssociation] = useState(
-    getPreviousRoleFields(data, role, page, "association")
-      ?.map((ele) =>
-        associationOptions?.find((item) => item._id === ele?.association)
-      )
-      ?.filter(Boolean) || []
-  );
-  const [affiliatedGyms, setAffiliatedGyms] = useState(
-    getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
-      gymOptions?.find((item) => item._id === ele?.gym?._id)
-    ) || []
-  );
+  const [association, setAssociation] = useState([]);
+  const [affiliatedGyms, setAffiliatedGyms] = useState([]);
 
   const [weight, setWeight] = useState(
     weightOptions?.find((ele) => ele?.value == data?.fighterDetails?.weight) ||
@@ -78,7 +68,9 @@ const FighterBioForm = ({
 
   const [selectFees, setSelectFees] = useState([]);
   const [bio, setBio] = useState(data?.fighterDetails?.bio || null);
-  const [nickName, setNickName] = useState(data?.fighterDetails?.nickName || null);
+  const [nickName, setNickName] = useState(
+    data?.fighterDetails?.nickName || null
+  );
 
   const [booleanErrors, setBooleanErrors] = useState([]);
   const [errorFields, setErrorFields] = useState([]);
@@ -162,6 +154,22 @@ const FighterBioForm = ({
       errorFields?.includes(field)
     );
   };
+
+  useEffect(() => {
+    setAssociation(
+      getPreviousRoleFields(data, role, page, "association")
+        ?.map((ele) =>
+          associationOptions?.find((item) => item._id === ele?.association)
+        )
+        ?.filter(Boolean)
+    );
+    setAffiliatedGyms(
+      getPreviousRoleFields(data, role, page, "affiliatedGyms")?.map((ele) =>
+        gymOptions?.find((item) => item._id === ele?.gym?._id)
+      )
+    );
+  }, [page]);
+
   return (
     <>
       <style>
