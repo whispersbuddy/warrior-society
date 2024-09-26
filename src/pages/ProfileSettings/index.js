@@ -61,9 +61,9 @@ const ProfileSettings = () => {
   const [lastName, setLastName] = useState(user?.lastName || null);
   const [contact, setContact] = useState(user?.contact || null);
   const [DOB, setDOB] = useState(user?.DOB || null);
-  const [country, setCountry] = useState(user?.country || null);
-  const [city, setCity] = useState(user?.city || null);
-  const [state, setState] = useState(user?.state || null);
+  const [country, setCountry] = useState(null);
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
   const [facebook, setFacebook] = useState(user?.facebook || "");
   const [instagram, setInstagram] = useState(user?.instagram || "");
   const [twitter, setTwitter] = useState(user?.twitter || "");
@@ -182,14 +182,17 @@ const ProfileSettings = () => {
   };
   const location = useLocation();
   useEffect(() => {
+    setCountry(user?.country);
+    setCity(user?.city);
+    setState(user?.state);
     coverInitialDimensions =
       user?.coverPhotoDimensions || coverInitialDimensions;
-      const params = new URLSearchParams(location.search);
-      const scroll = params.get('scroll');
-  
-      if (scroll === 'end') {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      }
+    const params = new URLSearchParams(location.search);
+    const scroll = params.get("scroll");
+
+    if (scroll === "end") {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
   }, [location]);
   const handleFieldError = (field, actualField) => {
     const theField = actualField ? actualField : field;
