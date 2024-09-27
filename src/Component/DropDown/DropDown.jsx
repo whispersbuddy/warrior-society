@@ -284,8 +284,10 @@ export const DropDown = ({
               let labelText = extractTextFromElement(
                 option.label || option[optionLabel] || ""
               );
-              return labelText?.trim()?.toLowerCase();
-              // ?.startsWith(input ? input?.toLowerCase() : "");
+              return labelText
+                ?.trim()
+                ?.toLowerCase()
+                ?.startsWith(input ? input?.toLowerCase() : "");
             }}
             // filterOption={({ label, value, data }, input) => {
             //   if (!input) return true;
