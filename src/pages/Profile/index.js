@@ -28,6 +28,7 @@ export const allRoles = ["Student", "Trainer", "GYM", "Fighter"];
 const Profile = () => {
   const redirected = useLocation()?.state;
   const navigate = useNavigate();
+  const location = useLocation();
 
   const dispatch = useDispatch();
   const { user, access_token } = useSelector((state) => state.authReducer);
@@ -83,6 +84,15 @@ const Profile = () => {
   useEffect(() => {
     getNewUsers();
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    if (params) {
+      setPageName(params.get("tab") || "Profile");
+    }
+  }, [location]);
+
   return (
     <>
       <NewsFeedHeader />

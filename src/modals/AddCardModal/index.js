@@ -96,7 +96,7 @@ const AddCardModal = ({
           <div className={classes.cardList}>
             {dataLoading && <Loader />}
             {!cards.length && !dataLoading ? (
-              <p className="text-center fs-4">No cards found</p>
+              <p className="text-center fs-4">No card found</p>
             ) : (
               cards.map((card) => (
                 <div

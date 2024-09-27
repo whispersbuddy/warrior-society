@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Country, State, City } from "country-state-city";
 import { useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import { DropDown } from "../../../../Component/DropDown/DropDown";
 import { Button } from "../../../../Component/Button/Button";
 import { validateUserFields } from "../../../../config/HelperFunction";
 import { apiHeader, BaseURL } from "../../../../config/apiUrl";
-import { Patch } from "../../../../Axios/AxiosFunctions";
+import { Get, Patch } from "../../../../Axios/AxiosFunctions";
 import classes from "./ConnectAccount.module.css";
 
 const ConnectAccount = () => {
@@ -28,8 +28,61 @@ const ConnectAccount = () => {
   const [postalCode, setPostalCode] = useState(null);
   const [address1, setAddress1] = useState(null);
   const [address2, setAddress2] = useState(null);
+  const [id_number, setIdNo] = useState(null);
+  const [idProvided, setIdProvided] = useState(false);
+  const [businessUrl, setBusinessUrl] = useState(null);
+  const [file, setFile] = useState(null);
+  const [docVerified, setDocVerified] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
   const [errorFields, setErrorFields] = useState([]);
+
+  const getData = async () => {
+    const url = BaseURL("stripe/account");
+    // setLoading(true);
+    const response = await Get(url, access_token);
+
+    if (response) {
+      setFirstName(response?.data?.individual?.first_name);
+      setLastName(response?.data?.individual?.last_name);
+      setEmail(response?.data?.email);
+      setContact(response?.data?.individual?.phone);
+      setDOB(
+        new Date(
+          response?.data?.individual?.dob?.year,
+          response?.data?.individual?.dob?.month - 1,
+          response?.data?.individual?.dob?.day
+        )
+      );
+      let _country = Country.getAllCountries()?.find(
+        (item) => item?.isoCode == response?.data?.individual?.address?.country
+      );
+      let _state = State?.getStatesOfCountry(_country?.isoCode)?.find(
+        (item) => item?.name == response?.data?.individual?.address?.state
+      );
+      let _city = City.getCitiesOfState(
+        _country?.isoCode,
+        _state?.isoCode
+      )?.find(
+        (item) => item?.name == response?.data?.individual?.address?.city
+      );
+      setCountry(_country);
+      setState(_state);
+      setCity(_city || response?.data?.individual?.address?.city);
+      setPostalCode(response?.data?.individual?.address?.postal_code);
+      setAddress1(response?.data?.individual?.address?.line1);
+      setAddress2(response?.data?.individual?.address?.line2);
+      setBusinessUrl(response?.data?.business_profile?.url);
+      setIdProvided(response?.data?.individual?.id_number_provided);
+      setDocVerified(
+        response?.data?.individual?.verification?.status === "verified"
+      );
+    }
+    // setLoading(false);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleFieldError = (field, actualField) => {
     const theField = actualField ? actualField : field;
@@ -70,23 +123,30 @@ const ConnectAccount = () => {
   const handleSubmit = async () => {
     console.log({ DOB, country, city, state, postalCode, address1, address2 });
     const errorFieldNames = [];
-    const params = {
+    let params = {
       firstName,
       lastName,
       email,
-      contact: contact?.length
-        ? contact[0] == "+"
-          ? contact
-          : `+${contact}`
-        : "",
-      DOB: DOB ? moment(DOB?.$d || DOB).format("MM/DD/YYYY") : "",
-      country: typeof country === "string" ? country : country?.name,
+      contact,
+      dob: {
+        day: moment(DOB).date(),
+        month: moment(DOB).month() + 1,
+        year: moment(DOB).year(),
+      },
+      // address: {
+      country: typeof country === "string" ? country : country?.isoCode,
       state: typeof state === "string" ? state : state?.name,
       city: typeof city === "string" ? city : city?.name,
       postalCode,
       address1,
       address2,
+      id_number,
+      businessUrl,
+      mcc: "5734",
     };
+    !address2 && delete params.address2;
+    idProvided && delete params.id_number;
+
     for (let key in params) {
       if (!params[key]) {
         errorFieldNames.push(key);
@@ -100,35 +160,55 @@ const ConnectAccount = () => {
       return;
     }
 
-    let data = {
-      first_name: "John",
-      last_name: "Doe",
-      dob: {
-        day: 1,
-        month: 1,
-        year: 1901,
+    params = {
+      individual: {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: contact?.length
+          ? contact[0] == "+"
+            ? contact
+            : `+${contact}`
+          : "",
+        dob: {
+          day: moment(DOB).date(),
+          month: moment(DOB).month() + 1,
+          year: moment(DOB).year(),
+        },
+        address: {
+          country: typeof country === "string" ? country : country?.isoCode,
+          state: typeof state === "string" ? state : state?.name,
+          city: typeof city === "string" ? city : city?.name,
+          postal_code: postalCode,
+          line1: address1,
+          line2: address2,
+        },
+        id_number,
       },
-      address: {
-        line1: "address_full_match",
-        city: "New York",
-        state: "NY",
-        postal_code: "10001",
-        country: "US",
+      business_profile: {
+        url: businessUrl,
+        mcc: "5734",
       },
-      email: "john.doe@example.com",
-      phone: "+11234567890",
-      id_number: "123456789",
     };
+    !address2 && delete params.individual.address.line2;
+    idProvided && delete params.individual.id_number;
 
     setUpdateLoading(true);
     const apiUrl = BaseURL("stripe/update-account");
-    const response = await Patch(apiUrl, data, apiHeader(access_token));
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(params));
+    !docVerified && formData.append("file", file);
+    const response = await Patch(apiUrl, formData, apiHeader(access_token));
+
     if (response) {
       toast.success("Submited Successfully");
-      // dispatch(updateUser(response.data.data));
-      // navigate("/profile");
     }
     setUpdateLoading(false);
+  };
+
+  const handleFile = (e) => {
+    if (!e.target.files?.length) return;
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -318,21 +398,39 @@ const ConnectAccount = () => {
               error={handleFieldError("address2")}
             />
           </Col>
-          {/* <Col md={12} className={classes.inputField}>
-            <Row>
-              <StateCitySelect
-                country={country}
-                setCountry={setCountry}
-                city={city}
-                setCity={setCity}
-                state={state}
-                setState={setState}
-                errorFields={["country", "state", "city"]?.map((item) =>
-                  handleFieldError(item)
-                )}
-              />
-            </Row>
-          </Col> */}
+          <Col md={6} className={classes.inputField}>
+            <Input
+              value={id_number}
+              setter={setIdNo}
+              placeholder="Id Number"
+              label="Id Number"
+              error={handleFieldError("id_number")}
+              disabled={idProvided}
+            />
+          </Col>
+          <Col md={6} className={classes.inputField}>
+            <Input
+              value={businessUrl}
+              setter={setBusinessUrl}
+              placeholder="Business Url"
+              label="Business Url"
+              error={handleFieldError("businessUrl")}
+            />
+          </Col>
+          <Col md={6} className={classes.inputField}>
+            <input
+              type="file"
+              // value={file}
+              onChange={handleFile}
+              placeholder="File"
+              // label="File"
+              // error={handleFieldError("file")}
+              disabled={docVerified}
+            />
+            {docVerified && (
+              <span className="text-success">Document Verified</span>
+            )}
+          </Col>
         </Row>
         <div className={classes.buttonContainer}>
           <Button

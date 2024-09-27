@@ -21,11 +21,12 @@ const FighterUserProfile = ({
   handleSponsorAmount,
   acceptedSponsorRequests,
 }) => {
+  const { user } = useSelector((state) => state.authReducer);
   const navigate = useNavigate();
   const handleSettingNavigation = () => {
-    navigate('/settings?scroll=end')
-  }
-  const { user } = useSelector((state) => state.authReducer);
+    navigate("/settings?scrollTo=logo");
+  };
+
   const showAvailabilityBorder =
     profileData?.fighterDetails?.availableForFight ||
     profileData?.fighterDetails?.availableForSparring;
@@ -284,9 +285,10 @@ const FighterUserProfile = ({
                   width: "100%",
                 }}
               />
-              {user?.logo &&
-              user?.stripeAccountId &&
-              profileData?.stripeAccountId ? (
+              {user?.stripeAccountId &&
+              profileData?.stripeAccountId &&
+              profileData?.stripe?.charges_enabled &&
+              profileData?.stripe?.payouts_enabled ? (
                 <>
                   <Input
                     customClass="mt-4"
@@ -295,17 +297,24 @@ const FighterUserProfile = ({
                     placeholder={"Amount"}
                     type="number"
                   />
-                   <p className="mt-2">Amount should be greater than $100</p>
+                  <p className="mt-2">Amount should be greater than $100</p>
                   <Button
                     onClick={handleSponsorAmount}
                     label="Sponsor"
                     className="mt-2 w-100"
                   />
                 </>
-              ) : <div> 
-                <h5 className="mt-4">Add Logo to your profile to sponsor a fighter</h5>
-                <a color="#111012" onClick={handleSettingNavigation} href="#">Click to Add logo</a>
-                </div>}
+              ) : null}
+              {!user?.logo && (
+                <div>
+                  <h5 className="mt-4">
+                    Add Logo to your profile to sponsor a fighter
+                  </h5>
+                  <a color="#111012" onClick={handleSettingNavigation} href="#">
+                    Click to Add logo
+                  </a>
+                </div>
+              )}
               {acceptedSponsorRequests?.length ? (
                 <div className={classes.sponsorRequests}>
                   <h3 className="mt-4">Sponsors</h3>

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
+import { Loader } from "../../../../Component/Loader";
 import { BaseURL } from "../../../../config/apiUrl";
 import { Get } from "../../../../Axios/AxiosFunctions";
 import classes from "./WalletDetails.module.css";
 
 const WalletDetails = () => {
   const { access_token } = useSelector((state) => state.authReducer);
-  const [balance, setBalance] = useState(0);
+  const [availableBalance, setAvailableBalance] = useState(0);
+  const [pendingBalance, setPendingBalance] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const getData = async () => {
@@ -24,7 +26,8 @@ const WalletDetails = () => {
         (a, b) => a + b?.amount / 100,
         0
       );
-      setBalance(availableBalance + pendingBalance);
+      setAvailableBalance(availableBalance);
+      setPendingBalance(pendingBalance);
     }
     setLoading(false);
   };
@@ -38,7 +41,14 @@ const WalletDetails = () => {
       <Container className="text-center">
         <h2>Wallet Details</h2>
         <p className="h3 mt-4">
-          {loading ? "Loading..." : `Balance: $${balance}`}
+          {loading ? (
+            <Loader />
+          ) : (
+            <div>
+              <p className="h3">Available Balance: ${availableBalance}</p>
+              <p className="h3 mt-4">Pending Balance: ${pendingBalance}</p>
+            </div>
+          )}
         </p>
       </Container>
     </div>

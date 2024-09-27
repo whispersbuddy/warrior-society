@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  margin: 50px 0;
+}
+
+.inputField {
+  margin-bottom: 30px;
+}
+
+.inputField button {
+  width: 100%;
+}
+.inputField input::placeholder {
+  text-transform: lowercase !important;
+}
+
+.bankList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  gap: 16px;
+}
+
+.bank {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 16px;
+  transition: transform 0.3s ease;
+  /* cursor: pointer; */
+}
+
+.selectedCard {
+  border: 2px solid #0070f3;
+}
+
+.bankContent {
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.bankBrand {
+  font-size: 20px;
+  font-weight: 600;
+}

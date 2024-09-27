@@ -3,20 +3,26 @@ import { Container } from "react-bootstrap";
 
 import WalletDetails from "./WalletDetails/indes";
 import ConnectAccount from "./ConnectAccount/indes";
+import Bank from "./Bank/indes";
+import Card from "./Card/indes";
 import classes from "./WalletDetails.module.css";
 
 const Wallet = () => {
-  const tabs = ["Wallet"];
+  const tabs = ["Wallet", "Details", "Bank", "Card"];
   const [currentTab, setCurrentTab] = useState(tabs[0]);
 
   const renderProfile = () => {
     switch (currentTab) {
       case "Wallet":
         return <WalletDetails />;
-      case "Connect Account":
+      case "Details":
         return <ConnectAccount />;
+      case "Bank":
+        return <Bank />;
+      case "Card":
+        return <Card />;
       default:
-        return <>ds</>;
+        return <></>;
     }
   };
 

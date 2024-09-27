@@ -857,6 +857,14 @@ const FighterUserProfile = ({ user }) => {
                     </div>
                   </div>
                 ) : null}
+
+                {!userData?.stripe?.charges_enabled ||
+                !userData?.stripe?.payouts_enabled ? (
+                  <p className="mt-4 h5">
+                    Please fill in the information in the Wallet tab to accept
+                    the sponsorship
+                  </p>
+                ) : null}
               </div>
             </Col>
           </Row>
