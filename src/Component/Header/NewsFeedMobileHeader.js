@@ -17,6 +17,7 @@ import { signOutRequest } from "../../store/auth/authSlice";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import ProfilePhoto from "../ProfilePhoto";
+import { LuWallet } from "react-icons/lu";
 import classes from "./NewsFeedMobileHeader.module.css";
 
 export const NewsFeedMobileHeader = ({
@@ -159,6 +160,12 @@ export const NewsFeedMobileHeader = ({
                   text={"Profile"}
                   customClass={currentPage == "/profile" && classes.activeItem}
                   path={"/profile"}
+                />
+                <RenderListItem
+                  icon={<LuWallet size={16} />}
+                  text={"Wallet"}
+                  customClass={currentPage == "/profile" && classes.activeItem}
+                  path={"/profile?tab=Wallet"}
                 />
                 <RenderListItem
                   icon={<FaCog size={16} />}

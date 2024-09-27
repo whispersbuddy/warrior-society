@@ -6,6 +6,7 @@ import { BsChatLeftText } from "react-icons/bs";
 import { FaCog, FaNewspaper } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { LuWallet } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Get } from "../../Axios/AxiosFunctions";
@@ -177,6 +178,10 @@ export const NewsFeedHeader = ({ className }) => {
                         <li onClick={() => navigate("/profile")}>
                           <FaRegCircleUser />
                           Profile
+                        </li>
+                        <li onClick={() => navigate("/profile?tab=Wallet")}>
+                          <LuWallet />
+                          Wallet
                         </li>
                         <li onClick={() => navigate("/settings")}>
                           <FaCog />

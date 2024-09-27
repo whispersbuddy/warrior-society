@@ -53,6 +53,7 @@ const ProfileSettings = () => {
   );
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [photo, setPhoto] = useState(user?.photo || "");
@@ -180,20 +181,25 @@ const ProfileSettings = () => {
     }
     setUpdateCoverLoading(false);
   };
-  const location = useLocation();
+
   useEffect(() => {
     setCountry(user?.country);
     setCity(user?.city);
     setState(user?.state);
     coverInitialDimensions =
       user?.coverPhotoDimensions || coverInitialDimensions;
-    const params = new URLSearchParams(location.search);
-    const scroll = params.get("scroll");
 
-    if (scroll === "end") {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    const params = new URLSearchParams(location.search);
+    const scrollTo = params.get("scrollTo");
+
+    if (scrollTo) {
+      const element = document.getElementById(scrollTo);
+      if (element) {
+        element?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }, [location]);
+
   const handleFieldError = (field, actualField) => {
     const theField = actualField ? actualField : field;
 
@@ -203,6 +209,7 @@ const ProfileSettings = () => {
       errorFields?.includes(field)
     );
   };
+
   return (
     <>
       <NewsFeedHeader />
@@ -374,7 +381,7 @@ const ProfileSettings = () => {
                   </Row>
                 </div>
 
-                <div className={classes.socialContainer}>
+                <div className={classes.socialContainer} id="logo">
                   <div className={classes.heading}>
                     <h2>Company Details</h2>
                     <div className="mt-2">
