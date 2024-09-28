@@ -72,6 +72,7 @@ const Signup = () => {
         : "",
       DOB: DOB ? moment(DOB?.$d || DOB).format("MM/DD/YYYY") : null,
       country: country?.name || country,
+      countryIso: country?.isoCode,
       state: state?.name || state,
       city: city?.name || city,
       email,
@@ -362,7 +363,7 @@ const Signup = () => {
                           error={handleFieldError("lastName")}
                         />
                       </Col>
-                     
+
                       <Col md={6} className={classes.inputField}>
                         <CustomPhoneInput
                           setter={setContact}
