@@ -33,6 +33,7 @@ const ConnectAccount = () => {
   const [businessUrl, setBusinessUrl] = useState(null);
   const [file, setFile] = useState(null);
   const [docVerified, setDocVerified] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [updateLoading, setUpdateLoading] = useState(false);
   const [errorFields, setErrorFields] = useState([]);
 
@@ -42,9 +43,10 @@ const ConnectAccount = () => {
     const response = await Get(url, access_token);
 
     if (response) {
+      setErrors(response?.data?.requirements?.currently_due);
       setFirstName(response?.data?.individual?.first_name);
       setLastName(response?.data?.individual?.last_name);
-      setEmail(response?.data?.email);
+      setEmail(response?.data?.individual?.email);
       setContact(response?.data?.individual?.phone);
       setDOB(
         new Date(
@@ -54,7 +56,7 @@ const ConnectAccount = () => {
         )
       );
       let _country = Country.getAllCountries()?.find(
-        (item) => item?.isoCode == response?.data?.individual?.address?.country
+        (item) => item?.isoCode == response?.data?.country
       );
       let _state = State?.getStatesOfCountry(_country?.isoCode)?.find(
         (item) => item?.name == response?.data?.individual?.address?.state
@@ -121,7 +123,6 @@ const ConnectAccount = () => {
   };
 
   const handleSubmit = async () => {
-    console.log({ DOB, country, city, state, postalCode, address1, address2 });
     const errorFieldNames = [];
     let params = {
       firstName,
@@ -141,7 +142,6 @@ const ConnectAccount = () => {
       address1,
       address2,
       id_number,
-      businessUrl,
       mcc: "5734",
     };
     !address2 && delete params.address2;
@@ -186,7 +186,7 @@ const ConnectAccount = () => {
         id_number,
       },
       business_profile: {
-        url: businessUrl,
+        url: businessUrl || "https://thewarriorsociety.com/",
         mcc: "5734",
       },
     };
@@ -214,8 +214,78 @@ const ConnectAccount = () => {
   return (
     <div className={classes.container}>
       <Container>
+        {errors?.length ? (
+          <div
+            className={classes.lightred + " border border-danger rounded p-4"}
+          >
+            Please fill the missing fields:
+            <ul>
+              {errors?.map((item, index) => {
+                switch (item) {
+                  case "individual.first_name":
+                    item = "First Name";
+                    break;
+                  case "individual.last_name":
+                    item = "Last Name";
+                    break;
+                  case "individual.email":
+                    item = "Email";
+                    break;
+                  case "individual.phone":
+                    item = "Phone Number";
+                    break;
+                  case "individual.dob.day":
+                    item = "Date Of Birth";
+                    break;
+                  case "individual.dob.month":
+                    item = null;
+                    break;
+                  case "individual.dob.year":
+                    item = null;
+                    break;
+                  case "individual.address.country":
+                    item = "Country";
+                    break;
+                  case "individual.address.state":
+                    item = "State";
+                    break;
+                  case "individual.address.city":
+                    item = "City";
+                    break;
+                  case "individual.address.postal_code":
+                    item = "Postal Code";
+                    break;
+                  case "individual.address.line1":
+                    item = "Address 1";
+                    break;
+                  case "individual.id_number":
+                    item = "Id Number";
+                    break;
+                  case "individual.ssn_last_4":
+                    item = "Id Number";
+                    break;
+                  case "business_profile.url":
+                    item = null;
+                    break;
+                  case "business_profile.mcc":
+                    item = null;
+                    break;
+                  case "external_account":
+                    item = "Bank Account";
+                    break;
+                  case "settings.payments.statement_descriptor":
+                    item = null;
+                    break;
+                  default:
+                    item = item;
+                }
+                return <li key={index}>{item}</li>;
+              })}
+            </ul>
+          </div>
+        ) : null}
         {/* <h1>Wallet Details</h1> */}
-        <Row>
+        <Row className="mt-4">
           <Col xl={6} className={classes.inputField}>
             <Input
               value={firstName}
@@ -262,6 +332,7 @@ const ConnectAccount = () => {
           </Col>
           <Col md={6} className={classes.inputField}>
             <DropDown
+              disabled={true}
               options={Country.getAllCountries()}
               getOptionLabel={(options) => {
                 return options["name"];
