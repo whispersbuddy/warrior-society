@@ -13,12 +13,13 @@ import { Delete, Get, Post } from "../../../../Axios/AxiosFunctions";
 import classes from "./Bank.module.css";
 import { Loader } from "../../../../Component/Loader";
 import { BsTrash } from "react-icons/bs";
+import { RxInfoCircled } from "react-icons/rx";
 
 const Bank = () => {
   const { access_token } = useSelector((state) => state?.authReducer);
 
   const [banks, setBanks] = useState([]);
-  const [accountNo, setAccountNo] = useState("000123456789");
+  const [accountNo, setAccountNo] = useState("");
   const [routingNo, setRoutingNo] = useState();
   const [country, setCountry] = useState(null);
   const [addBank, setAddBank] = useState(false);
@@ -74,6 +75,7 @@ const Bank = () => {
       account_number: accountNo,
       routing_number: routingNo,
     };
+    !routingNo && delete params.routing_number;
     setUpdateLoading(true);
     const apiUrl = BaseURL("stripe/bank");
     const response = await Post(apiUrl, params, apiHeader(access_token));
@@ -118,6 +120,16 @@ const Bank = () => {
                 placeholder="Routing Number"
                 label="Routing Number"
                 error={handleFieldError("routingNo")}
+                tooltipIcon={
+                  <RxInfoCircled className={classes.tooltipSvg} size={20} />
+                }
+                tooltipText="For other regions, different identifiers might be used instead
+                  of routing numbers. 
+                  For example: Europe: IBAN (International
+                  Bank Account Number) United Kingdom: Sort code Hong Kong,
+                  Singapore, and Australia: BSB number (in Australia) or similar
+                  local codes Other countries: Typically use SWIFT codes or
+                  local bank identifiers."
               />
             </Col>
             <Col md={6} className={classes.inputField}>

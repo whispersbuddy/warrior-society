@@ -83,7 +83,7 @@
   left: 20px;
   top: 0;
   bottom: 0;
-  margin-block:auto;
+  margin-block: auto;
   height: max-content;
 }
 
@@ -92,7 +92,7 @@
   right: 8px;
   top: 0;
   bottom: 0;
-  margin-block:auto;
+  margin-block: auto;
   height: max-content;
 }
 
@@ -111,4 +111,14 @@ input[type="number"] {
   .labelText {
     font-size: 20px;
   }
+}
+
+.tooltipDiv {
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.tooltipDiv span {
+  display: block;
+  width: 350px;
 }

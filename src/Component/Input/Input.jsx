@@ -4,6 +4,7 @@ import classes from "./input.module.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { numberRegEx } from "../../config/apiUrl";
+import Tooltip from "../Tooltip";
 
 /**
  * Primary UI component for user interaction
@@ -29,7 +30,9 @@ export const Input = ({
   labelLeftIcon,
   enterClick,
   customClass,
-  isEvent=false,
+  isEvent = false,
+  tooltipText,
+  tooltipIcon,
   ...props
 }) => {
   const [passToggle, setPassToggle] = useState(false);
@@ -46,19 +49,26 @@ export const Input = ({
         )}`}
         style={{ ...parentCustomStyle }}
       >
-        {label && (
-          <label
-            htmlFor={`input${label}`}
-            className={`${[
-              classes.labelText,
-              disabled && classes.disabled,
-            ].join(" ")}`}
-            style={{ ...labelStyle }}
-          >
-            {labelLeftIcon && labelLeftIcon}
-            {label} {label2 && label2}
-          </label>
-        )}
+        <div className="d-flex">
+          {label && (
+            <label
+              htmlFor={`input${label}`}
+              className={`${[
+                classes.labelText,
+                disabled && classes.disabled,
+              ].join(" ")}`}
+              style={{ ...labelStyle }}
+            >
+              {labelLeftIcon && labelLeftIcon}
+              {label} {label2 && label2}
+            </label>
+          )}
+          {tooltipText && (
+            <Tooltip className={classes.tooltipDiv} icon={tooltipIcon}> 
+              <span>{tooltipText}</span>
+            </Tooltip>
+          )}
+        </div>
         <div
           className={`${[classes.inputPassContainer].join(" ")}`}
           style={{ ...customStyle }}
@@ -75,13 +85,13 @@ export const Input = ({
               if (regexType == "number" || type == "number") {
                 setter(e?.target?.value?.replace(numberRegEx, ""));
               } else {
-                if(isEvent){
-                  const urlRegex = /^(https?:\/\/)?([\w\d\-_]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/;
-                  if(e.target.value.match(urlRegex)){
+                if (isEvent) {
+                  const urlRegex =
+                    /^(https?:\/\/)?([\w\d\-_]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/;
+                  if (e.target.value.match(urlRegex)) {
                     setter(e.target.value);
                   }
-                }
-                else{
+                } else {
                   setter(e.target.value);
                 }
               }
