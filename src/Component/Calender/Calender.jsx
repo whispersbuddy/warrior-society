@@ -76,8 +76,8 @@ export default function Calender({
           }}
           disablePast={disablePast}
           disabled={disabled}
-          // minDate={minValue}
-          maxDate={maxValue}
+          minDate={new Date('1970-11-11')}
+          maxDate={maxValue === true ? new Date() : maxValue}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
