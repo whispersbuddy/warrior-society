@@ -33,6 +33,7 @@ import EditNicknameModal from "../../../../modals/AddEditNickNameModal/EditNiceN
 import SponsorRequestsModal from "../../../../modals/SponsorRequestsModal";
 import { updateUser } from "../../../../store/auth/authSlice";
 import classes from "./FighterUserProfile.module.css";
+import { useNavigate } from "react-router-dom";
 
 const FighterUserProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -170,6 +171,11 @@ const FighterUserProfile = ({ user }) => {
       getSponsorRequests();
       toast.success("Request updated successfully");
     }
+  };
+
+  const navigate = useNavigate();
+  const handleSettingNavigation = () => {
+    navigate("/profile?tab=Wallet");
   };
 
   return (
@@ -797,6 +803,14 @@ const FighterUserProfile = ({ user }) => {
                     }}
                     title="Edit your availability for MMA and Sparring Partner"
                   />
+                  <div>
+                  <h5 className="mt-4">
+                    Add Logo to your profile to sponsor a fighter
+                  </h5>
+                  <a color="#111012" onClick={handleSettingNavigation} href="#">
+                    Click to Add Details
+                  </a>
+                </div>
                   {/* <Button
                     className="mt-4"
                     label="Sponsor Requests"
@@ -861,7 +875,7 @@ const FighterUserProfile = ({ user }) => {
                 {!userData?.stripe?.charges_enabled ||
                 !userData?.stripe?.payouts_enabled ? (
                   <p className="mt-4 h5">
-                    Please fill in the information in the Wallet tab to accept
+                    Please fill in the details in the Wallet tab to accept
                     the sponsorship
                   </p>
                 ) : null}
