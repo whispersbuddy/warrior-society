@@ -14,13 +14,14 @@ export const Button = ({
   width,
   background,
   color,
+  extraclass,
   ...props
 }) => {
   let styleObject = Object.assign({}, customStyle);
   return (
     <>
       <button
-        className={`${[classes.btn, className && className].join(" ")}`}
+        className={`${[classes.btn, className && className].join(" ")} ${extraclass}`}
         style={customStyle && customStyle}
         onClick={onClick}
         disabled={disabled ? disabled : false}

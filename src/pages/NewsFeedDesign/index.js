@@ -20,6 +20,10 @@ import ViewUpcomingFights from "../../modals/ViewUpcomingFIghts";
 import { updateUser } from "../../store/auth/authSlice";
 import classes from "./NewsFeedDesign.module.css";
 import PostSection from "./PostSection";
+import { FaUserFriends } from "react-icons/fa";
+import { PiStudent } from "react-icons/pi";
+
+
 let initialDimensions = {
   x: 0,
   y: 6.231578947368419,
@@ -80,15 +84,23 @@ const UserComponent = ({ user, role }) => {
       ) : (
         <div
           className={classes.userDiv}
-          title={`View Your ${user?.role} ${
-            user?.role !== "Followers" ? "Profile" : ""
-          }`}
+          title={`View Your ${user?.role} ${user?.role !== "Followers" ? "Profile" : ""
+            }`}
         >
           <div
             className={classes.imageBox}
             onClick={() => navigate("/profile", { state: path })}
           >
-            <img src={user?.photo} alt="" />
+            {
+              user?.role == 'Followers' && <FaUserFriends className="text-4xl text-red-500"/>
+            }
+
+            {
+              user?.role == 'Student' && <PiStudent className="text-4xl text-red-500"/>
+            }
+
+            {user?.role != 'Followers' && user?.role != 'Student' && <img src={user?.photo} alt="" />}
+
           </div>
           <div
             className={classes.userName}
@@ -245,7 +257,7 @@ const NewsFeedDesign = () => {
         <Loader className={"vh-100"} />
       ) : (
         <div className={classes.newsFeedPage}>
-          <div className={classes.newsFeedGrid+" !grid-cols-[4fr_4fr_4fr]"}>
+          <div className={classes.newsFeedGrid + " lg:!grid-cols-[3fr_4.5fr_3fr]  md:!grid-cols-[7fr_3fr]"}>
             <>
               <div
                 className={classes.hamMenu}
@@ -325,7 +337,7 @@ const NewsFeedDesign = () => {
                 </div>
               </div>
             </>
-            <div className={classes.post_section}>
+            <div className={classes.post_section+" p-4"}>
               <PostSection />
             </div>
             <div className={classes.userLeftContent}>

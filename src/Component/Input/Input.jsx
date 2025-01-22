@@ -33,6 +33,7 @@ export const Input = ({
   isEvent = false,
   tooltipText,
   tooltipIcon,
+  extraClass,
   ...props
 }) => {
   const [passToggle, setPassToggle] = useState(false);
@@ -46,7 +47,7 @@ export const Input = ({
       <div
         className={`${[classes.Container, customClass && customClass].join(
           " "
-        )}`}
+        )} !flex-1`}
         style={{ ...parentCustomStyle }}
       >
         <div className="d-flex">
@@ -103,7 +104,7 @@ export const Input = ({
             className={` ${[
               classes.inputBox,
               noBorder && classes.noBorder,
-            ].join(" ")}`}
+            ].join(" ")}  ${extraClass}`}
             style={{ ...inputContainerStyleObject, ...inputStyle }}
             onBlur={() => {
               setter(value?.trim());

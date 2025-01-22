@@ -11,6 +11,12 @@ import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FcLike } from "react-icons/fc";
+import { FcDislike } from "react-icons/fc";
+import { FaRegCommentAlt } from "react-icons/fa";
+import { PiShareFat } from "react-icons/pi";
+
+
 import {
   filterShared,
   formatTags,
@@ -178,7 +184,7 @@ export default function PostCardNew({
     <>
       {" "}
       {post?.originalPost ? (
-        <div className={classes.repostCard}>
+        <div className={classes.repostCard + " shadow-lg"}>
           <div
             className={classes.headerDiv}
             onClick={() => navigate(`/post/${post?._id}`)}
@@ -249,7 +255,7 @@ export default function PostCardNew({
               </div>
             )}
           </div>
-          <div>
+          <div className="mb-2">
             {post?.description && (
               <div className={classes.__text}>
                 <ShowMoreShowLessText
@@ -347,9 +353,10 @@ export default function PostCardNew({
                 onClick={() => likePost({ postId: post?._id })}
               >
                 {post?.likes?.find((ele) => ele?._id == userData?._id) ? (
-                  <AiFillLike size={20} color={"#0348B5"} />
+                  <FcDislike size={20} />
+                  // <AiFillLike size={20} color={"#0348B5"} />
                 ) : (
-                  <BiLike size={20} />
+                  <FcLike size={20} />
                 )}
                 <p>
                   <span>Like</span>
@@ -365,14 +372,14 @@ export default function PostCardNew({
                   setSelectedReply(null);
                 }}
               >
-                <BsChat size={20} />{" "}
+                <FaRegCommentAlt size={20} />{" "}
                 <p>
                   <span>Comment</span>
                 </p>
               </div>
               <div className={classes.separator}></div>
               <div className={classes.__icon}>
-                <BiRepost
+                <PiShareFat
                   size={20}
                   onClick={() => {
                     setPostActions({ ...postActions, show: "sharePost" });
@@ -518,10 +525,10 @@ export default function PostCardNew({
         data={
           postOwner
             ? [
-                "Edit",
-                "Delete",
-                post?.privacy == "private" ? "Public" : "Private",
-              ]
+              "Edit",
+              "Delete",
+              post?.privacy == "private" ? "Public" : "Private",
+            ]
             : ["Report"]
         }
         placement={"bottom"}
@@ -594,9 +601,8 @@ export default function PostCardNew({
           }
           onClick={handleUpdateStatus}
           isApiCall={actionsLoading === "changeStatus"}
-          subTitle={`Are you sure you want to change status to ${
-            post?.privacy === "public" ? "Private" : "Public"
-          }?`}
+          subTitle={`Are you sure you want to change status to ${post?.privacy === "public" ? "Private" : "Public"
+            }?`}
         />
       )}
       {taggedUsers && (
@@ -662,7 +668,7 @@ const Card = ({
   return (
     <div>
       <div
-        className={classes.postCard}
+        className={`${classes.postCard} ${!showOriginalPost && "shadow-lg"}`}
         style={{
           ...postStyle,
         }}
@@ -763,7 +769,7 @@ const Card = ({
           )}
           {showOriginalPost && (
             <p className={classes.shareTag}>
-              Shared <BiRepost />
+              Shared <PiShareFat />
             </p>
           )}
         </div>
@@ -880,9 +886,9 @@ const Card = ({
                     onClick={() => likePost({ postId: _id })}
                   >
                     {likes?.find((ele) => ele?._id == logInUser?._id) ? (
-                      <AiFillLike size={20} color={"#0348B5"} />
+                      <FcDislike size={20} />
                     ) : (
-                      <BiLike size={20} />
+                      <FcLike size={20} />
                     )}
                     <p>
                       <span>Like</span>
@@ -898,7 +904,7 @@ const Card = ({
                       setSelectedReply(null);
                     }}
                   >
-                    <BsChat size={20} />{" "}
+                    <FaRegCommentAlt size={20} />{" "}
                     <p>
                       <span>Comment</span>
                     </p>
@@ -910,7 +916,7 @@ const Card = ({
                       setPostActions({ ...postActions, show: "sharePost" });
                     }}
                   >
-                    <BiRepost size={20} />{" "}
+                    <PiShareFat size={20} />{" "}
                     <p>
                       <span>Share</span>
                     </p>

@@ -345,7 +345,7 @@ const PostSection = () => {
   return (
     <>
       <div className={classes.mainDiv}>
-        <div className={classes.postContainer} title="Create a new post">
+        <div className={classes.postContainer+" shadow-lg"} title="Create a new post">
           <CreatePost
             onClick={() => {
               setSelectedItem(null);

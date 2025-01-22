@@ -87,6 +87,7 @@ export const NewsFeedMobileHeader = ({
           {locationObj.pathname !== "/users" && (
             <div className={classes.searchBarDiv}>
               <Input
+              extraClass={'p-2'}
                 customClass={classes.inputContainer}
                 value={search}
                 setter={setSearch}
@@ -98,6 +99,7 @@ export const NewsFeedMobileHeader = ({
                 }}
               />
               <Button
+              extraclass={'p-0'}
                 label={"Search"}
                 onClick={() =>
                   navigate(`/users`, {

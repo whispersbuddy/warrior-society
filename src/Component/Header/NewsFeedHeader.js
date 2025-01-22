@@ -74,49 +74,53 @@ export const NewsFeedHeader = ({ className }) => {
           className={`${[Style.navbarContainer, className].join(" ")}`}
           fluid
         >
-          <div className={Style.leftHeader}>
+          <div className={Style.leftHeader + " flex-1 items-center"}>
             <div className={Style.logoDiv} onClick={() => navigate("/")}>
               <img src={newsFeedHeader} alt="" />
             </div>
-            <div className={[Style.navigationLinks]}>
-              <Link to="/news-feed">
-                <span>
-                  <FaNewspaper />
-                </span>
-                <span className={Style["navigationItem"]}>News Feed</span>
-              </Link>
-            </div>
+            {locationObj.pathname !== "/users" && (
+              <div className={`${Style.searchBarDiv} h-max `}>
+                <Input
+                  extraClass={'p-2'}
+                  customClass={`${Style.inputContainer} `}
+                  value={search}
+                  setter={setSearch}
+                  placeholder={"Search Users"}
+                  enterClick={() => {
+                    navigate(`/users`, {
+                      state: { search: search },
+                    });
+                  }}
+                />
+                <Button
+                  extraclass={'p-0'}
+                  label={"Search"}
+                  onClick={() =>
+                    navigate(`/users`, {
+                      state: { search: search },
+                    })
+                  }
+                />
+              </div>
+            )}
+
           </div>
-          {locationObj.pathname !== "/users" && (
-            <div className={Style.searchBarDiv}>
-              <Input
-                customClass={Style.inputContainer}
-                value={search}
-                setter={setSearch}
-                placeholder={"Search Users"}
-                enterClick={() => {
-                  navigate(`/users`, {
-                    state: { search: search },
-                  });
-                }}
-              />
-              <Button
-                label={"Search"}
-                onClick={() =>
-                  navigate(`/users`, {
-                    state: { search: search },
-                  })
-                }
-              />
-            </div>
-          )}
+
           <div className={Style["profile-container"]}>
-            <div className={Style["navigationLinks"]}>
+            <div className={Style["navigationLinks"] + " gap-3"}>
+              <div className={[Style.navigationLinks + " m-0"]}>
+                <Link to="/news-feed" >
+                  <span>
+                    <FaNewspaper className="hover:bg-red-500 hover:text-white rounded-full border-red-500 border-2 p-2 !text-[2.5rem]" />
+                  </span>
+                  {/* <span className={Style["navigationItem"]}>News Feed</span> */}
+                </Link>
+              </div>
               <Link to="/messaging">
                 <span>
-                  <BsChatLeftText />
+                  <BsChatLeftText className="hover:bg-red-500 hover:text-white rounded-full border-red-500 border-2 p-2 !text-[2.5rem]" />
                 </span>
-                <span className={Style["navigationItem"]}>Messaging</span>
+                {/* <span className={Style["navigationItem"]}>Messaging</span> */}
               </Link>
 
               <ClickAwayListener
@@ -147,26 +151,25 @@ export const NewsFeedHeader = ({ className }) => {
                             {newNotifications?.length}
                           </div>
                         )}
-                        <IoMdNotificationsOutline />
+                        <IoMdNotificationsOutline className="hover:bg-red-500 hover:text-white rounded-full border-red-500 border-2 p-2 !text-[2.5rem]" />
                       </span>
-                      <p className={Style["notificationClick"]}>
+                      {/* <p className={Style["notificationClick"]}>
                         Notifications
-                      </p>
+                      </p> */}
                     </div>
                   </OverlayTrigger>
                 </div>
               </ClickAwayListener>
             </div>
-            <div className={Style["profile-info"]}>
+            {/* <div className={Style["profile-info"]}>
               <p className={Style["profile-name"]}>
                 {user?.firstName} {user?.lastName}
               </p>
-            </div>
+            </div> */}
             <ClickAwayListener onClickAway={() => setShowProfileOverlay(false)}>
               <div
-                className={`${[Style.iconDiv].join(" ")} ${
-                  Style["profile-header"]
-                }`}
+                className={`${[Style.iconDiv].join(" ")} ${Style["profile-header"]
+                  }`}
               >
                 <OverlayTrigger
                   placement={"bottom"}
@@ -175,6 +178,9 @@ export const NewsFeedHeader = ({ className }) => {
                   overlay={
                     <div className={`${[Style.profileOverlay]}`}>
                       <ul>
+                        <li><p className={Style["profile-name"]}>
+                          {user?.firstName} {user?.lastName}
+                        </p></li>
                         <li onClick={() => navigate("/profile")}>
                           <FaRegCircleUser />
                           Profile
