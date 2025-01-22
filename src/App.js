@@ -5,6 +5,7 @@ import "react-modern-drawer/dist/index.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./assets/Styles/style.css";
 import "./assets/Styles/table.css";
+import "./App.css"
 // Import Swiper styles
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

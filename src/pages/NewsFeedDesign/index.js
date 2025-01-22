@@ -245,7 +245,7 @@ const NewsFeedDesign = () => {
         <Loader className={"vh-100"} />
       ) : (
         <div className={classes.newsFeedPage}>
-          <div className={classes.newsFeedGrid}>
+          <div className={classes.newsFeedGrid+" !grid-cols-[4fr_4fr_4fr]"}>
             <>
               <div
                 className={classes.hamMenu}
