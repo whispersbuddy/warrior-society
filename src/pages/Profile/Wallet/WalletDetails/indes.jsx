@@ -54,9 +54,11 @@ const WalletDetails = () => {
           {loading ? (
             <Loader />
           ) : (
-            <div>
-              <p className="h3">Available Balance: ${availableBalance}</p>
-              <p className="h3 mt-4">Pending Balance: ${pendingBalance}</p>
+            <div className="w-full">
+              <div className="flex gap-4  w-full !text-red-400 justify-center " >
+                <p className="h3 rounded-lg shadow-lg p-4 font-semibold">Available Balance: ${availableBalance}</p>
+                <p className="h3 rounded-lg shadow-lg p-4 font-semibold">Pending Balance: ${pendingBalance}</p>
+              </div>
               <Button
                 variant="primary"
                 className="mt-4"

@@ -22,6 +22,8 @@ import classes from "./NewsFeedDesign.module.css";
 import PostSection from "./PostSection";
 import { FaUserFriends } from "react-icons/fa";
 import { PiStudent } from "react-icons/pi";
+import { FaUserGraduate } from "react-icons/fa";
+
 
 
 let initialDimensions = {
@@ -88,7 +90,7 @@ const UserComponent = ({ user, role }) => {
             }`}
         >
           <div
-            className={classes.imageBox}
+            className={`${user?.role != 'Followers' && user?.role != 'Student'?classes.imageBox:""}`}
             onClick={() => navigate("/profile", { state: path })}
           >
             {
@@ -96,7 +98,7 @@ const UserComponent = ({ user, role }) => {
             }
 
             {
-              user?.role == 'Student' && <PiStudent className="text-4xl text-red-500"/>
+              user?.role == 'Student' && <FaUserGraduate className="text-4xl text-red-500"/>
             }
 
             {user?.role != 'Followers' && user?.role != 'Student' && <img src={user?.photo} alt="" />}
@@ -145,7 +147,7 @@ const UserRequest = ({ request, children }) => {
 const SchoolComponent = ({ school, join = true, onView }) => {
   const navigate = useNavigate();
   return (
-    <div className={classes.gymDiv}>
+    <div className={classes.gymDiv+" "}>
       <div className={classes.coverDiv}>
         <CropImage
           state={school?.bgPhoto}
@@ -258,7 +260,7 @@ const NewsFeedDesign = () => {
       ) : (
         <div className={classes.newsFeedPage}>
           <div className={classes.newsFeedGrid + " lg:!grid-cols-[3fr_4.5fr_3fr]  md:!grid-cols-[7fr_3fr]"}>
-            <>
+            <div className="">
               <div
                 className={classes.hamMenu}
                 onClick={() => setShowMenu(true)}
@@ -275,10 +277,10 @@ const NewsFeedDesign = () => {
               <div
                 className={[classes.subMenu, showMenu && classes.showMenu].join(
                   " "
-                )}
+                )+" !h-full"}
               >
                 <div
-                  className={classes.leftDiv}
+                  className={classes.leftDiv+" !py-4 !px-8 !h-full"}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className={classes.userContent}>
@@ -309,14 +311,14 @@ const NewsFeedDesign = () => {
                     </div>
                   </div>
 
-                  <div className={classes.recentlyJoined}>
+                  <div className={classes.recentlyJoined+" bg-white rounded-lg shadow-lg p-4 "}>
                     <div className={classes.header}>
                       <h5>joined warrior society</h5>
                     </div>
-                    <div className={classes.recentlyJoined__content}>
+                    <div className={classes.recentlyJoined__content+" !pr-8 pb-8"}>
                       {data?.recentUsers?.slice(0, 5)?.map((user) => (
                         <div
-                          className={classes.recentlyJoined__content__wrapper}
+                          className={classes.recentlyJoined__content__wrapper+" "}
                         >
                           <UserComponent user={user} key={user?._id} />
                         </div>
@@ -336,11 +338,11 @@ const NewsFeedDesign = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
             <div className={classes.post_section+" p-4"}>
               <PostSection />
             </div>
-            <div className={classes.userLeftContent}>
+            <div className={classes.userLeftContent+" px-8"}>
               <div className={classes.rightDiv}>
                 {data?.request?.request?.length > 0 && (
                   <div className={classes.associationRequests}>
@@ -429,7 +431,7 @@ const NewsFeedDesign = () => {
                   </div>
                 )}
                 {data?.birthday?.length > 0 && (
-                  <div className={classes.request__Wrapper}>
+                  <div className={classes.request__Wrapper+" bg-white rounded-lg shadow-lg p-4"}>
                     <div className={classes.header}>
                       <h5>birthdays</h5>
                       <span
@@ -439,9 +441,9 @@ const NewsFeedDesign = () => {
                         View All
                       </span>
                     </div>
-                    <div className={classes.request__content}>
+                    <div className={classes.request__content+" "}>
                       {data?.birthday?.slice(0, 5)?.map((user) => (
-                        <div className={classes.request__content__wrapper}>
+                        <div className={classes.request__content__wrapper+" "}>
                           <UserRequest request={user} key={user?._id}>
                             <div className={classes.messageReq}>
                               {user?.icon}

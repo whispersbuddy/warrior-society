@@ -345,7 +345,7 @@ const PostSection = () => {
   return (
     <>
       <div className={classes.mainDiv}>
-        <div className={classes.postContainer+" shadow-lg"} title="Create a new post">
+        <div className={classes.postContainer+" shadow-lg mb-4"} title="Create a new post">
           <CreatePost
             onClick={() => {
               setSelectedItem(null);
@@ -356,7 +356,7 @@ const PostSection = () => {
             }}
           />
         </div>
-        <div className={classes.switchContainer}>
+        {/* <div className={classes.switchContainer}>
           <div className={classes.switchComponent}>
             <p>Public</p>
             <Switch
@@ -369,7 +369,7 @@ const PostSection = () => {
             />
             <p>Private</p>
           </div>
-        </div>
+        </div> */}
         <div className={classes.postsContainer}>
           <Row>
             {isLoading === "mainLoading" ? (

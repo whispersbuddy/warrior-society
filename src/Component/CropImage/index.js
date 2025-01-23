@@ -88,7 +88,7 @@ function CropImage({
                       image={
                         typeof state == "object"
                           ? URL.createObjectURL(state)
-                          : imageUrl(state)
+                          : state.includes('default')?"/images/default.webp":imageUrl(state)
                       }
                       crop={crop}
                       zoom={zoom}
@@ -113,7 +113,7 @@ function CropImage({
                     src={
                       typeof state == "object"
                         ? URL.createObjectURL(state)
-                        : imageUrl(state)
+                        : state.includes('default')?"/images/default.webp":imageUrl(state)
                     }
                     className={[classes.renderImg, imgClass && imgClass].join(
                       " "

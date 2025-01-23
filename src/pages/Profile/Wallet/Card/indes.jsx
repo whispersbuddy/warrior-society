@@ -61,14 +61,14 @@ const Card = () => {
             />
           </StripeContext>
         ) : (
-          <div className={classes.cardList}>
+          <div className={classes.cardList} style={{gridTemplateColumns:"1fr"}}>
             {loading ? (
               <Loader />
             ) : !cards?.length && !loading ? (
               <p className="text-center fs-4">No Card found</p>
             ) : (
               cards.map((card) => (
-                <div key={card?.id} className={classes.card}>
+                <div key={card?.id} className={classes.card+" w-full"}>
                   <div className={classes.cardContent}>
                     <div>
                       <h4>**** **** **** {card.card?.last4}</h4>

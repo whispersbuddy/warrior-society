@@ -32,23 +32,27 @@ const Wallet = () => {
 
   return (
     <>
-      <div className={classes.profile_container}>
-        <Container className={classes.profileTabs}>
-          {tabs?.map((tab) => (
-            <div
-              className={[
-                classes.tab,
-                currentTab === tab && classes.activeTab,
-              ].join(" ")}
-              onClick={() => setCurrentTab(tab)}
-              key={tab}
-            >
-              {tab}
-            </div>
-          ))}
-        </Container>
+      <div className="flex sm:flex-row flex-col ">
+        <div className={classes.profile_container + " !flex-[0.2_0_0]"}>
+          <Container className={classes.profileTabs+ " !flex sm:!flex-col !gap-4"}>
+            {tabs?.map((tab) => (
+              <div
+                className={[
+                  classes.tab,
+                  currentTab === tab && classes.activeTab,
+                ].join(" ")}
+                onClick={() => setCurrentTab(tab)}
+                key={tab}
+              >
+                {tab}
+              </div>
+            ))}
+          </Container>
+        </div>
+        <div className="flex-1">
+          {renderProfile()}
+        </div>
       </div>
-      {renderProfile()}
     </>
   );
 };

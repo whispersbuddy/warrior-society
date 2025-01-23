@@ -100,6 +100,7 @@ const ProfileHeader = ({
   const [coverUpdated, setCoverUpdated] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
 
+  console.log('photoooo',user?.bgPhoto)
   const handleUnFollow = async (id, type) => {
     const apiUrl = BaseURL("profile/remove");
     setIsApiCall(true);
@@ -227,6 +228,7 @@ const ProfileHeader = ({
             <div className={classes.outer_profile_div}>
               <div
                 className={classes.profileDiv}
+                style={{boxShadow:"5px 5px 20px"}}
                 onClick={() => setShowProfile(true)}
               >
                 <ProfilePhoto
@@ -432,7 +434,7 @@ const ProfileHeader = ({
           <LightBoxModal
             show={showCover}
             setShow={setShowCover}
-            mainSrc={imageUrl(bgPhoto)}
+            mainSrc={bgPhoto.includes('default')?"/images/default.webp":imageUrl(bgPhoto)}
             coverPhotoDimensions={coverPhotoDimensions}
             cropAspectRatio={coverAspectRatio}
           />

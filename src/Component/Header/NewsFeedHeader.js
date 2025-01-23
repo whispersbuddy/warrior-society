@@ -71,18 +71,18 @@ export const NewsFeedHeader = ({ className }) => {
         <NewsFeedMobileHeader />
       ) : (
         <Container
-          className={`${[Style.navbarContainer, className].join(" ")}`}
+          className={`${[Style.navbarContainer, className].join(" ")+" shadow-lg"}`}
           fluid
         >
           <div className={Style.leftHeader + " flex-1 items-center"}>
-            <div className={Style.logoDiv} onClick={() => navigate("/")}>
+            <div className={Style.logoDiv+" m-0"} onClick={() => navigate("/")}>
               <img src={newsFeedHeader} alt="" />
             </div>
             {locationObj.pathname !== "/users" && (
-              <div className={`${Style.searchBarDiv} h-max `}>
+              <div className={`${Style.searchBarDiv} h-max !flex-[0.7_0_0] border-none !ml-1`}>
                 <Input
-                  extraClass={'p-2'}
-                  customClass={`${Style.inputContainer} `}
+                  extraClass={'p-2 '}
+                  customClass={`${Style.inputContainer}`}
                   value={search}
                   setter={setSearch}
                   placeholder={"Search Users"}

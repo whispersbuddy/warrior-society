@@ -29,22 +29,26 @@ const ProfileDetails = ({ newWarriorUsers, currentRole, setCurrentRole }) => {
 
   return (
     <>
-      <div className={classes.profile_container}>
-        <Container className={classes.profileTabs}>
-          {allRoles?.map((role) => (
-            <div
-              className={[
-                classes.tab,
-                currentRole === role && classes.activeTab,
-              ].join(" ")}
-              onClick={() => setCurrentRole(role)}
-            >
-              {role}
-            </div>
-          ))}
-        </Container>
+      <div className="flex sm:flex-row flex-col ">
+        <div className={classes.profile_container + " !flex-[0.2_0_0]"}>
+          <Container className={classes.profileTabs + " !flex sm:!flex-col !gap-4"}>
+            {allRoles?.map((role) => (
+              <div
+                className={[
+                  classes.tab,
+                  currentRole === role && classes.activeTab,
+                ].join(" ")}
+                onClick={() => setCurrentRole(role)}
+              >
+                {role}
+              </div>
+            ))}
+          </Container>
+        </div>
+        <div className="flex-1">
+          {renderProfile(currentRole)}
+        </div>
       </div>
-      {renderProfile(currentRole)}
     </>
   );
 };

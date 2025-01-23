@@ -111,9 +111,9 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
           ].join(" ")}
         >
           <Row>
-            <Col lg={8}>
+            <Col className="w-full">
               <div className={classes.leftContainer}>
-                <div className={classes.aboutContainer}>
+                <div className={classes.aboutContainer+" !border-none shadow-lg bg-white"}>
                   <div className={classes.header}>
                     <div className={classes.leftDiv}>
                       <h3>
@@ -148,7 +148,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                     )}
                   </p>
                 </div>
-                <div className={classes.fightingContainer}>
+                <div className={classes.fightingContainer+" !border-none shadow-lg bg-white"}>
                   <div className={classes.header}>
                     <h3>
                       Discipline(s){" "}
@@ -244,7 +244,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                     )}
                   </div>
                 </div>
-                <div className={classes.awardsContainer}>
+                <div className={classes.awardsContainer+" !border-none shadow-lg bg-white"}>
                   <div className={classes.header}>
                     <h3>
                       Accolades{" "}
@@ -316,7 +316,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                     </Row>
                   </div>
                 </div>
-                <div className={classes.gymsContainer}>
+                <div className={classes.gymsContainer+" !border-none shadow-lg bg-white"}>
                   <div className={classes.header}>
                     <h3>
                       GYM{" "}
@@ -399,7 +399,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                     </Row>
                   </div>
                 </div>
-                <div className={classes.gymsContainer}>
+                <div className={classes.gymsContainer+" !border-none shadow-lg bg-white"}>
                   <div className={classes.header}>
                     <h3>
                       Associations{" "}
@@ -491,7 +491,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                 </div>
               </div>
             </Col>
-            <Col lg={4}>
+            {/* <Col lg={4}>
               <div className={classes.rightContainer}>
                 <div className={classes.header}>
                   <h3>
@@ -540,7 +540,7 @@ const StudentUserProfile = ({ newWarriorUsers }) => {
                   <NoData text="No society members" />
                 )}
               </div>
-            </Col>
+            </Col> */}
           </Row>
           {modal?.show === "bio" && (
             <EditBioModal
